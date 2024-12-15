@@ -1,4 +1,4 @@
-import { _decorator, Component, Node,Vec3 } from 'cc';
+import { _decorator, Component, Node,Vec3 ,Sprite} from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Customer')
@@ -10,10 +10,16 @@ export class Customer extends Component {
     private ShelvePositions:Vec3[]=[];
     private SelectShelve:number=0;
     private IsNewCustomer:boolean=true;
+    @property(Sprite)
+    public CustomerMask: Sprite = null; // 卡牌正面
+    public cdTime: number = 2; // 卡牌冷却时间
+    public cdTimer: number = 0; // 卡牌冷却计时器
 
 
     onLoad(){
         this.ShelvePositions.push(new Vec3(-100,150,0));
+        this.ShelvePositions.push(new Vec3(110,150,0));
+
     }
     onDestroy(){
         this.ShelvePositions.length=0;
@@ -21,8 +27,14 @@ export class Customer extends Component {
     start() {
         this.SelectShelve = Math.floor(Math.random() * this.ShelvePositions.length);
         console.log(this.SelectShelve);
+        this.cdTimer = this.cdTime;
     }
     update(deltaTime:number){
+        if(this.cdTimer>0){
+            this.cdTimer-=deltaTime;
+        }else{
+            this.cdTimer=this.cdTime;
+        }
         if(this.node.position.x<=this.MiddlePosition.x && this.IsNewCustomer){
             this.node.setPosition(this.node.position.x+this.speed*deltaTime,this.node.position.y);
         }else{
@@ -35,10 +47,13 @@ export class Customer extends Component {
                     console.log("left"+this.node.position.x+"right"+this.ShelvePositions[this.SelectShelve].x);
 
                 }else{
-
+                    this.pay();
                 }
             }
         }
+    }
+    pay(){
+        this.CustomerMask.fillRange=this.cdTimer / this.cdTime;
     }
 
 

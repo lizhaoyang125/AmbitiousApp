@@ -44,7 +44,7 @@ export interface Store {        //商店
     "乌烟瘴气",
     "乏善可陈",
     "干净整洁",
-    "耳目一新",
+    "富丽堂皇",
     "五星商家",
   }
   export enum StoreType {
