@@ -6,12 +6,13 @@ export class Customer extends Component {
 
     @property(Number)
     public speed:number=100;
+    @property(Sprite)
+    public CustomerMask: Sprite = null; // 卡牌正面
+
     private MiddlePosition: Vec3 = new Vec3(0, 280, 0);
     private ShelvePositions:Vec3[]=[];
     private SelectShelve:number=0;
     private IsNewCustomer:boolean=true;
-    @property(Sprite)
-    public CustomerMask: Sprite = null; // 卡牌正面
     public cdTime: number = 2; // 卡牌冷却时间
     public cdTimer: number = 0; // 卡牌冷却计时器
 
@@ -32,10 +33,8 @@ export class Customer extends Component {
     update(deltaTime:number){
         if(this.ShelvePositions[this.SelectShelve].x>0){
             this.customerMove(deltaTime,1);
-            console.log("right");
         }else{
             this.customerMove(deltaTime,-1);
-            console.log("left");
         }
     }
     customerMove(deltaTime:number,direction:number){
