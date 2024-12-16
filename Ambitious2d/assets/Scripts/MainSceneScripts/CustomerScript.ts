@@ -44,8 +44,7 @@ export class Customer extends Component {
             }else{
                 if(this.node.position.x>=this.ShelvePositions[this.SelectShelve].x){
                     this.node.setPosition(this.node.position.x-this.speed*deltaTime,this.node.position.y);
-                    console.log("left"+this.node.position.x+"right"+this.ShelvePositions[this.SelectShelve].x);
-
+                    //console.log("left"+this.node.position.x+"right"+this.ShelvePositions[this.SelectShelve].x);
                 }else{
                     this.pay();
                 }
