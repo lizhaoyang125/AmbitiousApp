@@ -18,8 +18,8 @@ export class Customer extends Component {
 
 
     onLoad(){
-        this.ShelvePositions.push(new Vec3(-100,150,0));
-        this.ShelvePositions.push(new Vec3(110,150,0));
+        this.ShelvePositions.push(new Vec3(-100,100,0));
+        this.ShelvePositions.push(new Vec3(110,100,0));
 
     }
     onDestroy(){
@@ -31,36 +31,44 @@ export class Customer extends Component {
         this.cdTimer = this.cdTime;
     }
     update(deltaTime:number){
-        if(this.ShelvePositions[this.SelectShelve].x>0){
-            this.customerMove(deltaTime,1);
-        }else{
-            this.customerMove(deltaTime,-1);
-        }
+        this.customerMove(deltaTime);
     }
-    customerMove(deltaTime:number,direction:number){
-        if(this.node.position.x<=this.MiddlePosition.x && this.IsNewCustomer){
-            this.node.setPosition(this.node.position.x+this.speed*deltaTime,this.node.position.y);
+    customerMove(deltaTime:number){
+        this.moveX(this.node,this.MiddlePosition,deltaTime);
+        this.moveY(this.node,this.ShelvePositions[this.SelectShelve],deltaTime);
+        this.cdTimer-=deltaTime;
+        this.pay(deltaTime);
+    }
+    pay(deltaTime:number){
+        this.CustomerMask.fillRange=this.cdTimer / this.cdTime;
+        this.moveX(this.node,this.MiddlePosition,deltaTime);
+    }
+    moveX(Self:Node,TargetPosition:Vec3,deltaTime:number){
+        if(Self.position.x<=TargetPosition.x){
+            Self.setPosition(Self.position.x+this.speed*deltaTime,Self.position.y);
+            if(Self.position.x>=TargetPosition.x){
+                return true;
+            }
         }else{
-            this.IsNewCustomer=false;
-            if(this.node.position.y>=this.ShelvePositions[this.SelectShelve].y+50){    
-                this.node.setPosition(this.node.position.x,this.node.position.y-100*deltaTime);
-            }else{
-                if(this.node.position.x*direction<=this.ShelvePositions[this.SelectShelve].x*direction){
-                    this.node.setPosition(this.node.position.x+direction*this.speed*deltaTime,this.node.position.y);
-                    //console.log("left"+this.node.position.x+"right"+this.ShelvePositions[this.SelectShelve].x);
-                }else{
-                    if(this.cdTimer>0){
-                        this.cdTimer-=deltaTime;
-                    }
-                    this.pay();
-                }
+            Self.setPosition(Self.position.x-this.speed*deltaTime,Self.position.y);
+            if(Self.position.x<=TargetPosition.x){
+                return true;
             }
         }
     }
-    pay(){
-        this.CustomerMask.fillRange=this.cdTimer / this.cdTime;
+    moveY(Self:Node,TargetPosition:Vec3,deltaTime:number){
+        if(Self.position.y<=TargetPosition.y){
+            Self.setPosition(Self.position.x,Self.position.y+this.speed*deltaTime);
+            if(Self.position.y>=TargetPosition.y){
+                return true;
+            }
+        }else{
+            Self.setPosition(Self.position.x,Self.position.y-this.speed*deltaTime);
+            if(Self.position.y<=TargetPosition.y){
+                return true;
+            }
+        }
     }
-
 
 }
 

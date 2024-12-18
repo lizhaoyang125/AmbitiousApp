@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Sprite ,SpriteFrame} from 'cc';
+import { _decorator, BoxCollider2D, Collider2D, Component, Contact2DType, Node, Sprite ,SpriteFrame} from 'cc';
 const { ccclass, property } = _decorator;
 import { GoodsDict } from '../DataCollection';
 
@@ -18,6 +18,15 @@ export class ShelveScript extends Component {
         let Good="便宜女装";
         let index=GoodsDict[this.CurrentStore][Good];
         console.log("index:"+index);
+        let collider=this.node.getComponent(BoxCollider2D);
+        collider.on(Contact2DType.BEGIN_CONTACT,this.onBeginContact,this);
+        collider.on(Contact2DType.END_CONTACT,this.onEndContact,this);
+    }
+    onBeginContact(self: Collider2D, other: Collider2D) {
+        console.log("onBeginContact");
+    }
+    onEndContact(self: Collider2D, other: Collider2D) {
+        console.log("onEndContact");
     }
     public changeSpriteFrame() {
         this.ShelveGood2.spriteFrame = this.AvatarArray[0];

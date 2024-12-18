@@ -5,5 +5,23 @@
       "width": 430,
       "height": 932
     }
+  },
+  "custom_joint_texture_layouts": [],
+  "physics": {
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "ShelveGroup"
+      },
+      {
+        "index": 2,
+        "name": "CustomerGroup"
+      }
+    ],
+    "collisionMatrix": {
+      "0": 1,
+      "1": 4,
+      "2": 2
+    }
   }
 }
