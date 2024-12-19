@@ -15,11 +15,13 @@ export class Customer extends Component {
     private IsNewCustomer:boolean=true;
     public cdTime: number = 2; // 卡牌冷却时间
     public cdTimer: number = 0; // 卡牌冷却计时器
+    private MoveState:number=0;
 
 
     onLoad(){
-        this.ShelvePositions.push(new Vec3(-100,100,0));
-        this.ShelvePositions.push(new Vec3(110,100,0));
+        this.ShelvePositions.push(new Vec3(-100,150,0));
+        this.ShelvePositions.push(new Vec3(110,150,0));
+
 
     }
     onDestroy(){
@@ -29,43 +31,51 @@ export class Customer extends Component {
         this.SelectShelve = Math.floor(Math.random() * this.ShelvePositions.length);
         console.log(this.SelectShelve);
         this.cdTimer = this.cdTime;
+        this.MoveState=0;
     }
     update(deltaTime:number){
         this.customerMove(deltaTime);
     }
     customerMove(deltaTime:number){
-        this.moveX(this.node,this.MiddlePosition,deltaTime);
-        this.moveY(this.node,this.ShelvePositions[this.SelectShelve],deltaTime);
-        this.cdTimer-=deltaTime;
-        this.pay(deltaTime);
+        console.log("customerMove MoveState:"+this.MoveState);
+        switch(this.MoveState){
+            case 0:this.moveX(this.node,this.MiddlePosition,deltaTime); break;
+            case 1:this.moveY(this.node,this.ShelvePositions[this.SelectShelve].clone().add(new Vec3(0,50,0)),deltaTime); break;
+            case 2:this.pay(deltaTime); break;
+            default:this.MoveState=100;break;
+        }
     }
     pay(deltaTime:number){
         this.CustomerMask.fillRange=this.cdTimer / this.cdTime;
-        this.moveX(this.node,this.MiddlePosition,deltaTime);
+        this.cdTimer-=deltaTime;
+        this.MoveState=3;
     }
-    moveX(Self:Node,TargetPosition:Vec3,deltaTime:number){
+    moveX (Self:Node,TargetPosition:Vec3,deltaTime:number){
+        console.log("moveX MoveState:"+this.MoveState+"abs:"+Math.abs(Self.position.x - TargetPosition.x));
         if(Self.position.x<=TargetPosition.x){
             Self.setPosition(Self.position.x+this.speed*deltaTime,Self.position.y);
-            if(Self.position.x>=TargetPosition.x){
-                return true;
+            if (Math.abs(Self.position.x - TargetPosition.x) <= 2) {
+                this.MoveState = 1;
             }
         }else{
             Self.setPosition(Self.position.x-this.speed*deltaTime,Self.position.y);
-            if(Self.position.x<=TargetPosition.x){
-                return true;
+            if (Math.abs(Self.position.x - TargetPosition.x) <= 2) {
+                this.MoveState = 1;
             }
         }
     }
     moveY(Self:Node,TargetPosition:Vec3,deltaTime:number){
+        console.log("moveY TargetPosition:"+TargetPosition.y);
+        console.log("moveY MoveState:"+this.MoveState+"abs:"+Math.abs(Self.position.y - TargetPosition.y));
         if(Self.position.y<=TargetPosition.y){
             Self.setPosition(Self.position.x,Self.position.y+this.speed*deltaTime);
-            if(Self.position.y>=TargetPosition.y){
-                return true;
+            if (Math.abs(Self.position.y - TargetPosition.y) <= 2) {
+                this.MoveState = 2;
             }
         }else{
             Self.setPosition(Self.position.x,Self.position.y-this.speed*deltaTime);
-            if(Self.position.y<=TargetPosition.y){
-                return true;
+            if (Math.abs(Self.position.y - TargetPosition.y) <= 2) {
+                this.MoveState = 2;
             }
         }
     }
