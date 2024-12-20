@@ -37,7 +37,7 @@ export class Customer extends Component {
         this.customerMove(deltaTime);
     }
     customerMove(deltaTime:number){
-        console.log("customerMove MoveState:"+this.MoveState);
+        //console.log("customerMove MoveState:"+this.MoveState);
         switch(this.MoveState){
             case 0:this.moveX(this.node,this.MiddlePosition,deltaTime); break;
             case 1:this.moveY(this.node,this.ShelvePositions[this.SelectShelve].clone().add(new Vec3(0,50,0)),deltaTime); break;
@@ -66,7 +66,7 @@ export class Customer extends Component {
         }
     }
     moveX (Self:Node,TargetPosition:Vec3,deltaTime:number){
-        console.log("moveX MoveState:"+this.MoveState+"abs:"+Math.abs(Self.position.x - TargetPosition.x));
+        //console.log("moveX MoveState:"+this.MoveState+"abs:"+Math.abs(Self.position.x - TargetPosition.x));
         if(Self.position.x<=TargetPosition.x){
             Self.setPosition(Self.position.x+this.speed*deltaTime,Self.position.y);
             if (Math.abs(Self.position.x - TargetPosition.x) <= 2) {
@@ -90,8 +90,8 @@ export class Customer extends Component {
         }
     }
     moveY(Self:Node,TargetPosition:Vec3,deltaTime:number){
-        console.log("moveY TargetPosition:"+TargetPosition.y);
-        console.log("moveY MoveState:"+this.MoveState+"abs:"+Math.abs(Self.position.y - TargetPosition.y));
+       // console.log("moveY TargetPosition:"+TargetPosition.y);
+       // console.log("moveY MoveState:"+this.MoveState+"abs:"+Math.abs(Self.position.y - TargetPosition.y));
         if(Self.position.y<=TargetPosition.y){
             Self.setPosition(Self.position.x,Self.position.y+this.speed*deltaTime);
             if (Math.abs(Self.position.y - TargetPosition.y) <= 2) {
