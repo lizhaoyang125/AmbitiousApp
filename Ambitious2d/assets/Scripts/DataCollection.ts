@@ -41,6 +41,7 @@ export interface Store {        //商店
     Popularity: number; // 人气，0-100
     LeftNumber: number; // 剩余数量
     Description: string;
+    Frame: number;
  }
  export interface Contract {   //合同
     ID:number;
@@ -50,81 +51,40 @@ export interface Store {        //商店
     Price: number;
  }
 
-
-  export const EvaluationDict: { [key: number]: string} = {
+ export const EvaluationDict: { [key: number]: string} = {
     0:"乌烟瘴气",
     1:"乏善可陈",
     2:"干净整洁",
     3:"富丽堂皇",
     4:"五星商家",
   }
-  export const AllStoreGoodsDict: { [storeType: string]: { name: string; goods: { id: number; name: string }[] } } = {
-    "服装店": {
-      name: "服装店",
-      goods: [
-        { id: 10001, name: "便宜女装" },
-        { id: 10002, name: "便宜男装" },
-        { id: 10003, name: "中等女装" },
-        { id: 10004, name: "中等男装" },
-        { id: 10005, name: "昂贵女装" },
-        { id: 10006, name: "昂贵男装" },
-      ],
-    },
-    "花店": {
-      name: "花店",
-      goods: [
-        { id: 20001, name: "便宜花束" },
-        { id: 20002, name: "中等花束" },
-        { id: 20003, name: "昂贵花束" },
-      ],
-    },
-    "书店": {
-      name: "书店",
-      goods: [
-        { id: 30001, name: "励志书籍" },
-        { id: 30002, name: "工具书籍" },
-        { id: 30003, name: "言情书籍" },
-        { id: 30004, name: "科幻书籍" },
-        { id: 30006, name: "漫画书籍" },
-      ],
-    },
-    "电器店": {
-      name: "电器店",
-      goods: [
-        { id: 40001, name: "电视" },
-        { id: 40002, name: "冰箱" },
-        { id: 40003, name: "洗衣机" },
-        { id: 40004, name: "空调" },
-        { id: 40005, name: "电脑" },
-        { id: 40006, name: "手机" },
-        { id: 40007, name: "平板" },
-      ],
-    },
-  };
+
+  export const StoreTypeList:string[] = ["服装店","花店","书店","电器店"];
   export const SimpleAllStoreGoodsDict: { [storeType: string]: string[] } = {
-    "服装店": ["便宜女装","便宜男装","中等女装","中等男装","昂贵女装","昂贵男装"],
-    "花店": ["便宜花束","中等花束","昂贵花束"],
+    "服装店": ["便宜女装","便宜男装","一般女装","一般男装","昂贵女装","昂贵男装"],
+    "花店": ["便宜花束","一般花束","昂贵花束"],
     "书店": ["励志书籍","工具书籍","言情书籍","科幻书籍","漫画书籍"],
     "电器店": ["电视","冰箱","洗衣机","空调","电脑","手机","平板"],
 
   }
 
-
-
+//存储货物图片frame
   export const GoodsFrameDict: { [key: string]: number } = {
     "便宜女装": 0,
     "便宜男装": 1,
-    "中等女装": 2,
-    "中等男装": 3,
+    "一般女装": 2,
+    "一般男装": 3,
     "昂贵女装": 4,
     "昂贵男装": 5,
     "便宜花束": 6,
-    "中等花束": 7,
+    "一般花束": 7,
     "昂贵花束": 8,
     "励志书籍": 9,
     "工具书籍": 10,
     "言情书籍": 11,
   }
+
+  //存储员工技能
  export const TalentDict: {
     [key: string]: {
       id: number;
@@ -161,57 +121,4 @@ export interface Store {        //商店
   }
 
 
-
-  
-  export const MyStoreGoodsNumberDict: { [storeType: number]: { name: string; type: string;goods: { id: number; name: string;leftNumber:number }[] } } = {
-    0: {
-        name: "仓库",
-        type: "仓库",
-        goods: [
-          { id: 10001, name: "便宜女装",leftNumber:0 },
-          { id: 10002, name: "便宜男装",leftNumber:0 },
-          { id: 10003, name: "中等女装",leftNumber:0 },
-          { id: 10004, name: "中等男装",leftNumber:0 },
-          { id: 10005, name: "昂贵女装",leftNumber:0 },
-          { id: 10006, name: "昂贵男装",leftNumber:0 },
-          { id: 20001, name: "便宜花束",leftNumber:0 },
-          { id: 20002, name: "中等花束",leftNumber:0 },
-          { id: 20003, name: "昂贵花束",leftNumber:0 },
-          { id: 30001, name: "励志书籍",leftNumber:0 },
-          { id: 30002, name: "工具书籍",leftNumber:0 },
-          { id: 30003, name: "言情书籍",leftNumber:0 },
-          { id: 30004, name: "科幻书籍",leftNumber:0 },
-          { id: 30006, name: "漫画书籍",leftNumber:0 },
-          { id: 40001, name: "电视",leftNumber:0 },
-          { id: 40002, name: "冰箱",leftNumber:0 },
-          { id: 40003, name: "洗衣机",leftNumber:0 },
-          { id: 40004, name: "空调",leftNumber:0 },
-          { id: 40005, name: "电脑",leftNumber:0 },
-          { id: 40006, name: "手机",leftNumber:0 },
-          { id: 40007, name: "平板",leftNumber:0 },
-        ],
-      }, 
-    1: {
-      name: "八一服装店",
-      type: "服装店",
-      goods: [
-        { id: 10001, name: "便宜女装",leftNumber:0 },
-        { id: 10002, name: "便宜男装",leftNumber:0 },
-        { id: 10003, name: "中等女装",leftNumber:0 },
-        { id: 10004, name: "中等男装",leftNumber:0 },
-        { id: 10005, name: "昂贵女装",leftNumber:0 },
-        { id: 10006, name: "昂贵男装",leftNumber:0 },
-      ],
-    },
-    2: {
-      name: "西华花店",
-      type: "花店",
-      goods: [
-        { id: 20001, name: "便宜花束",leftNumber:0 },
-        { id: 20002, name: "中等花束",leftNumber:0 },
-        { id: 20003, name: "昂贵花束",leftNumber:0 },
-      ],
-    },
-
-  }; 
   

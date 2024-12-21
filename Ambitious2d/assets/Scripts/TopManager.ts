@@ -1,12 +1,14 @@
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, SpriteFrame } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('TopManager')
 export class TopManager extends Component {
     private static _instance: TopManager;
-    public MyStoresDict: { [StoreName: string]: { StoreType: string; ShelveIndex: number[] } } = {};
-    public ShelveIndexDict: { [shelveIndex: number]: { GoodsType: string; number: number } } = {};
-
+    public MyStoreShelveDict: { [StoreName: string]: { StoreType: string; ShelveIndex: number[] } } = {};
+    public ShelveGoodsDict: { [shelveIndex: number]: { GoodsType: string; number: number } } = {};
+    public AllGoodsNumberDict: { [GoodsType: string]: number } = {};        //仓库存货
+    @property(Array(SpriteFrame))
+    public AvatarArray:SpriteFrame[] = [];          // 货架的图片
     public static get Instance() {
         if (!this._instance) {
             console.warn("TopManager instance is not initialized yet!");
@@ -27,31 +29,61 @@ export class TopManager extends Component {
     }
 
     initialData() {
-        this.MyStoresDict = {
+        this.MyStoreShelveDict = {
             "八一服装店": { StoreType: "服装店", ShelveIndex: [1, 2] },
             "新华花店": { StoreType: "花店", ShelveIndex: [3] },
         };
-        this.ShelveIndexDict = {
+        this.ShelveGoodsDict = {
             1: { GoodsType: "便宜女装", number: 100 },
             2: { GoodsType: "便宜男装", number: 100 },
             3: { GoodsType: "便宜花束", number: 100 },
-            10000: { GoodsType: "便宜女装", number: 100 },      //仓库货架
-            10001: { GoodsType: "便宜男装", number: 100 },
-            10002: { GoodsType: "便宜花束", number: 100 },
+        };
+        this.AllGoodsNumberDict = {     //仓库存货
+            "便宜女装": 100,
+            "便宜男装": 100,
+            "一般男装": 100,
+            "一般女装": 100,
+            "昂贵男装": 100,
+            "昂贵女装": 100,
+            "便宜花束": 100,
+            "一般花束": 100,
+            "昂贵花束": 100,    
         };
     }
-    updateGoodsData(id:number,GoodsType:string,number:number){
-        this.ShelveIndexDict[id] = { GoodsType: GoodsType, number: number };
-        this.localStoreShelveIndexDict(id,GoodsType,number);
+    
+    addNewStore(StoreName:string,StoreType:string){
+        let shelveIndex = Object.keys(this.MyStoreShelveDict).length + 1;
+        this.MyStoreShelveDict[StoreName] = { StoreType: StoreType, ShelveIndex: [shelveIndex] };
+        this.ShelveGoodsDict[shelveIndex] = { GoodsType: "空", number: 0 }
+        this.localStoreMyStoreShelveDict();
+        this.localStoreShelveGoodsDict();
     }
-    localStoreShelveIndexDict(id:number,GoodsType:string,number:number){
-        localStorage.setItem("ShelveIndexDict",JSON.stringify(this.ShelveIndexDict));
+    addNewShelve(StoreName:string){
+        let shelveIndex = Object.keys(this.MyStoreShelveDict[StoreName].ShelveIndex).length + 1;
+        this.MyStoreShelveDict[StoreName].ShelveIndex.push(shelveIndex);
+        this.ShelveGoodsDict[shelveIndex] = { GoodsType: "空", number: 0 }
+        this.localStoreMyStoreShelveDict();
+        this.localStoreShelveGoodsDict();
     }
-    localMyStoresDict(id:number,GoodsType:string,number:number){
-        localStorage.setItem("MyStoresDict",JSON.stringify(this.MyStoresDict));
+
+    updateShelveData(id:number,GoodsType:string,number:number){
+        this.ShelveGoodsDict[id] = { GoodsType: GoodsType, number: number };
+        this.localStoreShelveGoodsDict();
+        this.AllGoodsNumberDict[GoodsType] = number;
+        this.localStoreAllGoodsNumberDict();
+    }
+    localStoreShelveGoodsDict(){    // 本地存储货架数据,货架以及货架上的商品数量
+        localStorage.setItem("ShelveGoodsDict",JSON.stringify(this.ShelveGoodsDict));
+    }
+    localStoreMyStoreShelveDict(){    // 本地存储店铺数据,店铺名称以及货架编号
+        localStorage.setItem("MyStoreShelveDict",JSON.stringify(this.MyStoreShelveDict));
+    }
+    localStoreAllGoodsNumberDict(){    // 本地存储所有商品数量,商品名称以及商品数量
+        localStorage.setItem("AllGoodsNumberDict",JSON.stringify(this.AllGoodsNumberDict));
     }
     loadLocalData(){
-        this.ShelveIndexDict = JSON.parse(localStorage.getItem("ShelveIndexDict"));
-        this.MyStoresDict = JSON.parse(localStorage.getItem("MyStoresDict"));
+        this.ShelveGoodsDict = JSON.parse(localStorage.getItem("ShelveGoodsDict"));
+        this.MyStoreShelveDict = JSON.parse(localStorage.getItem("MyStoreShelveDict"));
+        this.AllGoodsNumberDict = JSON.parse(localStorage.getItem("AllGoodsNumberDict"));
     }
 }
