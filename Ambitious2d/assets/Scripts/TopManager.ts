@@ -35,6 +35,23 @@ export class TopManager extends Component {
             1: { GoodsType: "便宜女装", number: 100 },
             2: { GoodsType: "便宜男装", number: 100 },
             3: { GoodsType: "便宜花束", number: 100 },
+            10000: { GoodsType: "便宜女装", number: 100 },      //仓库货架
+            10001: { GoodsType: "便宜男装", number: 100 },
+            10002: { GoodsType: "便宜花束", number: 100 },
         };
+    }
+    updateGoodsData(id:number,GoodsType:string,number:number){
+        this.ShelveIndexDict[id] = { GoodsType: GoodsType, number: number };
+        this.localStoreShelveIndexDict(id,GoodsType,number);
+    }
+    localStoreShelveIndexDict(id:number,GoodsType:string,number:number){
+        localStorage.setItem("ShelveIndexDict",JSON.stringify(this.ShelveIndexDict));
+    }
+    localMyStoresDict(id:number,GoodsType:string,number:number){
+        localStorage.setItem("MyStoresDict",JSON.stringify(this.MyStoresDict));
+    }
+    loadLocalData(){
+        this.ShelveIndexDict = JSON.parse(localStorage.getItem("ShelveIndexDict"));
+        this.MyStoresDict = JSON.parse(localStorage.getItem("MyStoresDict"));
     }
 }
