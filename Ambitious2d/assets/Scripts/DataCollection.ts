@@ -109,6 +109,60 @@ export interface Store {        //商店
 
   }
 
+
+
+  export const GoodsFrameDict: { [key: string]: number } = {
+    "便宜女装": 0,
+    "便宜男装": 1,
+    "中等女装": 2,
+    "中等男装": 3,
+    "昂贵女装": 4,
+    "昂贵男装": 5,
+    "便宜花束": 6,
+    "中等花束": 7,
+    "昂贵花束": 8,
+    "励志书籍": 9,
+    "工具书籍": 10,
+    "言情书籍": 11,
+  }
+ export const TalentDict: {
+    [key: string]: {
+      id: number;
+      effect: string;
+      description?: string; // 详细描述（可选）      // 图标路径（可选）
+    };
+  } = {
+    "销售专家": {
+      id: 0,
+      effect: "销量+10%",
+      description: "精通销售策略，让店铺销量提升。",
+    },
+    "管理专家": {
+      id: 1,
+      effect: "员工工资-5%",
+      description: "通过高效管理降低人员成本。",
+    },
+    "进货专家": {
+      id: 2,
+      effect: "进货价格-10%",
+      description: "通过精明进货降低成本。",
+    },
+    "财务专家": {
+      id: 3,
+      effect: "利润+10%",
+      description: "通过财务管理增加利润。",
+    },
+    "人事专家": {
+      id: 4,
+      effect: "员工忠诚度+10%",
+      description: "通过人事管理增加员工忠诚度。",
+    },
+    
+  }
+
+
+
+  
   export const MyStoreGoodsNumberDict: { [storeType: number]: { name: string; type: string;goods: { id: number; name: string;leftNumber:number }[] } } = {
     0: {
         name: "仓库",
@@ -161,44 +215,3 @@ export interface Store {        //商店
 
   }; 
   
-//  export const TalentDict: {[key: string]: number } = {
-//     "销售专家": 0,  //销量+10%
-//     "管理专家": 1,  //员工工资-5%
-//     "进货专家": 2,  //进货价格-10%
-//     "财务专家": 3,  //利润+10%
-//     "人事专家": 4,  //员工忠诚度+10%
-//  }
- export const TalentDict: {
-    [key: string]: {
-      id: number;
-      effect: string;
-      description?: string; // 详细描述（可选）      // 图标路径（可选）
-    };
-  } = {
-    "销售专家": {
-      id: 0,
-      effect: "销量+10%",
-      description: "精通销售策略，让店铺销量提升。",
-    },
-    "管理专家": {
-      id: 1,
-      effect: "员工工资-5%",
-      description: "通过高效管理降低人员成本。",
-    },
-    "进货专家": {
-      id: 2,
-      effect: "进货价格-10%",
-      description: "通过精明进货降低成本。",
-    },
-    "财务专家": {
-      id: 3,
-      effect: "利润+10%",
-      description: "通过财务管理增加利润。",
-    },
-    "人事专家": {
-      id: 4,
-      effect: "员工忠诚度+10%",
-      description: "通过人事管理增加员工忠诚度。",
-    },
-    
-  }
