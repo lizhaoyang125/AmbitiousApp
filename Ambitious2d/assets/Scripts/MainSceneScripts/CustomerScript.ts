@@ -16,6 +16,8 @@ export class Customer extends Component {
     public cdTime: number = 2; // 卡牌冷却时间
     public cdTimer: number = 0; // 卡牌冷却计时器
     private MoveState:number=0;
+    public BuyGood:string="";
+    public BuyPrice:number=0;
 
 
     onLoad(){
@@ -63,6 +65,7 @@ export class Customer extends Component {
         this.cdTimer-=deltaTime;
         if(this.cdTimer<=0){
             this.MoveState=7;
+            console.log("payCash BuyGood:"+this.BuyGood+" BuyPrice:"+this.BuyPrice);
         }
     }
     moveX (Self:Node,TargetPosition:Vec3,deltaTime:number){

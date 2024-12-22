@@ -1,6 +1,7 @@
 import { _decorator, BoxCollider2D, Collider2D, Component, Contact2DType, Label, log, Node, Sprite ,SpriteFrame, Toggle,ToggleContainer} from 'cc';
 import { GoodsFrameDict, SimpleAllStoreGoodsDict } from '../DataCollection';
 import { TopManager } from '../TopManager';
+import { Customer } from './CustomerScript';
 const { ccclass, property } = _decorator;
 
 @ccclass('ShelveScript')
@@ -42,6 +43,10 @@ export class ShelveScript extends Component {
         console.log("onBeginContact");
         this.CurrentGoodsNumber--;
         this.GoodsNumberLabel.string = this.CurrentGoodsNumber.toString();
+        TopManager.Instance.updateShelveData(this.ShelveID,this.CurrentGood,this.CurrentGoodsNumber);
+        console.log(other.node.getComponent(Customer)?.cdTime);
+        other.node.getComponent(Customer).BuyGood = this.CurrentGood;
+        other.node.getComponent(Customer).BuyPrice = 100;
     }
     onEndContact(self: Collider2D, other: Collider2D) {
         console.log("onEndContact");
