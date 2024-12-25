@@ -1,4 +1,4 @@
-import { _decorator, BoxCollider2D, Collider2D, Component, Contact2DType, Label, log, Node, Sprite ,SpriteFrame, Toggle,ToggleContainer} from 'cc';
+import { _decorator, BoxCollider2D, Collider2D, Component, Contact2DType, director, Label, log, Node, Sprite ,SpriteFrame, Toggle,ToggleContainer} from 'cc';
 import { GoodsFrameDict, SimpleAllStoreGoodsDict } from '../DataCollection';
 import { TopManager } from '../TopManager';
 import { Customer } from './CustomerScript';
@@ -102,7 +102,9 @@ export class ShelveScript extends Component {
             case "Good8":return 8;
         }
     }
+    switchScene(){
+        director.loadScene("TestScene");
+    }
 }
-
 
 
