@@ -11,7 +11,10 @@ export class TopManager extends Component {
     public AvatarArray:SpriteFrame[] = [];  // 货架的图片
     private _ValueForTest:number=100;     //用于demo跨Scene通信的测试
     public ValueForTest2:number=200;      //用于demo跨Scene通信的测试
-
+    public GameTime: string = "2024/1/1 08:00";    //游戏内时间，格式：年/月/日 时:分
+    private Timer1S:number=0;
+    private _deltaTime: number = 1/60;
+    private _accumulator = 0;
     public static get Instance() {
         if (!this._instance) {
             console.warn("TopManager instance is not initialized yet!");
@@ -24,6 +27,7 @@ export class TopManager extends Component {
     public static set ValueForTest(value:number){ //用于demo跨Scene通信的测试
         this._instance._ValueForTest = value;
     }
+
     protected onLoad(): void {
         if (TopManager._instance === null || TopManager._instance === undefined) {
             TopManager._instance = this;
@@ -34,6 +38,19 @@ export class TopManager extends Component {
             return;
         }
         console.log("TopManager is loaded!");
+    }
+    protected update(deltaTime: number): void {
+        this._accumulator += deltaTime;
+        this.GameTimeAdd1S();
+        if (this._accumulator >= this._deltaTime) {
+            this.Timer1S++;
+            this._accumulator -= this._deltaTime; // 减去已处理的时间
+        }
+        // 其他逻辑，例如每 1 秒触发一次
+        if (this.Timer1S >= 1) {
+            this.Timer1S = 0;
+            
+        }
     }
 
     initialData() {
@@ -59,6 +76,22 @@ export class TopManager extends Component {
         };
     }
     
+
+    public GameTimeAdd1S(): void {
+        // 将字符串转换为 Date 对象
+        const currentDate = new Date(this.GameTime);
+        // 增加 1 分钟（60000 毫秒）
+        currentDate.setMinutes(currentDate.getMinutes() + 1);
+        // 格式化新的时间为字符串
+        const year = currentDate.getFullYear();
+        const month = (currentDate.getMonth() + 1 < 10) ? '0' + (currentDate.getMonth() + 1) : (currentDate.getMonth() + 1);
+        const day = currentDate.getDate() < 10 ? '0' + currentDate.getDate() : currentDate.getDate();
+        const hours = currentDate.getHours() < 10 ? '0' + currentDate.getHours() : currentDate.getHours();
+        const minutes = currentDate.getMinutes() < 10 ? '0' + currentDate.getMinutes() : currentDate.getMinutes();
+        // 更新 GameTime
+        this.GameTime = `${year}/${month}/${day} ${hours}:${minutes}`;
+    }
+
     addNewStore(StoreName:string,StoreType:string){
         let shelveIndex = Object.keys(this.MyStoreShelveDict).length + 1;
         this.MyStoreShelveDict[StoreName] = { StoreType: StoreType, ShelveIndex: [shelveIndex],CashRegisterLevel:0,StoreLevel:0 };

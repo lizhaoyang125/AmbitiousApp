@@ -42,6 +42,7 @@ export class ShelveScript extends Component {
     onBeginContact(self: Collider2D, other: Collider2D) {
         console.log("onBeginContact");
         this.CurrentGoodsNumber--;
+        TopManager.Instance.ShelveGoodsDict[this.ShelveID].number--;
         this.GoodsNumberLabel.string = this.CurrentGoodsNumber.toString();
         TopManager.Instance.updateShelveData(this.ShelveID,this.CurrentGood,this.CurrentGoodsNumber);
         console.log(other.node.getComponent(Customer)?.cdTime);
