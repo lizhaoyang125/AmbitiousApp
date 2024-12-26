@@ -1,16 +1,20 @@
-import { _decorator, Component, Node, SpriteFrame } from 'cc';
+import { _decorator, Component, director, Node, SpriteFrame } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('TopManager')
 export class TopManager extends Component {
     private static _instance: TopManager;
+
     public MyStoreShelveDict: { [StoreName: string]: { StoreType: string; ShelveIndex: number[],CashRegisterLevel:number,StoreLevel:number } } = {};
     public ShelveGoodsDict: { [shelveIndex: number]: { GoodsType: string; number: number } } = {};
     public AllGoodsNumberDict: { [GoodsType: string]: number } = {};        //仓库存货
+    public Player:{Name:string,Money:number,Charater:string[]} = {Name:"",Money:0,Charater:[]};
+
     @property(Array(SpriteFrame))
     public AvatarArray:SpriteFrame[] = [];  // 货架的图片
-    private _ValueForTest:number=100;     //用于demo跨Scene通信的测试
+    private _ValueForTest:string="测试";     //用于demo跨Scene通信的测试
     public ValueForTest2:number=200;      //用于demo跨Scene通信的测试
+    public ValueForTestString:string="测试字符串";
     public GameTime: string = "2024/1/1 08:00";    //游戏内时间，格式：年/月/日 时:分
     private Timer1S:number=0;
     private _deltaTime: number = 1/60;
@@ -24,21 +28,31 @@ export class TopManager extends Component {
     public static get ValueForTest(){ //用于demo跨Scene通信的测试
         return this._instance._ValueForTest;
     }
-    public static set ValueForTest(value:number){ //用于demo跨Scene通信的测试
+    public static set ValueForTest(value:string){ //用于demo跨Scene通信的测试
         this._instance._ValueForTest = value;
     }
 
     protected onLoad(): void {
-        if (TopManager._instance === null || TopManager._instance === undefined) {
-            TopManager._instance = this;
-            this.initialData();
-        } else {
-            console.warn('TopManager is exist!');
-            this.node.destroy();
+        if (TopManager._instance) {
+            console.warn('TopManager already exists!');
+            this.node.destroy(); // 确保新创建的节点被销毁
             return;
+        }
+        TopManager._instance = this;
+        // 初始化数据
+        this.initialData();
+        // 确保节点在场景切换时不被销毁
+        if (!this.node.parent) {
+            console.warn("Node is not attached to the scene tree. Cannot persist it.");
+            return;
+        }
+        if (!director.isPersistRootNode(this.node)) {
+            director.addPersistRootNode(this.node);
         }
         console.log("TopManager is loaded!");
     }
+    
+    
     protected update(deltaTime: number): void {
         this._accumulator += deltaTime;
         this.GameTimeAdd1S();
@@ -47,12 +61,12 @@ export class TopManager extends Component {
             this._accumulator -= this._deltaTime; // 减去已处理的时间
         }
         // 其他逻辑，例如每 1 秒触发一次
-        if (this.Timer1S >= 1) {
+        if (this.Timer1S >= 60) {
             this.Timer1S = 0;
+            console.log("1分钟过去了");
             
         }
     }
-
     initialData() {
         this.MyStoreShelveDict = {
             "八一服装店": { StoreType: "服装店", ShelveIndex: [1, 2],CashRegisterLevel:0,StoreLevel:0 },

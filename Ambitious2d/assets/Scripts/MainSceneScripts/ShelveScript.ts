@@ -29,8 +29,8 @@ export class ShelveScript extends Component {
         let collider=this.node.getComponent(BoxCollider2D);
         collider.on(Contact2DType.BEGIN_CONTACT,this.onBeginContact,this);
         collider.on(Contact2DType.END_CONTACT,this.onEndContact,this);
-        
-        console.log(TopManager.Instance.ShelveGoodsDict);
+        const topManager = TopManager.Instance;       
+        //console.log("TopManager.Instance.ShelveGoodsDict:"+TopManager.Instance.ShelveGoodsDict);
         this.CurrentGood = TopManager.Instance.ShelveGoodsDict[this.ShelveID].GoodsType;
         this.CurrentGoodsNumber = TopManager.Instance.ShelveGoodsDict[this.ShelveID].number;
         
