@@ -36,41 +36,27 @@ export class Move extends Component {
     this.addTouch();
   }
   protected start(): void {
-    console.log("开始游戏");
     this.scheduleOnce(() => {
-      // 移除触摸事件
       this.removeTouch();
-      // 创建标签并添加到节点上
       let FutureWorkLabel = instantiate(this.FutureWorkLabel);
-      // 设置标签的位置
-
       FutureWorkLabel.setParent(this.node);
-      // 动画效果
       let t1 = tween(FutureWorkLabel).to(
         1.5,
         { position: new Vec3(0, 95, 0) },
         { easing: "backInOut" }
       );
-      // 移动节点效果
-      let t2 = tween(this.node).to(2, { position: new Vec3(0, 260, 0) });
-      // 动画结束后执行回调函数，然后开始移动节点的效果
+
+      let t2 = tween(this.node).to(2, { position: new Vec3(0, 170, 0) });
+
       t1.call(() => {
-        t2.start();
-        this.scheduleOnce(() => {
-          //获取玩家选择的属性标签
+        t2.call(() => {
           let newnode = this.getPlayerSelectedProperty();
-          //判断玩家是否选择了属性标签
           if (newnode) {
-            //获取玩家选择的属性标签的文字内容
-            GameManager.PlayProentry =
-              // 把玩家选择的属性标签的文字内容赋值给 wanjiashuxing 变量
-              newnode.getComponent(Label).string;
-            GameManager.inst().savePlayerPropenty();
-            console.log(newnode.getComponent(Label).string);
+            let str = newnode.getComponent(Label).string;
+            console.log(str);
           }
-          console.log("获取完成");
-          this.restratpanel.active = true;
-        });
+          // 比如可以在这里调用其他方法
+        }).start();
       }).start();
     }, Manager.Instance.totalTime);
   }

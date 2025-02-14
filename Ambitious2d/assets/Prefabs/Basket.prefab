@@ -742,12 +742,12 @@
     "minBoundary": {
       "__type__": "cc.Vec2",
       "x": -250,
-      "y": -390
+      "y": -350
     },
     "maxBoundary": {
       "__type__": "cc.Vec2",
-      "x": 250,
-      "y": 440
+      "x": 0,
+      "y": 0
     },
     "FutureWorkLabel": null,
     "restratpanel": null,
@@ -755,7 +755,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "34uPt3wvNCrpZmjqAyvxu7"
+    "fileId": "01Y3AxQW1Bhr61O3aZLFNd"
   },
   {
     "__type__": "cc.PrefabInfo",

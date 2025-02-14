@@ -61,6 +61,8 @@ export class Manager extends Component {
 
   private replaceLabelContent(): void {
     if (this.usedIndexes.size === this.workNameArray.length) {
+      // 所有索引都已使用，重置 usedIndexes
+      return;
     }
     let randomIndex: number;
     do {
@@ -73,7 +75,7 @@ export class Manager extends Component {
 
     WorkLabelNode.getComponent(Label).string = this.workNameArray[randomIndex];
     WorkLabelNode.parent = find("Canvas/WorkList");
-    WorkLabelNode.setPosition(randomRange(-320, 320), 670);
+    WorkLabelNode.setPosition(randomRange(-320, 320), 570);
   }
   /**返回按钮 */
   BreakBut() {
