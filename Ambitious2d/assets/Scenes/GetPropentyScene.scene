@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.SceneAsset",
-    "_name": "GetPropentyScebe(获取属性)",
+    "_name": "GetPropentyScene",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -56,7 +56,7 @@
     "_globals": {
       "__id__": 66
     },
-    "_id": "5400fd79-221c-4c22-8733-dbfca3245f35"
+    "_id": "d2939503-b26c-4bd3-a0b6-8102bcd43c05"
   },
   {
     "__type__": "cc.Node",

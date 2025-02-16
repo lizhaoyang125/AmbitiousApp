@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.SceneAsset",
-    "_name": "WarehouseScene(仓库页面)",
+    "_name": "WarehouseScene",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -56,7 +56,7 @@
     "_globals": {
       "__id__": 38
     },
-    "_id": "63ff0030-b6d8-471b-a343-0d1eeda0560a"
+    "_id": "32136c14-4f17-443c-8596-f67dd3698144"
   },
   {
     "__type__": "cc.Node",
