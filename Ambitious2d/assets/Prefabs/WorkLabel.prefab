@@ -80,7 +80,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 120,
-      "height": 50.4
+      "height": 25.2
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -115,13 +115,13 @@
       "b": 0,
       "a": 255
     },
-    "_string": "属性值",
+    "_string": "133",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 20,
     "_overflow": 3,
     "_enableWrapText": true,
     "_font": null,
@@ -215,13 +215,13 @@
     "_restitution": 0.7,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": -0.6,
+      "y": -0.2
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 80,
-      "height": 50.4
+      "width": 52,
+      "height": 24
     },
     "_id": ""
   },
