@@ -13,7 +13,7 @@ import {
   Vec2,
   Vec3,
 } from "cc";
-import { GameManager } from "../Globla/GameManger";
+import { GameManager } from "../GloblaScripts/GameManger";
 import { Manager } from "./Manager";
 
 const { ccclass, property } = _decorator;

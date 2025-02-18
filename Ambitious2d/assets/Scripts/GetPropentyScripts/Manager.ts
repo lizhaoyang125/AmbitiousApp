@@ -12,7 +12,7 @@ import {
   randomRange,
   randomRangeInt,
 } from "cc";
-import { GameManager } from "../Globla/GameManger";
+import { GameManager } from "../GloblaScripts/GameManger";
 const { ccclass, property } = _decorator;
 
 @ccclass("Manager")

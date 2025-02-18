@@ -11,7 +11,7 @@
   },
   {
     "__type__": "cc.Scene",
-    "_name": "WarehouseScene(仓库页面)",
+    "_name": "WarehouseScene",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -56,7 +56,7 @@
     "_globals": {
       "__id__": 38
     },
-    "_id": "32136c14-4f17-443c-8596-f67dd3698144"
+    "_id": "f3aff580-3821-46c8-a8c6-b6f949051800"
   },
   {
     "__type__": "cc.Node",
@@ -1351,7 +1351,7 @@
     "_id": "f8QBRShaZPp4qYGV4KWy0p"
   },
   {
-    "__type__": "d4ce5ib74hNKpw8i/Y/hrds",
+    "__type__": "f0d25kFcpRMWa6yq02iUnzE",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -1364,10 +1364,10 @@
       "__id__": 30
     },
     "House": {
-      "__uuid__": "660fbc5a-8b71-47f9-800d-98b2e1a2b34b",
+      "__uuid__": "354bce05-d969-4ecd-9d6e-73f50e6e6173",
       "__expectedType__": "cc.Prefab"
     },
-    "_id": "12aNUClfNB35qagW39Uqf9"
+    "_id": "e3e0EVyXFN8YjqS5XkV4nX"
   },
   {
     "__type__": "cc.UITransform",
