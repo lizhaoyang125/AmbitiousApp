@@ -340,8 +340,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 720,
-      "height": 1280
+      "width": 432,
+      "height": 935
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1234,10 +1234,10 @@
     "_string": "开始游戏",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 35,
-    "_fontSize": 35,
+    "_actualFontSize": 30,
+    "_fontSize": 30,
     "_fontFamily": "Arial",
-    "_lineHeight": 35,
+    "_lineHeight": 30,
     "_overflow": 1,
     "_enableWrapText": false,
     "_font": null,
@@ -1404,10 +1404,12 @@
   },
   {
     "__type__": "cc.ClickEvent",
-    "target": null,
+    "target": {
+      "__id__": 10
+    },
     "component": "",
-    "_componentId": "cc.Button",
-    "handler": "Strat",
+    "_componentId": "2db6crHM35Hg7FCXye9SzlR",
+    "handler": "ButStrat",
     "customEventData": ""
   },
   {
@@ -1793,7 +1795,7 @@
         "__id__": 56
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 59
@@ -1802,8 +1804,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 95.683,
-      "y": 422.638,
+      "x": 99.673,
+      "y": 389.11899999999997,
       "z": 0
     },
     "_lrot": {
@@ -1889,8 +1891,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 500,
-      "height": 300
+      "width": 230,
+      "height": 150
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1959,8 +1961,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -80,
-      "y": 63.976,
+      "x": 34.12299999999999,
+      "y": 16.889999999999986,
       "z": 0
     },
     "_lrot": {
@@ -2031,10 +2033,10 @@
     "_string": "余额:        ",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
+    "_actualFontSize": 25,
+    "_fontSize": 25,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 25,
     "_overflow": 1,
     "_enableWrapText": false,
     "_font": null,
@@ -2091,8 +2093,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -80,
-      "y": -1.138,
+      "x": 36.516999999999996,
+      "y": -19.162000000000035,
       "z": 0
     },
     "_lrot": {
@@ -2163,10 +2165,10 @@
     "_string": "仓库数量为:          ",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
+    "_actualFontSize": 25,
+    "_fontSize": 25,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 25,
     "_overflow": 1,
     "_enableWrapText": false,
     "_font": null,
@@ -2223,8 +2225,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -80,
-      "y": 121.412,
+      "x": 36.516999999999996,
+      "y": 56.769000000000005,
       "z": 0
     },
     "_lrot": {
@@ -2295,10 +2297,10 @@
     "_string": "姓名:          ",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
+    "_actualFontSize": 25,
+    "_fontSize": 25,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 25,
     "_overflow": 1,
     "_enableWrapText": false,
     "_font": null,
@@ -2355,7 +2357,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -79.168,
+      "x": 36.54599999999999,
       "y": -55.553,
       "z": -1000
     },
@@ -2427,10 +2429,10 @@
     "_string": "玩家属性为:          ",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
+    "_actualFontSize": 25,
+    "_fontSize": 25,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 25,
     "_overflow": 1,
     "_enableWrapText": false,
     "_font": null,
@@ -2478,8 +2480,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 500,
-      "height": 300
+      "width": 230,
+      "height": 150
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2510,7 +2512,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 303.756,
+      "y": 261.7619999999999,
       "z": 0
     },
     "_lrot": {
@@ -2632,8 +2634,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 720,
-      "height": 1280
+      "width": 432,
+      "height": 935.1
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

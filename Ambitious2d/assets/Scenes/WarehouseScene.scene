@@ -331,8 +331,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 720,
-      "height": 1280
+      "width": 439,
+      "height": 930
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -759,8 +759,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 200.988,
-      "y": 564.243,
+      "x": 96.56900000000002,
+      "y": 407.61499999999995,
       "z": 0
     },
     "_lrot": {
@@ -798,8 +798,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 240,
-      "height": 112.99999999999999
+      "width": 180,
+      "height": 67.8
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -831,10 +831,10 @@
     "_string": "可使用数量：\n已使用数量：",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
+    "_actualFontSize": 30,
+    "_fontSize": 30,
     "_fontFamily": "Arial",
-    "_lineHeight": 50,
+    "_lineHeight": 30,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": null,
@@ -891,8 +891,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -36.376,
-      "y": 484.018,
+      "x": 12.104000000000013,
+      "y": 321.79699999999997,
       "z": 0
     },
     "_lrot": {
@@ -930,8 +930,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 250,
-      "height": 63
+      "width": 200,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -963,10 +963,10 @@
     "_string": "小碰的仓库",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 50,
-    "_fontSize": 50,
+    "_actualFontSize": 40,
+    "_fontSize": 40,
     "_fontFamily": "Arial",
-    "_lineHeight": 50,
+    "_lineHeight": 40,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": null,
@@ -1004,7 +1004,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Button",
+    "_name": "AddButton",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -1030,8 +1030,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 220.034,
-      "y": 443.35400000000004,
+      "x": 130.53199999999998,
+      "y": 227.05799999999994,
       "z": 0
     },
     "_lrot": {
@@ -1150,10 +1150,10 @@
     "_string": "扩建",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 35,
-    "_fontSize": 35,
+    "_actualFontSize": 30,
+    "_fontSize": 30,
     "_fontFamily": "Arial",
-    "_lineHeight": 35,
+    "_lineHeight": 30,
     "_overflow": 1,
     "_enableWrapText": false,
     "_font": null,
@@ -1201,8 +1201,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150,
-      "height": 60
+      "width": 120,
+      "height": 50
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

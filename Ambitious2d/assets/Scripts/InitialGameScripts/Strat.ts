@@ -19,9 +19,9 @@ export class GameStrat extends Component {
   //开始游戏
   ButStrat(): void {
     if (GameManager._PlayProentry === null) {
-      director.loadScene("GetPropentyScebe(获取属性)");
+      director.loadScene("GetPropentyScene");
     } else {
-      director.loadScene("WarehouseScene(仓库页面)");
+      director.loadScene("WarehouseScene");
     }
   } //读取档案
   readdata() {
