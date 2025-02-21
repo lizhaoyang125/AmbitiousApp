@@ -10,7 +10,10 @@ export class StoreScript extends Component {
 
     public StoreName:string="";
     start() {
-
+        console.log("商店脚本开始运行start");
+    }
+    protected onLoad(): void {
+        console.log("商店脚本开始运行onLoad");
     }
 
     update(deltaTime: number) {

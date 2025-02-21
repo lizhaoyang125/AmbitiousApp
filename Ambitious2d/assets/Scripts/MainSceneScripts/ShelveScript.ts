@@ -25,6 +25,7 @@ export class ShelveScript extends Component {
     public CurrentGoodsNumber:number = 30;
 
     start(){
+        console.log("ShelveScript start");
         this.ShelveID = 1;
         let collider=this.node.getComponent(BoxCollider2D);
         collider.on(Contact2DType.BEGIN_CONTACT,this.onBeginContact,this);
@@ -53,8 +54,7 @@ export class ShelveScript extends Component {
         console.log("onEndContact");
     }
 
-    public changeSpriteFrame() {
-        
+    public changeSpriteFrame() {        //上架货物选择
         //this.GoodChooseToggle.toggleItems[2].isChecked = true;
         this.GoodChooseToggle.node.active = true;
         for (let i = 0; i < this.StoreGoodList.length; i++) {

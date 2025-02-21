@@ -5,10 +5,14 @@ const { ccclass, property } = _decorator;
 export class TopManager extends Component {
     private static _instance: TopManager;
 
+    //商店数据结构：商店名称，商店类型，货架索引数组，收银台等级，商店等级（主要是商店名称，类型，货架ID）
     public MyStoreShelveDict: { [StoreName: string]: { StoreType: string; ShelveIndex: number[],CashRegisterLevel:number,StoreLevel:number } } = {};
+    //货架数据结构：货架索引，商品类型，数量
     public ShelveGoodsDict: { [shelveIndex: number]: { GoodsType: string; number: number } } = {};
-    public AllGoodsNumberDict: { [GoodsType: string]: number } = {};        //仓库存货
-    public Player:{Name:string,Money:number,Charater:string[]} = {Name:"",Money:0,Charater:[]};
+    //仓库存货：商品类型，数量
+    public AllGoodsNumberDict: { [GoodsType: string]: number } = {};        //
+    //玩家数据结构：玩家名称，金币数量，拥有的角色数组，金币数量（主要是玩家名称，拥有的角色数组）
+    public Player:{Name:string,Money:number,Character:string[]} = {Name:"",Money:0,Character:[]};
 
     @property(Array(SpriteFrame))
     public AvatarArray:SpriteFrame[] = [];  // 货架的图片
@@ -68,6 +72,13 @@ export class TopManager extends Component {
         }
     }
     initialData() {
+        this.loadLocalData();    //加载本地数据
+        if(this.Player==null){   
+            console.log("没有玩家数据，创建一个新玩家");
+        } else {
+            console.log("玩家数据加载成功");
+        }
+
         this.MyStoreShelveDict = {
             "八一服装店": { StoreType: "服装店", ShelveIndex: [1, 2],CashRegisterLevel:0,StoreLevel:0 },
             "新华花店": { StoreType: "花店", ShelveIndex: [3],CashRegisterLevel:0,StoreLevel:0 },
@@ -133,6 +144,12 @@ export class TopManager extends Component {
     localStoreMyStoreShelveDict(){    // 本地存储店铺数据,店铺名称以及货架编号
         localStorage.setItem("MyStoreShelveDict",JSON.stringify(this.MyStoreShelveDict));
     }
+    localStorePlayer(){    // 本地存储店铺数据,店铺名称以及货架编号
+        localStorage.setItem("Player",JSON.stringify(this.Player));
+    }
+
+
+
     localStoreAllGoodsNumberDict(){    // 本地存储所有商品数量,商品名称以及商品数量
         localStorage.setItem("AllGoodsNumberDict",JSON.stringify(this.AllGoodsNumberDict));
     }
@@ -140,5 +157,6 @@ export class TopManager extends Component {
         this.ShelveGoodsDict = JSON.parse(localStorage.getItem("ShelveGoodsDict"));
         this.MyStoreShelveDict = JSON.parse(localStorage.getItem("MyStoreShelveDict"));
         this.AllGoodsNumberDict = JSON.parse(localStorage.getItem("AllGoodsNumberDict"));
+        this.Player = JSON.parse(localStorage.getItem("Player"));
     }
 }
