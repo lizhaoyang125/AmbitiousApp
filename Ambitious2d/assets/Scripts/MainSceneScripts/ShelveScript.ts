@@ -7,9 +7,9 @@ const { ccclass, property } = _decorator;
 @ccclass('ShelveScript')
 export class ShelveScript extends Component {
     @property(Sprite)
-    public ShelveGood: Sprite = null; // 货架正面
+    public ShelveButton: Sprite = null; // 货架正面
     @property(Sprite)
-    public ShelveGood2: Sprite = null; // 货架背面
+    public ShelveGood: Sprite = null; // 货架背面
 
     @property(Label)
     public GoodsNumberLabel:Label = null;
@@ -25,7 +25,7 @@ export class ShelveScript extends Component {
     public CurrentGoodsNumber:number = 30;
 
     start(){
-        console.log("ShelveScript start");
+        console.log("ShelveScript start, ShelveID:"+this.ShelveID);
         this.ShelveID = 1;
         let collider=this.node.getComponent(BoxCollider2D);
         collider.on(Contact2DType.BEGIN_CONTACT,this.onBeginContact,this);
@@ -54,8 +54,20 @@ export class ShelveScript extends Component {
         console.log("onEndContact");
     }
 
+    public initialShelve(){  //初始化货架商品
+        //获取商店所有上架的商品列表
+        this.GoodChooseToggle.node.active = true;
+        for (let i = 0; i < this.StoreGoodList.length; i++) {
+            this.GoodChooseToggle.toggleItems[i].node.active = true;
+            let LeftNumber = TopManager.Instance.AllGoodsNumberDict[this.StoreGoodList[i]];
+            this.GoodChooseToggle.toggleItems[i].node.getChildByName("Label").getComponent(Label).string = this.StoreGoodList[i]+"("+LeftNumber.toString()+")";
+        }
+        this.GoodChooseToggle.node.active = false;
+
+    }
     public changeSpriteFrame() {        //上架货物选择
         //this.GoodChooseToggle.toggleItems[2].isChecked = true;
+        console.log("changeSpriteFrame");
         this.GoodChooseToggle.node.active = true;
         for (let i = 0; i < this.StoreGoodList.length; i++) {
             this.GoodChooseToggle.toggleItems[i].node.active = true;
@@ -72,7 +84,7 @@ export class ShelveScript extends Component {
                 toggle.node.on('toggle', () => this.onTalentToggleChange(toggle), this);
             }
         } else {
-            console.error("SexToggle is not assigned or is null.");
+            console.error("GoodChooseToggle is not assigned or is null.");
         }
     }
     onTalentToggleChange(toggle: Toggle) {  
@@ -82,7 +94,7 @@ export class ShelveScript extends Component {
             let index = this.getToggleIndex(toggle.node.name);
             console.log("index:"+index);
             this.CurrentGood = this.StoreGoodList[index];
-            this.ShelveGood2.spriteFrame = TopManager.Instance.AvatarArray[GoodsFrameDict[this.CurrentGood]];
+            this.ShelveGood.spriteFrame = TopManager.Instance.AvatarArray[GoodsFrameDict[this.CurrentGood]];
         } else {  
             console.log("toggle is not checked"+toggle.node.name);
             this.GoodChooseToggle.node.active = false;

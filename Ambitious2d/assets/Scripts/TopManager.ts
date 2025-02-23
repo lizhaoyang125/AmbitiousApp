@@ -4,7 +4,7 @@ const { ccclass, property } = _decorator;
 @ccclass('TopManager')
 export class TopManager extends Component {
     private static _instance: TopManager;
-
+    public CurrentStoreName:string="";    //当前商店名称
     //商店数据结构：商店名称，商店类型，货架索引数组，收银台等级，商店等级（主要是商店名称，类型，货架ID）
     public MyStoreShelveDict: { [StoreName: string]: { StoreType: string; ShelveIndex: number[],CashRegisterLevel:number,StoreLevel:number } } = {};
     //货架数据结构：货架索引，商品类型，数量
@@ -53,7 +53,13 @@ export class TopManager extends Component {
         if (!director.isPersistRootNode(this.node)) {
             director.addPersistRootNode(this.node);
         }
-        console.log("TopManager is loaded!");
+        for (const key in this.MyStoreShelveDict) {
+            if (this.MyStoreShelveDict.hasOwnProperty(key)) {
+                this.CurrentStoreName = key;
+                break; // 只获取第一个元素
+            }
+          }
+        console.log("TopManager is loaded! current store:"+this.CurrentStoreName);
     }
     
     
@@ -147,9 +153,6 @@ export class TopManager extends Component {
     localStorePlayer(){    // 本地存储店铺数据,店铺名称以及货架编号
         localStorage.setItem("Player",JSON.stringify(this.Player));
     }
-
-
-
     localStoreAllGoodsNumberDict(){    // 本地存储所有商品数量,商品名称以及商品数量
         localStorage.setItem("AllGoodsNumberDict",JSON.stringify(this.AllGoodsNumberDict));
     }
@@ -158,5 +161,9 @@ export class TopManager extends Component {
         this.MyStoreShelveDict = JSON.parse(localStorage.getItem("MyStoreShelveDict"));
         this.AllGoodsNumberDict = JSON.parse(localStorage.getItem("AllGoodsNumberDict"));
         this.Player = JSON.parse(localStorage.getItem("Player"));
+        if(this.Player==null){   
+            console.log("没有玩家数据，创建一个新玩家,进入GameInitialScene");
+        }
+
     }
 }
