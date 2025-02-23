@@ -90,12 +90,12 @@ export class TopManager extends Component {
             "新华花店": { StoreType: "花店", ShelveIndex: [3],CashRegisterLevel:0,StoreLevel:0 },
         };
         this.ShelveGoodsDict = {
-            1: { GoodsType: "便宜女装", number: 100 },
-            2: { GoodsType: "便宜男装", number: 100 },
-            3: { GoodsType: "便宜花束", number: 100 },
+            1: { GoodsType: "便宜女装", number: 10 },
+            2: { GoodsType: "便宜男装", number: 20 },
+            3: { GoodsType: "一般男装", number: 30 },
         };
         this.AllGoodsNumberDict = {     //仓库存货
-            "便宜女装": 100,
+            "便宜女装": 10,
             "便宜男装": 100,
             "一般男装": 100,
             "一般女装": 100,

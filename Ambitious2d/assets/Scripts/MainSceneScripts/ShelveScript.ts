@@ -25,17 +25,17 @@ export class ShelveScript extends Component {
     public CurrentGoodsNumber:number = 30;
 
     start(){
+        const topManager = TopManager.Instance;  
         console.log("ShelveScript start, ShelveID:"+this.ShelveID);
-        this.ShelveID = 1;
         let collider=this.node.getComponent(BoxCollider2D);
         collider.on(Contact2DType.BEGIN_CONTACT,this.onBeginContact,this);
         collider.on(Contact2DType.END_CONTACT,this.onEndContact,this);
-        const topManager = TopManager.Instance;       
-        //console.log("TopManager.Instance.ShelveGoodsDict:"+TopManager.Instance.ShelveGoodsDict);
+        
         this.CurrentGood = TopManager.Instance.ShelveGoodsDict[this.ShelveID].GoodsType;
         this.CurrentGoodsNumber = TopManager.Instance.ShelveGoodsDict[this.ShelveID].number;
-        
+        this.ShelveGood.spriteFrame = TopManager.Instance.AvatarArray[GoodsFrameDict[this.CurrentGood]];
         this.GoodsNumberLabel.string = this.CurrentGoodsNumber.toString();
+
         this.registerToggleEvents();
         this.StoreGoodList = SimpleAllStoreGoodsDict[this.CurrentStoreType];
         
@@ -54,17 +54,6 @@ export class ShelveScript extends Component {
         console.log("onEndContact");
     }
 
-    public initialShelve(){  //初始化货架商品
-        //获取商店所有上架的商品列表
-        this.GoodChooseToggle.node.active = true;
-        for (let i = 0; i < this.StoreGoodList.length; i++) {
-            this.GoodChooseToggle.toggleItems[i].node.active = true;
-            let LeftNumber = TopManager.Instance.AllGoodsNumberDict[this.StoreGoodList[i]];
-            this.GoodChooseToggle.toggleItems[i].node.getChildByName("Label").getComponent(Label).string = this.StoreGoodList[i]+"("+LeftNumber.toString()+")";
-        }
-        this.GoodChooseToggle.node.active = false;
-
-    }
     public changeSpriteFrame() {        //上架货物选择
         //this.GoodChooseToggle.toggleItems[2].isChecked = true;
         console.log("changeSpriteFrame");
