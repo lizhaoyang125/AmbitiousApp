@@ -41,7 +41,7 @@ export class ShelveScript extends Component {
         
     }
     onBeginContact(self: Collider2D, other: Collider2D) {
-        console.log("onBeginContact");
+        console.log("onBeginContact,开始买东西了！");
         this.CurrentGoodsNumber--;
         TopManager.Instance.ShelveGoodsDict[this.ShelveID].number--;
         this.GoodsNumberLabel.string = this.CurrentGoodsNumber.toString();
