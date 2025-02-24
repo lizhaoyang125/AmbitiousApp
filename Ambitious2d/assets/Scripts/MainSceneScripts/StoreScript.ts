@@ -24,7 +24,7 @@ export class StoreScript extends Component {
     start() {
         console.log(this.StoreName + "商店脚本开始运行");
         for (let index = 0; index < this.ShelveList.length; index++) {
-            this.createShelvePrefab(100 * index, 0, this.ShelveList[index]);
+            this.createShelvePrefab(100 * ((index%2)*2-1), 150-100*(index >> 1), this.ShelveList[index]);
         }
 
     }
