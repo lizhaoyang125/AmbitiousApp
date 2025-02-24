@@ -59,7 +59,7 @@
     "_globals": {
       "__id__": 69
     },
-    "_id": "301403c5-ad98-47b5-b6f5-d00039f38b22"
+    "_id": "5ffa5622-1ada-4bc4-baef-dd7f7a474595"
   },
   {
     "__type__": "cc.Node",
@@ -107,7 +107,7 @@
     "_id": "44rel7qo1OmqrOHibazV/X"
   },
   {
-    "__type__": "50072Hc0m9BBa7Xtuw1j8/P",
+    "__type__": "1ed8a5e+4FCPbnJfy5eqLfA",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -116,7 +116,7 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_id": "3f1T6bmRdFCoJKLNHlH+x9"
+    "_id": "19NuLh1eZDz5CgdksEJYYM"
   },
   {
     "__type__": "cc.Node",
@@ -1747,7 +1747,7 @@
     "_id": "56nDC54q1HGrnmU2Z4Tv6L"
   },
   {
-    "__type__": "2db6crHM35Hg7FCXye9SzlR",
+    "__type__": "07093fJxABI37ZRU5bnKiaC",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -1757,7 +1757,7 @@
     "_enabled": true,
     "__prefab": null,
     "stratbut": {
-      "__id__": 25
+      "__id__": 32
     },
     "readbut": {
       "__id__": 17
@@ -1768,7 +1768,7 @@
     "ArchiveuiPanel": {
       "__id__": 43
     },
-    "_id": "f75f0liNxO3bYRFmD1Vfd1"
+    "_id": "a1WtbZrN5CPqVtugso09WQ"
   },
   {
     "__type__": "cc.Node",
