@@ -1,6 +1,7 @@
 import { _decorator, Component, Label, Node, Prefab, instantiate, Vec3 } from 'cc';
 import { ShelveScript } from './ShelveScript';
 import { TopManager } from '../TopManager';
+import { CustomerScript } from './CustomerScript';
 const { ccclass, property } = _decorator;
 
 @ccclass('StoreScript')
@@ -11,6 +12,8 @@ export class StoreScript extends Component {
     public StoreName:string="";
     @property(Prefab)
     public ShelvePrefab:Prefab=null;
+    @property(Prefab)
+    public CustomerPrefab:Prefab=null;
     public CurrentStore:{ StoreType: string; ShelveIndex: number[],CashRegisterLevel:number,StoreLevel:number } = null;
     public ShelveList: number[] = null;
 
@@ -49,6 +52,17 @@ export class StoreScript extends Component {
         } else {
             console.error("ShelvePrefab is not set!");
             return null;
+        }
+    }
+    newCustomerCome(shelveID:number,goodsType:string){
+        console.log("有顾客来了");
+        if(this.CustomerPrefab){
+            const newCustomer=instantiate(this.CustomerPrefab);
+            newCustomer.setPosition(new Vec3(100*((shelveID%2)*2-1), 150-100*(shelveID >> 1), 0));
+            this.node.addChild(newCustomer);
+            const customerScript=newCustomer.getComponent(CustomerScript);
+        }else{
+            console.error("CustomerPrefab is not set!");
         }
     }
 

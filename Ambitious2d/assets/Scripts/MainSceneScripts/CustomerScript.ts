@@ -1,13 +1,14 @@
 import { _decorator, Component, Node,Vec3 ,Sprite} from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass('Customer')
-export class Customer extends Component {
+@ccclass('CustomerScript')
+export class CustomerScript extends Component {
 
     @property(Number)
     public speed:number=100;
     @property(Sprite)
     public CustomerMask: Sprite = null; // 卡牌正面
+    public ShelveNumber:number=0;
 
     private MiddlePosition: Vec3 = new Vec3(0, 280, 0);
     private ShelvePositions:Vec3[]=[];
