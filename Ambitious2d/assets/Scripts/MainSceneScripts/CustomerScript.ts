@@ -9,6 +9,7 @@ export class CustomerScript extends Component {
     @property(Sprite)
     public CustomerMask: Sprite = null; // 卡牌正面
     public ShelveNumber:number=0;
+    public DstShelve:number=0;
 
     private MiddlePosition: Vec3 = new Vec3(0, 280, 0);
     private ShelvePositions:Vec3[]=[];
@@ -22,15 +23,16 @@ export class CustomerScript extends Component {
 
 
     onLoad(){
-        this.ShelvePositions.push(new Vec3(-100,150,0));
-        this.ShelvePositions.push(new Vec3(110,150,0));
-
-
+        console.log("CustomerScript onLoad ");
     }
     onDestroy(){
         this.ShelvePositions.length=0;
     }
     start() {
+        console.log("CustomerScript onLoad ShelveNumber:"+this.ShelveNumber+" DstShelve:"+this.DstShelve);
+        for(let i=0;i<this.ShelveNumber;i++){
+            this.ShelvePositions.push(new Vec3(100*((-1)**i),150-100*(i >> 1),0));
+        }
         this.SelectShelve = Math.floor(Math.random() * this.ShelvePositions.length);
         console.log(this.SelectShelve);
         this.cdTimer = this.cdTime;

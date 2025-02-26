@@ -29,6 +29,7 @@ export class StoreScript extends Component {
         for (let index = 0; index < this.ShelveList.length; index++) {
             this.createShelvePrefab(100 * ((index%2)*2-1), 150-100*(index >> 1), this.ShelveList[index]);
         }
+        this.newCustomerCome(2,1);
 
     }
 
@@ -54,13 +55,19 @@ export class StoreScript extends Component {
             return null;
         }
     }
-    newCustomerCome(shelveID:number,goodsType:string){
+    newCustomerCome(shelveNumber:number,dstShelve:number){
         console.log("有顾客来了");
         if(this.CustomerPrefab){
             const newCustomer=instantiate(this.CustomerPrefab);
-            newCustomer.setPosition(new Vec3(100*((shelveID%2)*2-1), 150-100*(shelveID >> 1), 0));
+            newCustomer.setPosition(-200, 280, 0);
             this.node.addChild(newCustomer);
             const customerScript=newCustomer.getComponent(CustomerScript);
+            if(customerScript){
+                customerScript.ShelveNumber=shelveNumber;
+                customerScript.DstShelve=dstShelve;
+            }else{
+                console.error("CustomerScript component not found on the prefab!");
+            }
         }else{
             console.error("CustomerPrefab is not set!");
         }
