@@ -69,7 +69,7 @@ export interface Store {        //商店
   }
 
 //存储货物图片frame
-  export const GoodsFrameDict: { [key: string]: number } = {
+  export const GoodsFrameDict: { [key: string]: number} = {
     "便宜女装": 0,
     "便宜男装": 1,
     "一般女装": 2,

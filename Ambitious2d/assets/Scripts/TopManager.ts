@@ -10,7 +10,7 @@ export class TopManager extends Component {
     //货架数据结构：货架索引，商品类型，数量
     public ShelveGoodsDict: { [shelveIndex: number]: { GoodsType: string; number: number } } = {};
     //仓库存货：商品类型，数量
-    public AllGoodsNumberDict: { [GoodsType: string]: number } = {};        //
+    public AllWarehouseGoodsDict: { [GoodsType: string]: [leftNumber:number,Popularity:number] } = {};
     //玩家数据结构：玩家名称，金币数量，拥有的角色数组，金币数量（主要是玩家名称，拥有的角色数组）
     public Player:{Name:string,Money:number,Character:string[]} = {Name:"",Money:0,Character:[]};
 
@@ -94,16 +94,16 @@ export class TopManager extends Component {
             2: { GoodsType: "便宜男装", number: 20 },
             3: { GoodsType: "一般男装", number: 30 },
         };
-        this.AllGoodsNumberDict = {     //仓库存货
-            "便宜女装": 10,
-            "便宜男装": 100,
-            "一般男装": 100,
-            "一般女装": 100,
-            "昂贵男装": 100,
-            "昂贵女装": 100,
-            "便宜花束": 100,
-            "一般花束": 100,
-            "昂贵花束": 100,    
+        this.AllWarehouseGoodsDict = {     //仓库存货
+            "便宜女装": [10, 50],
+            "便宜男装": [100, 50],
+            "一般男装": [100, 50],
+            "一般女装": [100, 50],
+            "昂贵男装": [100, 50],
+            "昂贵女装": [100, 50],
+            "便宜花束": [100, 50],
+            "一般花束": [100, 50],
+            "昂贵花束": [100, 50],    
         };
     }
     
@@ -138,12 +138,16 @@ export class TopManager extends Component {
         this.localStoreShelveGoodsDict();
     }
 
-    updateShelveData(id:number,GoodsType:string,number:number){
-        this.ShelveGoodsDict[id] = { GoodsType: GoodsType, number: number };
+    updateShelveData(id:number,GoodsType:string,leftNumber:number){
+        this.ShelveGoodsDict[id] = { GoodsType: GoodsType, number: leftNumber };
         this.localStoreShelveGoodsDict();
-        this.AllGoodsNumberDict[GoodsType] = number;
-        this.localStoreAllGoodsNumberDict();
     }
+    updateWarehouseData(id:number,GoodsType:string,leftNumber:number,Popularity:number){
+        this.AllWarehouseGoodsDict[GoodsType][0] = leftNumber;
+        this.AllWarehouseGoodsDict[GoodsType][1] = Popularity;
+        this.localStoreAllWarehouseGoodsDict();
+    }
+
     localStoreShelveGoodsDict(){    // 本地存储货架数据,货架以及货架上的商品数量
         localStorage.setItem("ShelveGoodsDict",JSON.stringify(this.ShelveGoodsDict));
     }
@@ -153,13 +157,13 @@ export class TopManager extends Component {
     localStorePlayer(){    // 本地存储店铺数据,店铺名称以及货架编号
         localStorage.setItem("Player",JSON.stringify(this.Player));
     }
-    localStoreAllGoodsNumberDict(){    // 本地存储所有商品数量,商品名称以及商品数量
-        localStorage.setItem("AllGoodsNumberDict",JSON.stringify(this.AllGoodsNumberDict));
+    localStoreAllWarehouseGoodsDict(){    // 本地存储所有商品数量,商品名称以及商品数量
+        localStorage.setItem("AllWarehouseGoodsDict",JSON.stringify(this.AllWarehouseGoodsDict));
     }
     loadLocalData(){
         this.ShelveGoodsDict = JSON.parse(localStorage.getItem("ShelveGoodsDict"));
         this.MyStoreShelveDict = JSON.parse(localStorage.getItem("MyStoreShelveDict"));
-        this.AllGoodsNumberDict = JSON.parse(localStorage.getItem("AllGoodsNumberDict"));
+        this.AllWarehouseGoodsDict = JSON.parse(localStorage.getItem("AllWarehouseGoodsDict"));
         this.Player = JSON.parse(localStorage.getItem("Player"));
         if(this.Player==null){   
             console.log("没有玩家数据，创建一个新玩家,进入GameInitialScene");
