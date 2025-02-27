@@ -94,7 +94,7 @@ export class TopManager extends Component {
             2: { GoodsType: "便宜男装", number: 20 },
             3: { GoodsType: "一般男装", number: 30 },
         };
-        this.AllWarehouseGoodsDict = {     //仓库存货
+        this.AllWarehouseGoodsDict = {     //仓库存货, [数量,流行程度]
             "便宜女装": [10, 50],
             "便宜男装": [100, 50],
             "一般男装": [100, 50],
