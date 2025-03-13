@@ -86,7 +86,7 @@ export class TopManager extends Component {
         }
 
         this.MyStoreShelveDict = {
-            "八一服装店": { StoreType: "服装店", ShelveIndex: [1, 2],CashRegisterLevel:0,StoreLevel:0 },
+            "八一服装店": { StoreType: "服装店", ShelveIndex: [1, 2,3],CashRegisterLevel:0,StoreLevel:0 },
             "新华花店": { StoreType: "花店", ShelveIndex: [3],CashRegisterLevel:0,StoreLevel:0 },
         };
         this.ShelveGoodsDict = {
