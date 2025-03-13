@@ -60,7 +60,7 @@ export class ShelveScript extends Component {
         this.GoodChooseToggle.node.active = true;
         for (let i = 0; i < this.StoreGoodList.length; i++) {
             this.GoodChooseToggle.toggleItems[i].node.active = true;
-            let LeftNumber = TopManager.Instance.AllGoodsNumberDict[this.StoreGoodList[i]];
+            let LeftNumber = TopManager.Instance.AllWarehouseGoodsDict[this.StoreGoodList[i]];
             this.GoodChooseToggle.toggleItems[i].node.getChildByName("Label").getComponent(Label).string = this.StoreGoodList[i]+"("+LeftNumber.toString()+")";
         }
     }
