@@ -15,7 +15,9 @@ export class TopManager extends Component {
     public Player:{Name:string,Money:number,Character:string[]} = {Name:"",Money:0,Character:[]};
 
     @property(Array(SpriteFrame))
-    public AvatarArray:SpriteFrame[] = [];  // 货架的图片
+    public AvatarArray:SpriteFrame[] = [];  // 货物的图片
+    @property(Array(SpriteFrame))
+    public CharacterArray:SpriteFrame[] = [];  // 顾客的图片
     private _ValueForTest:string="测试";     //用于demo跨Scene通信的测试
     public ValueForTest2:number=200;      //用于demo跨Scene通信的测试
     public ValueForTestString:string="测试字符串";

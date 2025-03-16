@@ -167,6 +167,28 @@
         "__expectedType__": "cc.SpriteFrame"
       }
     ],
+    "CharacterArray": [
+      {
+        "__uuid__": "ff256351-ad55-4d8c-8720-cc8770cbdf57@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "3ca61877-2851-4d9f-8c83-0b08160199bb@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "87d69bdb-e66a-4adf-bbc3-63d9f532ad34@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "5821ae7a-5cd4-470c-acee-8aa9231722dc@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "c2636cef-ce3c-4b9d-9ec1-8a70e4c90f1f@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      }
+    ],
     "_id": "13a8F0u61GGLqFmkTFIKM8"
   },
   {

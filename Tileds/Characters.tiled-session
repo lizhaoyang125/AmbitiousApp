@@ -1,0 +1,35 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "全部文件 (*)",
+    "fileStates": {
+        "character_9-16.tsx": {
+            "scaleInDock": 8,
+            "scaleInEditor": 4
+        },
+        "free_character_nude.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 11
+        }
+    },
+    "last.imagePath": "C:/Users/admin/Downloads/角色资源包完整版本/sprite",
+    "map.tileHeight": 20,
+    "map.tileWidth": 16,
+    "openFiles": [
+    ],
+    "project": "Characters.tiled-project",
+    "recentFiles": [
+        "free_character_nude.tsx",
+        "character_9-16.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 20,
+        "width": 16
+    }
+}

@@ -1,4 +1,4 @@
-import { _decorator, Component, Label, Node, Prefab, instantiate, Vec3 } from 'cc';
+import { _decorator, Component, Label, Node, Prefab, instantiate, Vec3 ,Sprite} from 'cc';
 import { ShelveScript } from './ShelveScript';
 import { TopManager } from '../TopManager';
 import { CustomerScript } from './CustomerScript';
@@ -17,24 +17,39 @@ export class StoreScript extends Component {
     public CurrentStore:{ StoreType: string; ShelveIndex: number[],CashRegisterLevel:number,StoreLevel:number } = null;
     public ShelveList: number[] = null;
 
+    public popularity: number = 10;
+    private customerSpawnTimer: number = 0;
+    private customerSpawnInterval: number = 5; // 默认每 5 秒生成一个顾客
+
     protected onLoad(): void {
-        this.StoreName=TopManager.Instance.CurrentStoreName;
-        this.CurrentStore=TopManager.Instance.MyStoreShelveDict[this.StoreName];
-        this.ShelveList=this.CurrentStore.ShelveIndex;
-        console.log(this.StoreName+"商店脚本开始运行onLoad");
+        this.StoreName = TopManager.Instance.CurrentStoreName;
+        this.CurrentStore = TopManager.Instance.MyStoreShelveDict[this.StoreName];
+        this.ShelveList = this.CurrentStore.ShelveIndex;
+        console.log(this.StoreName + "商店脚本开始运行onLoad");
     }
 
     start() {
         console.log(this.StoreName + "商店脚本开始运行");
         for (let index = 0; index < this.ShelveList.length; index++) {
-            this.createShelvePrefab(100 * ((index%2)*2-1), 150-100*(index >> 1), this.ShelveList[index]);
+            this.createShelvePrefab(100 * ((index % 2) * 2 - 1), 150 - 100 * (index >> 1), this.ShelveList[index]);
         }
-        this.newCustomerCome(2,1);
-
+        this.newCustomerCome(2, 1);
     }
 
     update(deltaTime: number) {
-        this.TimeLabel.string=TopManager.Instance.GameTime;
+        this.TimeLabel.string = TopManager.Instance.GameTime;
+
+        // 根据 popularity 更新顾客生成间隔
+        this.customerSpawnInterval = 5 / (this.popularity / 10);
+
+        // 更新计时器
+        this.customerSpawnTimer += deltaTime;
+
+        // 检查是否到了生成新顾客的时间
+        if (this.customerSpawnTimer >= this.customerSpawnInterval) {
+            this.newCustomerCome(2, 1);
+            this.customerSpawnTimer = 0;
+        }
     }
 
     createShelvePrefab(x: number, y: number, id: number) {
@@ -61,6 +76,9 @@ export class StoreScript extends Component {
             const newCustomer=instantiate(this.CustomerPrefab);
             newCustomer.setPosition(-200, 280, 0);
             this.node.addChild(newCustomer);
+            const spriteComponent = newCustomer.getComponent(Sprite);
+            const randomIndex = Math.floor(Math.random() * TopManager.Instance.CharacterArray.length);
+            spriteComponent.spriteFrame = TopManager.Instance.CharacterArray[randomIndex];
             const customerScript=newCustomer.getComponent(CustomerScript);
             if(customerScript){
                 customerScript.ShelveNumber=shelveNumber;
