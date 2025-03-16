@@ -33,7 +33,7 @@ export class StoreScript extends Component {
         for (let index = 0; index < this.ShelveList.length; index++) {
             this.createShelvePrefab(100 * ((index % 2) * 2 - 1), 150 - 100 * (index >> 1), this.ShelveList[index]);
         }
-        this.newCustomerCome(2, 1);
+        this.newCustomerCome(this.ShelveList.length, 1);
     }
 
     update(deltaTime: number) {
@@ -47,7 +47,7 @@ export class StoreScript extends Component {
 
         // 检查是否到了生成新顾客的时间
         if (this.customerSpawnTimer >= this.customerSpawnInterval) {
-            this.newCustomerCome(2, 1);
+            this.newCustomerCome(this.ShelveList.length, 1);
             this.customerSpawnTimer = 0;
         }
     }

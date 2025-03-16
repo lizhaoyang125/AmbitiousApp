@@ -31,9 +31,11 @@ export class CustomerScript extends Component {
     start() {
         console.log("CustomerScript onLoad ShelveNumber:"+this.ShelveNumber+" DstShelve:"+this.DstShelve);
         for(let i=0;i<this.ShelveNumber;i++){
-            this.ShelvePositions.push(new Vec3(100*((-1)**i),150-100*(i >> 1),0));
+            this.ShelvePositions.push(new Vec3(-100*((-1)**i),150-100*(i >> 1),0));
         }
         this.SelectShelve = Math.floor(Math.random() * this.ShelvePositions.length);
+        console.log("CustomerScript onLoad ShelveNumber:"+this.ShelveNumber+" DstShelve:"+this.DstShelve);
+
         console.log(this.SelectShelve);
         this.cdTimer = this.cdTime;
         this.MoveState=0;
