@@ -10,7 +10,7 @@ export class TopManager extends Component {
     //货架数据结构：货架索引，商品类型，数量
     public ShelveGoodsDict: { [shelveIndex: number]: { GoodsType: string; number: number } } = {};
     //仓库存货：商品类型，数量
-    public AllWarehouseGoodsDict: { [GoodsType: string]: [leftNumber:number,Popularity:number] } = {};
+    public AllWarehouseGoodsDict: { [GoodsType: string]: {leftNumber:number,Price:Number;Popularity:number} } = {};
     //玩家数据结构：玩家名称，金币数量，拥有的角色数组，金币数量（主要是玩家名称，拥有的角色数组）
     public Player:{Name:string,Money:number,Character:string[]} = {Name:"",Money:0,Character:[]};
 
@@ -96,16 +96,17 @@ export class TopManager extends Component {
             2: { GoodsType: "便宜男装", number: 20 },
             3: { GoodsType: "一般男装", number: 30 },
         };
-        this.AllWarehouseGoodsDict = {     //仓库存货, [数量,流行程度]
-            "便宜女装": [10, 50],
-            "便宜男装": [100, 50],
-            "一般男装": [100, 50],
-            "一般女装": [100, 50],
-            "昂贵男装": [100, 50],
-            "昂贵女装": [100, 50],
-            "便宜花束": [100, 50],
-            "一般花束": [100, 50],
-            "昂贵花束": [100, 50],    
+        this.AllWarehouseGoodsDict = {
+            // 修正为符合定义结构的对象形式
+            "便宜女装": { leftNumber: 10, Price: 22, Popularity: 50 },
+            "便宜男装": { leftNumber: 20, Price: 11, Popularity: 50 },
+            "一般男装": { leftNumber: 30, Price: 22, Popularity: 50 },
+            "一般女装": { leftNumber: 40, Price: 33, Popularity: 50 },
+            "昂贵男装": { leftNumber: 50, Price: 33, Popularity: 50 },
+            "昂贵女装": { leftNumber: 60, Price: 44, Popularity: 50 },
+            "便宜花束": { leftNumber: 70, Price: 8, Popularity: 50 },
+            "一般花束": { leftNumber: 80, Price: 16, Popularity: 50 },
+            "昂贵花束": { leftNumber: 90, Price: 30, Popularity: 50 },
         };
     }
     

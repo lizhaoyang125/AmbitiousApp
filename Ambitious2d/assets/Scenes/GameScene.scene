@@ -143,6 +143,10 @@
     "__prefab": null,
     "AvatarArray": [
       {
+        "__uuid__": "44e614b0-4c23-4087-bf3b-4880e0c4b2b2@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
         "__uuid__": "b760fd3e-4f0d-4095-8f67-9ad56d517a5e@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
