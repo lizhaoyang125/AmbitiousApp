@@ -83,8 +83,11 @@ export class TopManager extends Component {
         this.loadLocalData();    //加载本地数据
         if(this.Player==null){   
             console.log("没有玩家数据，创建一个新玩家");
+            this.Player = { Name: "Player1", Money: 1000, Character: ["Character1"] };
+            
         } else {
             console.log("玩家数据加载成功");
+            return;
         }
 
         this.MyStoreShelveDict = {
@@ -108,6 +111,7 @@ export class TopManager extends Component {
             "一般花束": { leftNumber: 80, Price: 16, Popularity: 50 },
             "昂贵花束": { leftNumber: 90, Price: 30, Popularity: 50 },
         };
+        this.saveLocalData();
     }
     
 
@@ -151,16 +155,16 @@ export class TopManager extends Component {
         this.localStoreAllWarehouseGoodsDict();
     }
 
-    localStoreShelveGoodsDict(){    // 本地存储货架数据,货架以及货架上的商品数量
+    localStoreShelveGoodsDict(){    // 本地存储 货架数据,货架以及货架上的商品数量
         localStorage.setItem("ShelveGoodsDict",JSON.stringify(this.ShelveGoodsDict));
     }
-    localStoreMyStoreShelveDict(){    // 本地存储店铺数据,店铺名称以及货架编号
+    localStoreMyStoreShelveDict(){    // 本地存储 店铺数据,店铺名称以及货架编号
         localStorage.setItem("MyStoreShelveDict",JSON.stringify(this.MyStoreShelveDict));
     }
-    localStorePlayer(){    // 本地存储店铺数据,店铺名称以及货架编号
+    localStorePlayer(){    // 本地存储玩家数据
         localStorage.setItem("Player",JSON.stringify(this.Player));
     }
-    localStoreAllWarehouseGoodsDict(){    // 本地存储所有商品数量,商品名称以及商品数量
+    localStoreAllWarehouseGoodsDict(){    // 本地存储，仓库所有商品数量,商品名称以及商品数量
         localStorage.setItem("AllWarehouseGoodsDict",JSON.stringify(this.AllWarehouseGoodsDict));
     }
     loadLocalData(){
@@ -172,5 +176,11 @@ export class TopManager extends Component {
             console.log("没有玩家数据，创建一个新玩家,进入GameInitialScene");
         }
 
+    }
+    saveLocalData(){
+        this.localStoreShelveGoodsDict();
+        this.localStoreMyStoreShelveDict();
+        this.localStorePlayer(); 
+        this.localStoreAllWarehouseGoodsDict();
     }
 }
