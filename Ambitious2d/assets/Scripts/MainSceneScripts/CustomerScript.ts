@@ -1,4 +1,5 @@
 import { _decorator, Component, Node,Vec3 ,Sprite} from 'cc';
+import { TopManager } from '../TopManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('CustomerScript')
@@ -21,7 +22,6 @@ export class CustomerScript extends Component {
     public BuyGood:string="";
     public BuyPrice:number=0;
 
-
     onLoad(){
         console.log("CustomerScript onLoad ");
     }
@@ -29,6 +29,7 @@ export class CustomerScript extends Component {
         this.ShelvePositions.length=0;
     }
     start() {
+        
         console.log("CustomerScript onLoad ShelveNumber:"+this.ShelveNumber+" DstShelve:"+this.DstShelve);
         for(let i=0;i<this.ShelveNumber;i++){
             this.ShelvePositions.push(new Vec3(-100*((-1)**i),150-100*(i >> 1),0));
@@ -71,7 +72,9 @@ export class CustomerScript extends Component {
         if(this.cdTimer<=0){
             this.MoveState=7;
             console.log("payCash BuyGood:"+this.BuyGood+" BuyPrice:"+this.BuyPrice);
+            TopManager.Instance.Player.Money+=this.BuyPrice;
         }
+        
     }
     moveX (Self:Node,TargetPosition:Vec3,deltaTime:number){
         //console.log("moveX MoveState:"+this.MoveState+"abs:"+Math.abs(Self.position.x - TargetPosition.x));

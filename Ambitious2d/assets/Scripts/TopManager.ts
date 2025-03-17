@@ -10,7 +10,7 @@ export class TopManager extends Component {
     //货架数据结构：货架索引，商品类型，数量
     public ShelveGoodsDict: { [shelveIndex: number]: { GoodsType: string; number: number } } = {};
     //仓库存货：商品类型，数量
-    public AllWarehouseGoodsDict: { [GoodsType: string]: {leftNumber:number,Price:Number;Popularity:number} } = {};
+    public AllWarehouseGoodsDict: { [GoodsType: string]: {LeftNumber:number,Price:number;Popularity:number} } = {};
     //玩家数据结构：玩家名称，金币数量，拥有的角色数组，金币数量（主要是玩家名称，拥有的角色数组）
     public Player:{Name:string,Money:number,Character:string[]} = {Name:"",Money:0,Character:[]};
 

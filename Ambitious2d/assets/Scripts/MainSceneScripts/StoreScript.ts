@@ -9,6 +9,9 @@ export class StoreScript extends Component {
 
     @property(Label)
     public TimeLabel:Label=null;
+    @property(Label)
+    public TotalMoneyLabel:Label=null;
+
     public StoreName:string="";
     @property(Prefab)
     public ShelvePrefab:Prefab=null;
@@ -38,6 +41,7 @@ export class StoreScript extends Component {
 
     update(deltaTime: number) {
         this.TimeLabel.string = TopManager.Instance.GameTime;
+        this.TotalMoneyLabel.string = "余额："+TopManager.Instance.Player.Money.toString();
 
         // 根据 popularity 更新顾客生成间隔
         this.customerSpawnInterval = 5 / (this.popularity / 10);

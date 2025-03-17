@@ -31,7 +31,7 @@ export class ShelveScript extends Component {
         collider.on(Contact2DType.BEGIN_CONTACT,this.onBeginContact,this);
         collider.on(Contact2DType.END_CONTACT,this.onEndContact,this);
         
-        this.CurrentGood = TopManager.Instance.ShelveGoodsDict[this.ShelveID].GoodsType;
+        this.CurrentGood = topManager.ShelveGoodsDict[this.ShelveID].GoodsType;
         this.CurrentGoodsNumber = TopManager.Instance.ShelveGoodsDict[this.ShelveID].number;
         this.ShelveGood.spriteFrame = TopManager.Instance.AvatarArray[GoodsFrameDict[this.CurrentGood]];
         this.GoodsNumberLabel.string = this.CurrentGoodsNumber.toString();
@@ -42,13 +42,18 @@ export class ShelveScript extends Component {
     }
     onBeginContact(self: Collider2D, other: Collider2D) {
         console.log("onBeginContact,开始买东西了！");
-        this.CurrentGoodsNumber--;
-        TopManager.Instance.ShelveGoodsDict[this.ShelveID].number--;
-        this.GoodsNumberLabel.string = this.CurrentGoodsNumber.toString();
-        TopManager.Instance.updateShelveData(this.ShelveID,this.CurrentGood,this.CurrentGoodsNumber);
-        console.log(other.node.getComponent(CustomerScript)?.cdTime);
-        other.node.getComponent(CustomerScript).BuyGood = this.CurrentGood;
-        other.node.getComponent(CustomerScript).BuyPrice = 100;
+        if(this.CurrentGoodsNumber<=0){
+            console.log("没有货物了！");
+            return; 
+        } else {
+            this.CurrentGoodsNumber--;
+            TopManager.Instance.ShelveGoodsDict[this.ShelveID].number--;
+            this.GoodsNumberLabel.string = this.CurrentGoodsNumber.toString();
+            TopManager.Instance.updateShelveData(this.ShelveID,this.CurrentGood,this.CurrentGoodsNumber);
+            console.log(other.node.getComponent(CustomerScript)?.cdTime);
+            other.node.getComponent(CustomerScript).BuyGood = this.CurrentGood;
+            other.node.getComponent(CustomerScript).BuyPrice = TopManager.Instance.AllWarehouseGoodsDict[this.CurrentGood].Price;
+        }
     }
     onEndContact(self: Collider2D, other: Collider2D) {
         console.log("onEndContact");
@@ -60,7 +65,7 @@ export class ShelveScript extends Component {
         this.GoodChooseToggle.node.active = true;
         for (let i = 0; i < this.StoreGoodList.length; i++) {
             this.GoodChooseToggle.toggleItems[i].node.active = true;
-            let LeftNumber = TopManager.Instance.AllWarehouseGoodsDict[this.StoreGoodList[i]]["leftNumber"];
+            let LeftNumber = TopManager.Instance.AllWarehouseGoodsDict[this.StoreGoodList[i]]["LeftNumber"];
             this.GoodChooseToggle.toggleItems[i].node.getChildByName("Label").getComponent(Label).string = this.StoreGoodList[i]+"("+LeftNumber.toString()+")";
         }
     }
