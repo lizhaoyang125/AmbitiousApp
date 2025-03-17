@@ -8,6 +8,14 @@
     ],
     "file.lastUsedOpenFilter": "全部文件 (*)",
     "fileStates": {
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/store.tmx": {
+            "scale": 0.06927083333333334,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 11541.654135338345,
+                "y": 6135.338345864661
+            }
+        },
         "character_9-16.tsx": {
             "scaleInDock": 8,
             "scaleInEditor": 4
@@ -18,8 +26,10 @@
         }
     },
     "last.imagePath": "C:/Users/admin/Downloads/角色资源包完整版本/sprite",
-    "map.tileHeight": 20,
-    "map.tileWidth": 16,
+    "map.height": 10,
+    "map.tileHeight": 48,
+    "map.tileWidth": 48,
+    "map.width": 10,
     "openFiles": [
     ],
     "project": "Characters.tiled-project",
