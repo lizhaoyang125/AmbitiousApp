@@ -1,12 +1,12 @@
-import { _decorator, Component, Node,Vec3 ,Sprite} from 'cc';
+import { _decorator, Component, Node,Vec3 ,Sprite,CCInteger} from 'cc';
 import { TopManager } from '../TopManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('CustomerScript')
 export class CustomerScript extends Component {
 
-    @property(Number)
-    public speed:number=100;
+    @property(CCInteger)
+    public speed:Number=100;
     @property(Sprite)
     public CustomerMask: Sprite = null; // 卡牌正面
     public ShelveNumber:number=0;
@@ -73,6 +73,7 @@ export class CustomerScript extends Component {
             this.MoveState=7;
             console.log("payCash BuyGood:"+this.BuyGood+" BuyPrice:"+this.BuyPrice);
             TopManager.Instance.Player.Money+=this.BuyPrice;
+            TopManager.Instance.localStorePlayer();
         }
         
     }

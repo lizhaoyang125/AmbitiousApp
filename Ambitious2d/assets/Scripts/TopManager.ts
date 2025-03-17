@@ -101,15 +101,15 @@ export class TopManager extends Component {
         };
         this.AllWarehouseGoodsDict = {
             // 修正为符合定义结构的对象形式
-            "便宜女装": { leftNumber: 10, Price: 22, Popularity: 50 },
-            "便宜男装": { leftNumber: 20, Price: 11, Popularity: 50 },
-            "一般男装": { leftNumber: 30, Price: 22, Popularity: 50 },
-            "一般女装": { leftNumber: 40, Price: 33, Popularity: 50 },
-            "昂贵男装": { leftNumber: 50, Price: 33, Popularity: 50 },
-            "昂贵女装": { leftNumber: 60, Price: 44, Popularity: 50 },
-            "便宜花束": { leftNumber: 70, Price: 8, Popularity: 50 },
-            "一般花束": { leftNumber: 80, Price: 16, Popularity: 50 },
-            "昂贵花束": { leftNumber: 90, Price: 30, Popularity: 50 },
+            "便宜女装": { LeftNumber: 10, Price: 22, Popularity: 50 },
+            "便宜男装": { LeftNumber: 20, Price: 11, Popularity: 50 },
+            "一般男装": { LeftNumber: 30, Price: 22, Popularity: 50 },
+            "一般女装": { LeftNumber: 40, Price: 33, Popularity: 50 },
+            "昂贵男装": { LeftNumber: 50, Price: 33, Popularity: 50 },
+            "昂贵女装": { LeftNumber: 60, Price: 44, Popularity: 50 },
+            "便宜花束": { LeftNumber: 70, Price: 8, Popularity: 50 },
+            "一般花束": { LeftNumber: 80, Price: 16, Popularity: 50 },
+            "昂贵花束": { LeftNumber: 90, Price: 30, Popularity: 50 },
         };
         this.saveLocalData();
     }
