@@ -19,5 +19,3 @@ export class TestScripts extends Component {
         director.loadScene("GameScene");
     }
 }
-
-

@@ -38,6 +38,12 @@ export class TopManager extends Component {
         this._instance._ValueForTest = value;
     }
 
+    public Pause_all(){
+        director.pause(); 
+    }
+    public Resume_all(){
+        director.resume(); 
+    }
     protected onLoad(): void {
         if (TopManager._instance) {
             console.warn('TopManager already exists!');
