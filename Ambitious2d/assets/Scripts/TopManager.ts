@@ -10,9 +10,9 @@ export class TopManager extends Component {
     //货架数据结构：货架索引，商品类型，数量
     public ShelveGoodsDict: { [shelveIndex: number]: { GoodsType: string; number: number } } = {};
     //仓库存货：商品类型，数量
-    public AllWarehouseGoodsDict: { [GoodsType: string]: {LeftNumber:number,Price:number;Popularity:number} } = {};
+    public AllWarehouseGoodsDict: { [GoodsType: string]: { LeftNumber: number, Price: number, Popularity: number } } = {};
     //玩家数据结构：玩家名称，金币数量，拥有的角色数组，金币数量（主要是玩家名称，拥有的角色数组）
-    public Player:{Name:string,Money:number,Character:string[]} = {Name:"",Money:0,Character:[]};
+    public Player:{Name:string,Money:number,Character:string[],ShelveMaxGoodsNumber:number} = {Name:"",Money:0,Character:[],ShelveMaxGoodsNumber:30};
 
     @property(Array(SpriteFrame))
     public AvatarArray:SpriteFrame[] = [];  // 货物的图片
@@ -25,6 +25,7 @@ export class TopManager extends Component {
     private Timer1S:number=0;
     private _deltaTime: number = 1/60;
     private _accumulator = 0;
+
     public static get Instance() {
         if (!this._instance) {
             console.warn("TopManager instance is not initialized yet!");
@@ -89,7 +90,7 @@ export class TopManager extends Component {
         this.loadLocalData();    //加载本地数据
         if(this.Player==null){   
             console.log("没有玩家数据，创建一个新玩家");
-            this.Player = { Name: "Player1", Money: 1000, Character: ["Character1"] };
+            this.Player = { Name: "Player1", Money: 1000, Character: ["Character1"],ShelveMaxGoodsNumber:30 };
             
         } else {
             console.log("玩家数据加载成功");
@@ -106,14 +107,13 @@ export class TopManager extends Component {
             3: { GoodsType: "一般男装", number: 30 },
         };
         this.AllWarehouseGoodsDict = {
-            // 修正为符合定义结构的对象形式
             "便宜女装": { LeftNumber: 10, Price: 22, Popularity: 50 },
             "便宜男装": { LeftNumber: 20, Price: 11, Popularity: 50 },
             "一般男装": { LeftNumber: 30, Price: 22, Popularity: 50 },
             "一般女装": { LeftNumber: 40, Price: 33, Popularity: 50 },
             "昂贵男装": { LeftNumber: 50, Price: 33, Popularity: 50 },
             "昂贵女装": { LeftNumber: 60, Price: 44, Popularity: 50 },
-            "便宜花束": { LeftNumber: 70, Price: 8, Popularity: 50 },
+            "便宜花束": { LeftNumber: 70, Price: 8,  Popularity: 50 },
             "一般花束": { LeftNumber: 80, Price: 16, Popularity: 50 },
             "昂贵花束": { LeftNumber: 90, Price: 30, Popularity: 50 },
         };
@@ -177,16 +177,17 @@ export class TopManager extends Component {
         this.ShelveGoodsDict = JSON.parse(localStorage.getItem("ShelveGoodsDict"));
         this.MyStoreShelveDict = JSON.parse(localStorage.getItem("MyStoreShelveDict"));
         this.AllWarehouseGoodsDict = JSON.parse(localStorage.getItem("AllWarehouseGoodsDict"));
+        
         this.Player = JSON.parse(localStorage.getItem("Player"));
         if(this.Player==null){   
             console.log("没有玩家数据，创建一个新玩家,进入GameInitialScene");
-        }
-
+        } 
     }
     saveLocalData(){
         this.localStoreShelveGoodsDict();
         this.localStoreMyStoreShelveDict();
         this.localStorePlayer(); 
         this.localStoreAllWarehouseGoodsDict();
+        console.log(localStorage.getItem("AllWarehouseGoodsDict"));
     }
 }
