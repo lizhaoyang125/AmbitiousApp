@@ -5,9 +5,25 @@
     },
     "activeFile": "",
     "expandedProjectPaths": [
+        "."
     ],
     "file.lastUsedOpenFilter": "全部文件 (*)",
     "fileStates": {
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/Maps/Godot_Autotiles_48x48.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/Maps/Modern_Office_MV_1_TILESETS_B-C-D-E.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/Maps/Modern_Office_MV_2_TILESETS_B-C-D-E.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/Maps/Modern_Office_MV_3_TILESETS_B-C-D-E.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/Maps/Modern_Office_Shadowless_48x48.tsx": {
+            "scaleInDock": 1
+        },
         "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/store.tmx": {
             "scale": 0.06927083333333334,
             "selectedLayer": 0,
@@ -31,10 +47,13 @@
     "map.tileWidth": 48,
     "map.width": 10,
     "openFiles": [
+        "free_character_nude.tsx",
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/store.tmx"
     ],
     "project": "Characters.tiled-project",
     "recentFiles": [
         "free_character_nude.tsx",
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/store.tmx",
         "character_9-16.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",

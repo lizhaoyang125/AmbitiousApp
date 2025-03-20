@@ -1646,7 +1646,7 @@
     },
     "component": "",
     "_componentId": "08ee94WFFFPVLOJD5oCUA7k",
-    "handler": "Resume_all",
+    "handler": "clearAllLocalData",
     "customEventData": "1"
   },
   {

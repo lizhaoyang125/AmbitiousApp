@@ -87,7 +87,9 @@ export class TopManager extends Component {
         }
     }
     initialData() {
+        this.clearAllLocalData();     //清除本地数据
         this.loadLocalData();    //加载本地数据
+        
         if(this.Player==null){   
             console.log("没有玩家数据，创建一个新玩家");
             this.Player = { Name: "Player1", Money: 1000, Character: ["Character1"],ShelveMaxGoodsNumber:30 };
@@ -182,6 +184,9 @@ export class TopManager extends Component {
         if(this.Player==null){   
             console.log("没有玩家数据，创建一个新玩家,进入GameInitialScene");
         } 
+    }
+    clearAllLocalData(){
+        localStorage.clear(); 
     }
     saveLocalData(){
         this.localStoreShelveGoodsDict();

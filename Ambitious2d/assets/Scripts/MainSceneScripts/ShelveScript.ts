@@ -65,8 +65,9 @@ export class ShelveScript extends Component {
         this.GoodChooseToggle.node.active = true;
         for (let i = 0; i < this.StoreGoodList.length; i++) {
             this.GoodChooseToggle.toggleItems[i].node.active = true;
-            let LeftNumber:number = TopManager.Instance.AllWarehouseGoodsDict[this.StoreGoodList[i]]["leftNumber"];
-            this.GoodChooseToggle.toggleItems[i].node.getChildByName("Label").getComponent(Label).string = this.StoreGoodList[i]+"("+LeftNumber.toString()+")";
+            let LeftNumber:number = TopManager.Instance.AllWarehouseGoodsDict[this.StoreGoodList[i]]["LeftNumber"];
+            this.GoodChooseToggle.toggleItems[i].node.getChildByName("Label").getComponent(Label).string = this.StoreGoodList[i];
+            this.GoodChooseToggle.toggleItems[i].node.getChildByName("NumberLabel").getComponent(Label).string = "("+LeftNumber.toString()+")";
         }
     }
 
@@ -83,14 +84,27 @@ export class ShelveScript extends Component {
     }
     onTalentToggleChange(toggle: Toggle) {  
         if (toggle.isChecked) {  
-            console.log("toggle is checked"+toggle.node.name);
+            let ChooseGood = toggle.node.getChildByName("Label").getComponent(Label).string;
+            console.log(TopManager.Instance.Player);
+            if(TopManager.Instance.AllWarehouseGoodsDict[ChooseGood]["LeftNumber"]>=TopManager.Instance.Player.ShelveMaxGoodsNumber){
+                this.CurrentGoodsNumber=TopManager.Instance.Player.ShelveMaxGoodsNumber;
+                TopManager.Instance.AllWarehouseGoodsDict[ChooseGood]["LeftNumber"]=TopManager.Instance.AllWarehouseGoodsDict[ChooseGood]["LeftNumber"]-TopManager.Instance.Player.ShelveMaxGoodsNumber;
+            } else {
+                this.CurrentGoodsNumber=TopManager.Instance.AllWarehouseGoodsDict[ChooseGood]["LeftNumber"];
+                TopManager.Instance.AllWarehouseGoodsDict[ChooseGood]["LeftNumber"]=0;
+            }
+
+            console.log("toggle is checked "+ChooseGood);
             this.GoodChooseToggle.node.active = false;
             let index = this.getToggleIndex(toggle.node.name);
             console.log("index:"+index);
             this.CurrentGood = this.StoreGoodList[index];
             this.ShelveGood.spriteFrame = TopManager.Instance.AvatarArray[GoodsFrameDict[this.CurrentGood]];
+            this.GoodsNumberLabel.string = this.CurrentGoodsNumber.toString();
         } else {  
-            console.log("toggle is not checked"+toggle.node.name);
+            let RemoveGood = toggle.node.getChildByName("Label").getComponent(Label).string;
+            TopManager.Instance.AllWarehouseGoodsDict[RemoveGood]["LeftNumber"]=TopManager.Instance.AllWarehouseGoodsDict[RemoveGood]["LeftNumber"]+this.CurrentGoodsNumber;
+            console.log("toggle is not checked "+RemoveGood);
             this.GoodChooseToggle.node.active = false;
             let index = this.StoreGoodList.indexOf(toggle.node.name);
             console.log("index:"+index);
