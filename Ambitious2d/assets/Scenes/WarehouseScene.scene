@@ -362,7 +362,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "7d8f9b89-4fd1-4c9f-a3ab-38ec7cded7ca@f9941",
+      "__uuid__": "d7a290d2-044e-44de-ae44-36acbcd33b99@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -405,8 +405,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 250,
+      "x": -5.36099999999999,
+      "y": 249.99999999999994,
       "z": 0
     },
     "_lrot": {
@@ -505,7 +505,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -3.554000000000002,
       "y": 0,
       "z": 0
     },
@@ -544,8 +544,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
-      "height": 150
+      "width": 200,
+      "height": 100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -577,10 +577,10 @@
     "_string": "无法创建,已到达可创建最大数量",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 30,
-    "_fontSize": 30,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 20,
     "_overflow": 1,
     "_enableWrapText": true,
     "_font": null,
@@ -628,8 +628,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
-      "height": 150
+      "width": 200,
+      "height": 100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1363,8 +1363,8 @@
     "button": {
       "__id__": 30
     },
-    "House": {
-      "__uuid__": "145d537b-e3cc-437d-b573-e5d3fc1a3c0a",
+    "ShelvePrefab": {
+      "__uuid__": "241f00d8-c42c-4311-ae72-406fd67eb834",
       "__expectedType__": "cc.Prefab"
     },
     "_id": "20F8V5KAdFmYBe2yn6m6Id"

@@ -7,72 +7,72 @@ import {
   math,
   Node,
   Prefab,
+  Sprite,
   v2,
   v3,
+  Vec3,
 } from "cc";
+import { GoodsFrameDict, SimpleAllStoreGoodsDict } from "../DataCollection";
 import { GameManager } from "../GloblaScripts/GameManger";
+import { TopManager } from "../TopManager";
 const { ccclass, property } = _decorator;
 
 @ccclass("Createnew")
 export class Createnew extends Component {
   @property(Button)
   button: Button = null;
+  currentHouseCount = 0; // 当前货架数量
+  Y: number = 260; // 货架Y轴位置
+  public ShelveList: string[] = null; // 货架列表
   @property(Prefab)
-  House: Prefab = null;
-  Loacthousecount: number = 0;
-  MaxhouseCount = 8;
-  currentHouseCount = 0;
-  Y: number = 300;
-  start() {
-    console.log("start");
-  }
+  public ShelvePrefab: Prefab = null; // 货架预制体
+
+  start() {}
+
   protected onLoad(): void {
-    let strlabel = this.node.getChildByName("Tip").getComponent(Label);
-    const str = GameManager.inst()._playerName;
-
-    strlabel.string = str + "的仓库";
-    this.Loacthousecount = GameManager.inst()._StoreCount;
-
-    let cpint2 = GameManager.inst()._Money;
-
-    for (let i = 1; i <= this.Loacthousecount; i++) {
-      this.CreateShelf();
+    const goodsTypes = Object.keys(TopManager.Instance.AllWarehouseGoodsDict);
+    let i = 0; // Assume goodsTypes is an array of keys, we need to get the actual goods data
+    for (let goodKey of goodsTypes) {
+      const goodsData = TopManager.Instance.AllWarehouseGoodsDict[goodKey];
+      console.log(
+        "goodsData" + "leftnumber" + goodsData.LeftNumber,
+        "goodKey" + goodKey
+      );
+      if (goodsData) {
+        i++;
+        this.createShelvePrefab(
+          100,
+          -100 * (i + 1),
+          goodsData.LeftNumber,
+          goodKey
+        );
+      } else {
+        console.error(`No goods data found for key: ${goodKey}`);
+      }
     }
   }
+
+  createShelvePrefab(
+    x: number,
+    y: number,
+    leftNumber: number,
+    GoodsType: string
+  ) {
+    if (this.ShelvePrefab) {
+      const newShelve = instantiate(this.ShelvePrefab);
+      newShelve.setPosition(new Vec3(x, y, 0));
+      this.node.addChild(newShelve);
+      // Check if newShelve has 'shelveGood' and 'shelveNumberLabel' nodes
+      const shelveGoodNode = newShelve.getChildByName("Good");
+      shelveGoodNode.getComponent(Sprite).spriteFrame =
+        TopManager.Instance.AvatarArray[GoodsFrameDict[GoodsType]];
+      const shelveNumberLabelNode = newShelve.getChildByName("Label");
+      shelveNumberLabelNode.getComponent(Label).string = leftNumber.toString();
+    }
+  }
+
   update(deltaTime: number) {}
   /**
    * 根据玩家本地货架数量创建已存在的货架
    */
-  CreateShelf() {
-    if (this.currentHouseCount === this.MaxhouseCount) {
-      let panel = this.node.getChildByName("MessagePanel");
-      panel.active = true;
-      return false;
-    }
-    let bool = this.AddWareHouse(this.currentHouseCount + 1);
-    this.currentHouseCount = bool
-      ? this.currentHouseCount + 1
-      : this.currentHouseCount;
-  }
-  AddWareHouse(num: number): boolean {
-    try {
-      let newx = 0;
-      let newy = 0;
-      // 计算商和余数
-      let quotient = Math.floor(num / 2); // 商
-      let remainder = num % 2; // 余数
-      // 根据余数设置 newx
-      newx = remainder === 0 ? 180 : -180;
-      // 根据 quotient 计算 newy 的位置
-      newy = this.Y - (quotient + remainder) * 200;
-      const house = instantiate(this.House);
-      house.setPosition(v3(newx, newy, 0)); // 设置房屋位置
-      let LAB = house.getChildByName("Title").getComponent(Label);
-      LAB.string = "鲜花";
-      house.setParent(this.node); // 将房屋添加到当前节点
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
 }
