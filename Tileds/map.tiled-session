@@ -1,0 +1,101 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "atlas_48x.tsx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "全部文件 (*)",
+    "fileStates": {
+        "A2_Floors_MV_TILESET_2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/A2_Floors_MV_TILESET_2.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/atlas_48x.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/character_1-8.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/map.tmx": {
+            "scale": 0.1259469696969697,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 262.01503759398497,
+                "y": 528.0000000000001
+            }
+        },
+        "SRW_Marketplace_A1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "SRW_Marketplace_autotile_A2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "SRW_Marketplace_tileset_B.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "SRW_Marketplace_tileset_C.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "_srw_character_1-8.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "atlas_48x.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "character_1-8.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "map.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 99.33333333333337,
+                "y": 693.3333333333333
+            }
+        }
+    },
+    "last.imagePath": "C:/Users/admin/Downloads/modernuserinterface-win/48x48",
+    "map.height": 22,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 48,
+    "map.tileWidth": 48,
+    "map.width": 11,
+    "openFiles": [
+        "atlas_48x.tsx",
+        "map.tmx",
+        "A2_Floors_MV_TILESET_2.tsx",
+        "character_1-8.tsx",
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/map.tmx"
+    ],
+    "project": "map.tiled-project",
+    "recentFiles": [
+        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/map.tmx",
+        "character_1-8.tsx",
+        "A2_Floors_MV_TILESET_2.tsx",
+        "map.tmx",
+        "atlas_48x.tsx",
+        "_srw_character_1-8.tsx",
+        "SRW_Marketplace_A1.tsx",
+        "SRW_Marketplace_tileset_B.tsx",
+        "SRW_Marketplace_tileset_C.tsx",
+        "SRW_Marketplace_autotile_A2.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 48,
+        "width": 48
+    }
+}

@@ -6,13 +6,14 @@ export class TopManager extends Component {
     private static _instance: TopManager;
     public CurrentStoreName:string="";    //当前商店名称
     //商店数据结构：商店名称，商店类型，货架索引数组，收银台等级，商店等级（主要是商店名称，类型，货架ID）
-    public MyStoreShelveDict: { [StoreName: string]: { StoreType: string; ShelveIndex: number[],CashRegisterLevel:number,StoreLevel:number } } = {};
+    public MyStoreShelveDict: { [StoreName: string]: { StoreType: string; ShelveIndex: number[],CashRegisterLevel:number,StoreLevel:number,RentCost:number } } = {};
     //货架数据结构：货架索引，商品类型，数量
     public ShelveGoodsDict: { [shelveIndex: number]: { GoodsType: string; number: number } } = {};
     //仓库存货：商品类型，数量
-    public AllWarehouseGoodsDict: { [GoodsType: string]: { LeftNumber: number, Price: number, Popularity: number } } = {};
+    public AllWarehouseGoodsDict: { [GoodsType: string]: { LeftNumber: number, Price: number, Popularity: number,Cost:number } } = {};
     //玩家数据结构：玩家名称，金币数量，拥有的角色数组，金币数量（主要是玩家名称，拥有的角色数组）
     public Player:{Name:string,Money:number,Character:string[],ShelveMaxGoodsNumber:number} = {Name:"",Money:0,Character:[],ShelveMaxGoodsNumber:30};
+    public EmployeeDict:{[Name:string]:[Type:string, Salary:number,Character:string[],SkillLevel:number]}={};
 
     @property(Array(SpriteFrame))
     public AvatarArray:SpriteFrame[] = [];  // 货物的图片
@@ -100,24 +101,25 @@ export class TopManager extends Component {
         }
 
         this.MyStoreShelveDict = {
-            "八一服装店": { StoreType: "服装店", ShelveIndex: [1, 2,3],CashRegisterLevel:0,StoreLevel:0 },
-            "新华花店": { StoreType: "花店", ShelveIndex: [3],CashRegisterLevel:0,StoreLevel:0 },
+            "八一服装店": { StoreType: "服装店", ShelveIndex: [1, 2,3,4],CashRegisterLevel:0,StoreLevel:0,RentCost:1000  },
+            "新华花店": { StoreType: "花店", ShelveIndex: [3],CashRegisterLevel:0,StoreLevel:0,RentCost:1000 },
         };
         this.ShelveGoodsDict = {
             1: { GoodsType: "便宜女装", number: 10 },
             2: { GoodsType: "便宜男装", number: 20 },
             3: { GoodsType: "一般男装", number: 30 },
+            4: { GoodsType: "一般男装", number: 30 },
         };
         this.AllWarehouseGoodsDict = {
-            "便宜女装": { LeftNumber: 10, Price: 22, Popularity: 50 },
-            "便宜男装": { LeftNumber: 20, Price: 11, Popularity: 50 },
-            "一般男装": { LeftNumber: 30, Price: 22, Popularity: 50 },
-            "一般女装": { LeftNumber: 40, Price: 33, Popularity: 50 },
-            "昂贵男装": { LeftNumber: 50, Price: 33, Popularity: 50 },
-            "昂贵女装": { LeftNumber: 60, Price: 44, Popularity: 50 },
-            "便宜花束": { LeftNumber: 70, Price: 8,  Popularity: 50 },
-            "一般花束": { LeftNumber: 80, Price: 16, Popularity: 50 },
-            "昂贵花束": { LeftNumber: 90, Price: 30, Popularity: 50 },
+            "便宜女装": { LeftNumber: 10, Price: 22, Popularity: 50, Cost: 10 },
+            "便宜男装": { LeftNumber: 20, Price: 11, Popularity: 50, Cost: 10 },
+            "一般男装": { LeftNumber: 30, Price: 69, Popularity: 50, Cost: 19 },
+            "一般女装": { LeftNumber: 40, Price: 119, Popularity: 50, Cost: 20 },
+            "昂贵男装": { LeftNumber: 10, Price: 188, Popularity: 50, Cost: 99 },
+            "昂贵女装": { LeftNumber: 10, Price: 399, Popularity: 50, Cost: 99 },
+            "便宜花束": { LeftNumber: 70, Price: 8,  Popularity: 50, Cost: 10 },
+            "一般花束": { LeftNumber: 80, Price: 16, Popularity: 50, Cost: 10 },
+            "昂贵花束": { LeftNumber: 90, Price: 30, Popularity: 50, Cost: 10 },
         };
         this.saveLocalData();
     }
@@ -138,9 +140,9 @@ export class TopManager extends Component {
         this.GameTime = `${year}/${month}/${day} ${hours}:${minutes}`;
     }
 
-    addNewStore(StoreName:string,StoreType:string){
+    addNewStore(StoreName:string,StoreType:string,StoreLevel:number,CashRegisterLevel:number,RentCost:number){
         let shelveIndex = Object.keys(this.MyStoreShelveDict).length + 1;
-        this.MyStoreShelveDict[StoreName] = { StoreType: StoreType, ShelveIndex: [shelveIndex],CashRegisterLevel:0,StoreLevel:0 };
+        this.MyStoreShelveDict[StoreName] = { StoreType: StoreType, ShelveIndex: [shelveIndex],CashRegisterLevel:0,StoreLevel:0,RentCost:RentCost };
         this.ShelveGoodsDict[shelveIndex] = { GoodsType: "空", number: 0 }
         this.localStoreMyStoreShelveDict();
         this.localStoreShelveGoodsDict();
@@ -157,9 +159,12 @@ export class TopManager extends Component {
         this.ShelveGoodsDict[id] = { GoodsType: GoodsType, number: leftNumber };
         this.localStoreShelveGoodsDict();
     }
-    updateWarehouseData(id:number,GoodsType:string,leftNumber:number,Popularity:number){
-        this.AllWarehouseGoodsDict[GoodsType][0] = leftNumber;
-        this.AllWarehouseGoodsDict[GoodsType][1] = Popularity;
+    updateWarehouseData(GoodsType: string, leftNumber: number, Popularity: number, cost: number) {
+        if (this.AllWarehouseGoodsDict[GoodsType]) {
+            this.AllWarehouseGoodsDict[GoodsType].LeftNumber = leftNumber;
+            this.AllWarehouseGoodsDict[GoodsType].Popularity = Popularity;
+            this.AllWarehouseGoodsDict[GoodsType].Cost = cost;
+        }
         this.localStoreAllWarehouseGoodsDict();
     }
 

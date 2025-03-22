@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "free_character_nude.tsx",
     "expandedProjectPaths": [
         "."
     ],
@@ -47,8 +47,7 @@
     "map.tileWidth": 48,
     "map.width": 10,
     "openFiles": [
-        "free_character_nude.tsx",
-        "D:/github_worspace/AmbitiousApp/Ambitious2d/assets/Pictures/store.tmx"
+        "free_character_nude.tsx"
     ],
     "project": "Characters.tiled-project",
     "recentFiles": [

@@ -20,3 +20,4 @@ node_modules/
 # WebStorm
 #//////////////////////////
 .idea/
+/assets/Scripts/DataCollection.ts.meta
