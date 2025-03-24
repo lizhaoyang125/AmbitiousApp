@@ -31,14 +31,12 @@ export class Createnew extends Component {
 
   protected onLoad(): void {
     const goodsTypes = Object.keys(TopManager.Instance.AllWarehouseGoodsDict);
-    // Assume goodsTypes is an array of keys, we need to get the actual goods data
     let newx = 0;
     let newy = 0;
     for (let goodKey of goodsTypes) {
       const goodsData = TopManager.Instance.AllWarehouseGoodsDict[goodKey];
       if (goodsData) {
         const newx = this.currentHouseCount % 2 == 0 ? -100 : 100;
-        console.log(this.currentHouseCount / 2);
         const newy = this.Y - 100 * Math.floor(this.currentHouseCount / 2);
         this.createShelvePrefab(newx, newy, goodsData.LeftNumber, goodKey);
       } else {

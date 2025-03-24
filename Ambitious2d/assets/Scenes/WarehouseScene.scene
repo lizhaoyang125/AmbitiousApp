@@ -175,7 +175,7 @@
     "_priority": 0,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 465.99999999999994,
+    "_orthoHeight": 466,
     "_near": 0,
     "_far": 1000,
     "_color": {
@@ -1364,7 +1364,7 @@
       "__id__": 30
     },
     "ShelvePrefab": {
-      "__uuid__": "2a22f360-6636-40a3-8cc7-560bd3830be7",
+      "__uuid__": "edb1ba9a-4441-493c-84b4-ceacac1b4dd6",
       "__expectedType__": "cc.Prefab"
     },
     "_id": "20F8V5KAdFmYBe2yn6m6Id"
@@ -1382,7 +1382,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 430,
-      "height": 931.9999999999998
+      "height": 932
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
