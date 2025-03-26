@@ -22,7 +22,7 @@ export class Createnew extends Component {
   @property(Button)
   button: Button = null;
   currentHouseCount = 0; // 当前货架数量
-  Y: number = 260; // 货架Y轴位置
+  Y: number = 140; // 货架Y轴位置
   public ShelveList: string[] = null; // 货架列表
   @property(Prefab)
   public ShelvePrefab: Prefab = null; // 货架预制体
@@ -31,24 +31,18 @@ export class Createnew extends Component {
 
   protected onLoad(): void {
     const goodsTypes = Object.keys(TopManager.Instance.AllWarehouseGoodsDict);
-    let i = 0; // Assume goodsTypes is an array of keys, we need to get the actual goods data
+    let newx = 0;
+    let newy = 0;
     for (let goodKey of goodsTypes) {
       const goodsData = TopManager.Instance.AllWarehouseGoodsDict[goodKey];
-      console.log(
-        "goodsData" + "leftnumber" + goodsData.LeftNumber,
-        "goodKey" + goodKey
-      );
       if (goodsData) {
-        i++;
-        this.createShelvePrefab(
-          100,
-          -100 * (i + 1),
-          goodsData.LeftNumber,
-          goodKey
-        );
+        const newx = this.currentHouseCount % 2 == 0 ? -100 : 100;
+        const newy = this.Y - 100 * Math.floor(this.currentHouseCount / 2);
+        this.createShelvePrefab(newx, newy, goodsData.LeftNumber, goodKey);
       } else {
         console.error(`No goods data found for key: ${goodKey}`);
       }
+      this.currentHouseCount++;
     }
   }
 
@@ -62,7 +56,6 @@ export class Createnew extends Component {
       const newShelve = instantiate(this.ShelvePrefab);
       newShelve.setPosition(new Vec3(x, y, 0));
       this.node.addChild(newShelve);
-      // Check if newShelve has 'shelveGood' and 'shelveNumberLabel' nodes
       const shelveGoodNode = newShelve.getChildByName("Good");
       shelveGoodNode.getComponent(Sprite).spriteFrame =
         TopManager.Instance.AvatarArray[GoodsFrameDict[GoodsType]];
