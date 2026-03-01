@@ -1,4 +1,11 @@
 import { _decorator, Component, director, Node, SpriteFrame } from "cc";
+import {
+  Player,
+  StoreInfo,
+  ShelveGoods,
+  WarehouseGood,
+  EmployeeDict,
+} from "./DataCollection";
 const { ccclass, property } = _decorator;
 
 @ccclass("TopManager")
@@ -6,43 +13,15 @@ export class TopManager extends Component {
   private static _instance: TopManager;
   public CurrentStoreName: string = ""; //当前商店名称
   //商店数据结构：商店名称，商店类型，货架索引数组，收银台等级，商店等级（主要是商店名称，类型，货架ID）
-  public MyStoreShelveDict: {
-    [StoreName: string]: {
-      StoreType: string;
-      ShelveIndex: number[];
-      CashRegisterLevel: number;
-      StoreLevel: number;
-      RentCost: number;
-    };
-  } = {};
+  public MyStoreShelveDict: { [StoreName: string]: StoreInfo } = {};
   //货架数据结构：货架索引，商品类型，数量
-  public ShelveGoodsDict: {
-    [shelveIndex: number]: { GoodsType: string; number: number };
-  } = {};
+  public ShelveGoodsDict: { [shelveIndex: number]: ShelveGoods } = {};
   //仓库存货：商品类型，数量
-  public AllWarehouseGoodsDict: {
-    [GoodsType: string]: {
-      LeftNumber: number;
-      Price: number;
-      Popularity: number;
-      Cost: number;
-    };
-  } = {};
-  //玩家数据结构：玩家名称，金币数量，拥有的角色数组，金币数量（主要是玩家名称，拥有的角色数组）
-  public Player: {
-    Name: string;
-    Money: number;
-    Character: string[];
-    ShelveMaxGoodsNumber: number;
-  } = { Name: "", Money: 0, Character: [], ShelveMaxGoodsNumber: 30 };
-  public EmployeeDict: {
-    [Name: string]: [
-      Type: string,
-      Salary: number,
-      Character: string[],
-      SkillLevel: number
-    ];
-  } = {};
+  public AllWarehouseGoodsDict: { [GoodsType: string]: WarehouseGood } = {};
+  //玩家数据
+  public Player: Player = { ID: 0, Name: "", Level: 1, Money: 0, Character: [], ShelveMaxGoodsNumber: 30, Talent: [] };
+  //员工字典：员工名称 -> [员工类型, 工资, 性格特征, 技能等级]
+  public EmployeeDict: EmployeeDict = {};
 
   @property(Array(SpriteFrame))
   public AvatarArray: SpriteFrame[] = []; // 货物的图片
@@ -128,10 +107,13 @@ export class TopManager extends Component {
     if (this.Player == null) {
       console.log("没有玩家数据，创建一个新玩家");
       this.Player = {
+        ID: 1,
         Name: "Player1",
+        Level: 1,
         Money: 1000,
         Character: ["Character1"],
         ShelveMaxGoodsNumber: 30,
+        Talent: [],
       };
     } else {
       console.log("玩家数据加载成功");
