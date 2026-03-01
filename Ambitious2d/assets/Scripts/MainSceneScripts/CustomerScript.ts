@@ -45,16 +45,18 @@ export class CustomerScript extends Component {
         this.customerMove(deltaTime);
     }
     customerMove(deltaTime:number){
+        // 应用游戏速度倍率
+        const speedDeltaTime = deltaTime * TopManager.Instance.GameSpeed;
         //console.log("customerMove MoveState:"+this.MoveState);
         switch(this.MoveState){
-            case 0:this.moveX(this.node,this.MiddlePosition,deltaTime); break;
-            case 1:this.moveY(this.node,this.ShelvePositions[this.SelectShelve].clone().add(new Vec3(0,50,0)),deltaTime); break;
-            case 2:this.moveX(this.node,this.ShelvePositions[this.SelectShelve],deltaTime); break;
-            case 3:this.takeGoods(deltaTime); break;
-            case 4:this.moveX(this.node,this.MiddlePosition,deltaTime); break;
-            case 5:this.moveY(this.node,this.MiddlePosition,deltaTime); break;
-            case 6:this.payCash(deltaTime); break;
-            case 7:this.moveX(this.node,this.MiddlePosition.clone().subtract(new Vec3(200,0,0)),deltaTime); break;
+            case 0:this.moveX(this.node,this.MiddlePosition,speedDeltaTime); break;
+            case 1:this.moveY(this.node,this.ShelvePositions[this.SelectShelve].clone().add(new Vec3(0,50,0)),speedDeltaTime); break;
+            case 2:this.moveX(this.node,this.ShelvePositions[this.SelectShelve],speedDeltaTime); break;
+            case 3:this.takeGoods(speedDeltaTime); break;
+            case 4:this.moveX(this.node,this.MiddlePosition,speedDeltaTime); break;
+            case 5:this.moveY(this.node,this.MiddlePosition,speedDeltaTime); break;
+            case 6:this.payCash(speedDeltaTime); break;
+            case 7:this.moveX(this.node,this.MiddlePosition.clone().subtract(new Vec3(200,0,0)),speedDeltaTime); break;
             case 8:this.node.destroy(); break;
             default:this.MoveState=100;break;
         }

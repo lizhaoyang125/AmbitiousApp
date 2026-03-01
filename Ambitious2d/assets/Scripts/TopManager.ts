@@ -21,7 +21,9 @@ export class TopManager extends Component {
   //玩家数据
   public Player: Player = { ID: 0, Name: "", Level: 1, Money: 0, Character: [], ShelveMaxGoodsNumber: 30, Talent: [] };
   //员工字典：员工名称 -> [员工类型, 工资, 性格特征, 技能等级]
-  public EmployeeDict: EmployeeDict = {};
+  public EmployeeDicts: EmployeeDict = {};
+  //游戏速度倍率：1为正常速度，2为2倍速，0.5为0.5倍速
+  public GameSpeed: number = 1;
 
   @property(Array(SpriteFrame))
   public AvatarArray: SpriteFrame[] = []; // 货物的图片
@@ -88,11 +90,18 @@ export class TopManager extends Component {
   }
 
   protected update(deltaTime: number): void {
-    this._accumulator += deltaTime;
-    this.GameTimeAdd1S();
+    // 应用游戏速度倍率
+    const speedDeltaTime = deltaTime * this.GameSpeed;
+    this._accumulator += speedDeltaTime;
+    // 根据游戏速度调整时间增加频率
+    // GameSpeed=1时每帧增加1分钟，GameSpeed=2时每帧增加2分钟，以此类推
     if (this._accumulator >= this._deltaTime) {
-      this.Timer1S++;
-      this._accumulator -= this._deltaTime; // 减去已处理的时间
+      const times = Math.floor(this._accumulator / this._deltaTime);
+      for (let i = 0; i < times; i++) {
+        this.GameTimeAdd1S();
+      }
+      this.Timer1S += times;
+      this._accumulator -= this._deltaTime * times; // 减去已处理的时间
     }
     // 其他逻辑，例如每 1 秒触发一次
     if (this.Timer1S >= 60) {
@@ -277,5 +286,21 @@ export class TopManager extends Component {
     this.localStorePlayer();
     this.localStoreAllWarehouseGoodsDict();
     console.log(localStorage.getItem("AllWarehouseGoodsDict"));
+  }
+
+
+  //加速游戏，最大4倍速
+  speedUp(){
+    if (this.GameSpeed < 4) {
+      this.GameSpeed *= 2;
+      console.log("游戏加速，当前速度: " + this.GameSpeed + "x");
+    }
+  }
+  //减速游戏，最小0.25倍速
+  slowDown() {
+    if (this.GameSpeed > 0.25) {
+      this.GameSpeed /= 2;
+      console.log("游戏减速，当前速度: " + this.GameSpeed + "x");
+    }
   }
 }
