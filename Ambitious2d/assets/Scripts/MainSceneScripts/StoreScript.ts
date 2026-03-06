@@ -59,6 +59,16 @@ export class StoreScript extends Component {
         }
     }
 
+    // 加速游戏
+    public speedUp() {
+        TopManager.Instance.speedUp();
+    }
+
+    // 减速游戏
+    public slowDown() {
+        TopManager.Instance.slowDown();
+    }
+
     createShelvePrefab(x: number, y: number, id: number) {
         if (this.ShelvePrefab) {
             const newShelve = instantiate(this.ShelvePrefab);
@@ -97,5 +107,6 @@ export class StoreScript extends Component {
             console.error("CustomerPrefab is not set!");
         }
     }
+
 
 }

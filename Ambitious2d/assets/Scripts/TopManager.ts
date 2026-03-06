@@ -85,7 +85,7 @@ export class TopManager extends Component {
     }
     console.log("TopManager is loaded! current store:" + this.CurrentStoreName);
   }
-  lodasencen() {
+  loadScene() {
     director.loadScene("WarehouseScene");
   }
 

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, director, Node } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('StartNodeScripts')
@@ -28,6 +28,9 @@ export class StartNodeScripts extends Component {
     loadGame() {
         // 载入游戏逻辑: 可在此处读取存档、初始化场景等
         console.log('载入游戏');
+        // 加载场景 GameScene
+        director.loadScene("GameScene");
+
     }
 
     quitGame() {

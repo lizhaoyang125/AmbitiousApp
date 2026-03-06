@@ -1,5 +1,6 @@
 import { _decorator, Component, Label, Node } from 'cc';
 import { TalentDict } from '../DataCollection';
+import { TopManager } from '../TopManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('InitialNodeScripts')
@@ -11,6 +12,12 @@ export class InitialNodeScripts extends Component {
 
     start() {
         this.chooseTalent(); // 选择天赋 返回首页
+        const tm = TopManager.Instance;
+        if (tm) {
+            console.log(`当前游戏时间: ${tm.GameTime}`);
+        } else {
+            console.warn('TopManager 尚未初始化');
+        }
     }
 
     update(deltaTime: number) {
