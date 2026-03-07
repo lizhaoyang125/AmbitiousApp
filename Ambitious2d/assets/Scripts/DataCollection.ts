@@ -24,20 +24,27 @@ export interface Player {
   Talent: (keyof typeof TalentDict)[];
 }
 
-// 单个店铺信息（对应 MyStoreShelveDict 的值）
+// 单个店铺信息（对应 MyStoreDict 的值）
 export interface StoreInfo {
   StoreType: string;
-  ShelveIndex: number[];
   CashRegisterLevel: number;
   StoreLevel: number;
+  Area: number;
   RentCost: number;
+  FootTraffic: number;
 }
 
-// 货架上的商品（对应 ShelveGoodsDict 的值）
+// 货架上的商品
 export interface ShelveGoods {
   GoodsType: string;
   number: number;
 }
+
+// 商店货架字典：以商店名称为key，每个商店有自己的货架字典
+export type StoreShelveGoods = { [shelveIndex: number]: ShelveGoods };
+
+// 商店货架总字典
+export type StoreShelveGoodsDict = { [StoreName: string]: StoreShelveGoods };
 
 // 仓库中的商品（对应 AllWarehouseGoodsDict 的值）
 export interface WarehouseGood {

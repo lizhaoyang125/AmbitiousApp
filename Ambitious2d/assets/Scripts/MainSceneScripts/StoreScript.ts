@@ -19,7 +19,6 @@ export class StoreScript extends Component {
     public ShelvePrefab:Prefab=null;
     @property(Prefab)
     public CustomerPrefab:Prefab=null;
-    public CurrentStore:{ StoreType: string; ShelveIndex: number[],CashRegisterLevel:number,StoreLevel:number } = null;
     public ShelveList: number[] = null;
 
     public popularity: number = 10;
@@ -28,8 +27,8 @@ export class StoreScript extends Component {
 
     protected onLoad(): void {
         this.StoreName = TopManager.Instance.CurrentStoreName;
-        this.CurrentStore = TopManager.Instance.MyStoreShelveDict[this.StoreName];
-        this.ShelveList = this.CurrentStore.ShelveIndex;
+        // 从 StoreShelveDicts 获取该商店的货架索引列表
+        this.ShelveList = Object.keys(TopManager.Instance.StoreShelveDicts[this.StoreName] || {}).map(Number);
         console.log(this.StoreName + "商店脚本开始运行onLoad");
     }
 
@@ -77,6 +76,7 @@ export class StoreScript extends Component {
             const shelveScript = newShelve.getComponent(ShelveScript);
             if (shelveScript) {
                 shelveScript.ShelveID = id;
+                shelveScript.CurrentStoreName = this.StoreName;
             } else {
                 console.error("ShelveScript component not found on the prefab!");
             }

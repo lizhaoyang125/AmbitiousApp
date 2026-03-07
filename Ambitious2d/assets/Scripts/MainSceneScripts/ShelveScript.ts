@@ -31,8 +31,8 @@ export class ShelveScript extends Component {
         collider.on(Contact2DType.BEGIN_CONTACT,this.onBeginContact,this);
         collider.on(Contact2DType.END_CONTACT,this.onEndContact,this);
         
-        this.CurrentGood = topManager.ShelveGoodsDict[this.ShelveID].GoodsType;
-        this.CurrentGoodsNumber = TopManager.Instance.ShelveGoodsDict[this.ShelveID].number;
+        this.CurrentGood = topManager.StoreShelveDicts[this.CurrentStoreName][this.ShelveID].GoodsType;
+        this.CurrentGoodsNumber = TopManager.Instance.StoreShelveDicts[this.CurrentStoreName][this.ShelveID].number;
         this.ShelveGood.spriteFrame = TopManager.Instance.AvatarArray[GoodsFrameDict[this.CurrentGood]];
         this.GoodsNumberLabel.string = this.CurrentGoodsNumber.toString();
 
@@ -47,9 +47,9 @@ export class ShelveScript extends Component {
             return; 
         } else {
             this.CurrentGoodsNumber--;
-            TopManager.Instance.ShelveGoodsDict[this.ShelveID].number--;
+            TopManager.Instance.StoreShelveDicts[this.CurrentStoreName][this.ShelveID].number--;
             this.GoodsNumberLabel.string = this.CurrentGoodsNumber.toString();
-            TopManager.Instance.updateShelveData(this.ShelveID,this.CurrentGood,this.CurrentGoodsNumber);
+            TopManager.Instance.updateShelveData(this.CurrentStoreName, this.ShelveID, this.CurrentGood, this.CurrentGoodsNumber);
             console.log(other.node.getComponent(CustomerScript)?.cdTime);
             other.node.getComponent(CustomerScript).BuyGood = this.CurrentGood;
             other.node.getComponent(CustomerScript).BuyPrice = TopManager.Instance.AllWarehouseGoodsDict[this.CurrentGood].Price;

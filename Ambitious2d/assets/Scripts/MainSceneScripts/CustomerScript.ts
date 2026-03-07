@@ -6,7 +6,7 @@ const { ccclass, property } = _decorator;
 export class CustomerScript extends Component {
 
     @property(CCInteger)
-    public speed:Number=100;
+    public speed:number=100;
     @property(Sprite)
     public CustomerMask: Sprite = null; // 卡牌正面
     public ShelveNumber:number=0;
@@ -46,7 +46,7 @@ export class CustomerScript extends Component {
     }
     customerMove(deltaTime:number){
         // 应用游戏速度倍率
-        const speedDeltaTime = deltaTime * TopManager.Instance.GameSpeed;
+        const speedDeltaTime = deltaTime * (TopManager.Instance ? TopManager.Instance.GameSpeed : 1);
         //console.log("customerMove MoveState:"+this.MoveState);
         switch(this.MoveState){
             case 0:this.moveX(this.node,this.MiddlePosition,speedDeltaTime); break;
@@ -82,7 +82,7 @@ export class CustomerScript extends Component {
     moveX (Self:Node,TargetPosition:Vec3,deltaTime:number){
         //console.log("moveX MoveState:"+this.MoveState+"abs:"+Math.abs(Self.position.x - TargetPosition.x));
         if(Self.position.x<=TargetPosition.x){
-            Self.setPosition(Self.position.x+this.speed*deltaTime,Self.position.y);
+            Self.setPosition(Self.position.x+this.speed*deltaTime,Self.position.y,Self.position.z);
             if (Math.abs(Self.position.x - TargetPosition.x) <= 2) {
                 switch(this.MoveState){
                     case 0:this.MoveState = 1;break;
@@ -92,7 +92,7 @@ export class CustomerScript extends Component {
                 }
             }
         }else{
-            Self.setPosition(Self.position.x-this.speed*deltaTime,Self.position.y);
+            Self.setPosition(Self.position.x-this.speed*deltaTime,Self.position.y,Self.position.z);
             if (Math.abs(Self.position.x - TargetPosition.x) <= 2) {
                 switch(this.MoveState){
                     case 0:this.MoveState = 1;break;
@@ -107,7 +107,7 @@ export class CustomerScript extends Component {
        // console.log("moveY TargetPosition:"+TargetPosition.y);
        // console.log("moveY MoveState:"+this.MoveState+"abs:"+Math.abs(Self.position.y - TargetPosition.y));
         if(Self.position.y<=TargetPosition.y){
-            Self.setPosition(Self.position.x,Self.position.y+this.speed*deltaTime);
+            Self.setPosition(Self.position.x,Self.position.y+this.speed*deltaTime,Self.position.z);
             if (Math.abs(Self.position.y - TargetPosition.y) <= 2) {
                 switch(this.MoveState){
                     case 1:this.MoveState = 2;break;
@@ -116,7 +116,7 @@ export class CustomerScript extends Component {
                 }
             }
         }else{
-            Self.setPosition(Self.position.x,Self.position.y-this.speed*deltaTime);
+            Self.setPosition(Self.position.x,Self.position.y-this.speed*deltaTime,Self.position.z);
             if (Math.abs(Self.position.y - TargetPosition.y) <= 2) {
                 switch(this.MoveState){
                     case 1:this.MoveState = 2;break;

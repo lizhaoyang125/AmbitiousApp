@@ -2,9 +2,9 @@ import { _decorator, Component, director, Node, SpriteFrame } from "cc";
 import {
   Player,
   StoreInfo,
-  ShelveGoods,
   WarehouseGood,
   EmployeeDict,
+  StoreShelveGoodsDict,
 } from "./DataCollection";
 const { ccclass, property } = _decorator;
 
@@ -12,10 +12,10 @@ const { ccclass, property } = _decorator;
 export class TopManager extends Component {
   private static _instance: TopManager;
   public CurrentStoreName: string = ""; //当前商店名称
-  //商店数据结构：商店名称，商店类型，货架索引数组，收银台等级，商店等级（主要是商店名称，类型，货架ID）
-  public MyStoreShelveDict: { [StoreName: string]: StoreInfo } = {};
-  //货架数据结构：货架索引，商品类型，数量
-  public ShelveGoodsDict: { [shelveIndex: number]: ShelveGoods } = {};
+  //商店数据结构：商店名称 -> 商店信息
+  public MyStoreDict: { [StoreName: string]: StoreInfo } = {};
+  //货架数据结构：以商店名称为key，每个商店有自己的货架字典（货架索引 -> 商品信息）
+  public StoreShelveDicts: StoreShelveGoodsDict = {};
   //仓库存货：商品类型，数量
   public AllWarehouseGoodsDict: { [GoodsType: string]: WarehouseGood } = {};
   //玩家数据
@@ -77,8 +77,8 @@ export class TopManager extends Component {
     if (!director.isPersistRootNode(this.node)) {
       director.addPersistRootNode(this.node);
     }
-    for (const key in this.MyStoreShelveDict) {
-      if (this.MyStoreShelveDict.hasOwnProperty(key)) {
+    for (const key in this.MyStoreDict) {
+      if (this.MyStoreDict.hasOwnProperty(key)) {
         this.CurrentStoreName = key;
         break; // 只获取第一个元素
       }
@@ -129,27 +129,34 @@ export class TopManager extends Component {
       return;
     }
 
-    this.MyStoreShelveDict = {
+    this.MyStoreDict = {
       八一服装店: {
         StoreType: "服装店",
-        ShelveIndex: [1, 2, 3, 4],
         CashRegisterLevel: 0,
         StoreLevel: 0,
         RentCost: 1000,
+        Area: 100,
+        FootTraffic: 100,
       },
       新华花店: {
         StoreType: "花店",
-        ShelveIndex: [3],
         CashRegisterLevel: 0,
         StoreLevel: 0,
         RentCost: 1000,
+        Area: 100,
+        FootTraffic: 100,
       },
     };
-    this.ShelveGoodsDict = {
-      1: { GoodsType: "便宜女装", number: 10 },
-      2: { GoodsType: "便宜男装", number: 20 },
-      3: { GoodsType: "一般男装", number: 30 },
-      4: { GoodsType: "一般男装", number: 30 },
+    this.StoreShelveDicts = {
+      八一服装店: {
+        1: { GoodsType: "便宜女装", number: 10 },
+        2: { GoodsType: "便宜男装", number: 20 },
+        3: { GoodsType: "一般男装", number: 30 },
+        4: { GoodsType: "一般男装", number: 30 },
+      },
+      新华花店: {
+        1: { GoodsType: "便宜花束", number: 50 },
+      },
     };
     this.AllWarehouseGoodsDict = {
       便宜女装: { LeftNumber: 10, Price: 22, Popularity: 50, Cost: 10 },
@@ -197,31 +204,42 @@ export class TopManager extends Component {
     StoreType: string,
     StoreLevel: number,
     CashRegisterLevel: number,
-    RentCost: number
+    RentCost: number,
+    Area: number,
+    FootTraffic: number,
   ) {
-    let shelveIndex = Object.keys(this.MyStoreShelveDict).length + 1;
-    this.MyStoreShelveDict[StoreName] = {
+    let shelveIndex = 1;
+    this.MyStoreDict[StoreName] = {
       StoreType: StoreType,
-      ShelveIndex: [shelveIndex],
-      CashRegisterLevel: 0,
-      StoreLevel: 0,
+      CashRegisterLevel: CashRegisterLevel,
+      StoreLevel: StoreLevel,
       RentCost: RentCost,
+      Area: Area,
+      FootTraffic: FootTraffic,
     };
-    this.ShelveGoodsDict[shelveIndex] = { GoodsType: "空", number: 0 };
-    this.localStoreMyStoreShelveDict();
+    // 初始化该商店的货架数据
+    this.StoreShelveDicts[StoreName] = {
+      [shelveIndex]: { GoodsType: "空", number: 0 }
+    };
+    this.localStoreMyStoreDict();
     this.localStoreShelveGoodsDict();
   }
   addNewShelve(StoreName: string) {
-    let shelveIndex =
-      Object.keys(this.MyStoreShelveDict[StoreName].ShelveIndex).length + 1;
-    this.MyStoreShelveDict[StoreName].ShelveIndex.push(shelveIndex);
-    this.ShelveGoodsDict[shelveIndex] = { GoodsType: "空", number: 0 };
-    this.localStoreMyStoreShelveDict();
+    // 从 StoreShelveDicts 获取该商店的货架数量
+    const storeShelves = this.StoreShelveDicts[StoreName];
+    let shelveIndex = storeShelves ? Object.keys(storeShelves).length + 1 : 1;
+    // 确保该商店的货架字典存在
+    if (!this.StoreShelveDicts[StoreName]) {
+      this.StoreShelveDicts[StoreName] = {};
+    }
+    this.StoreShelveDicts[StoreName][shelveIndex] = { GoodsType: "空", number: 0 };
     this.localStoreShelveGoodsDict();
   }
 
-  updateShelveData(id: number, GoodsType: string, leftNumber: number) {
-    this.ShelveGoodsDict[id] = { GoodsType: GoodsType, number: leftNumber };
+  updateShelveData(storeName: string, shelveIndex: number, GoodsType: string, leftNumber: number) {
+    if (this.StoreShelveDicts[storeName]) {
+      this.StoreShelveDicts[storeName][shelveIndex] = { GoodsType: GoodsType, number: leftNumber };
+    }
     this.localStoreShelveGoodsDict();
   }
   updateWarehouseData(
@@ -239,17 +257,17 @@ export class TopManager extends Component {
   }
 
   localStoreShelveGoodsDict() {
-    // 本地存储 货架数据,货架以及货架上的商品数量
+    // 本地存储 货架数据,以商店名称为key
     localStorage.setItem(
-      "ShelveGoodsDict",
-      JSON.stringify(this.ShelveGoodsDict)
+      "StoreShelveDicts",
+      JSON.stringify(this.StoreShelveDicts)
     );
   }
-  localStoreMyStoreShelveDict() {
+  localStoreMyStoreDict() {
     // 本地存储 店铺数据,店铺名称以及货架编号
     localStorage.setItem(
-      "MyStoreShelveDict",
-      JSON.stringify(this.MyStoreShelveDict)
+      "MyStoreDict",
+      JSON.stringify(this.MyStoreDict)
     );
   }
   localStorePlayer() {
@@ -264,9 +282,9 @@ export class TopManager extends Component {
     );
   }
   loadLocalData() {
-    this.ShelveGoodsDict = JSON.parse(localStorage.getItem("ShelveGoodsDict"));
-    this.MyStoreShelveDict = JSON.parse(
-      localStorage.getItem("MyStoreShelveDict")
+    this.StoreShelveDicts = JSON.parse(localStorage.getItem("StoreShelveDicts"));
+    this.MyStoreDict = JSON.parse(
+      localStorage.getItem("MyStoreDict")
     );
     this.AllWarehouseGoodsDict = JSON.parse(
       localStorage.getItem("AllWarehouseGoodsDict")
@@ -282,7 +300,7 @@ export class TopManager extends Component {
   }
   saveLocalData() {
     this.localStoreShelveGoodsDict();
-    this.localStoreMyStoreShelveDict();
+    this.localStoreMyStoreDict();
     this.localStorePlayer();
     this.localStoreAllWarehouseGoodsDict();
     console.log(localStorage.getItem("AllWarehouseGoodsDict"));
