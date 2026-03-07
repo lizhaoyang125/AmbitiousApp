@@ -75,7 +75,7 @@ export class CustomerScript extends Component {
             this.MoveState=7;
             console.log("payCash BuyGood:"+this.BuyGood+" BuyPrice:"+this.BuyPrice);
             TopManager.Instance.Player.Money+=this.BuyPrice;
-            TopManager.Instance.localStorePlayer();
+            TopManager.Instance.localSave("player");
         }
         
     }

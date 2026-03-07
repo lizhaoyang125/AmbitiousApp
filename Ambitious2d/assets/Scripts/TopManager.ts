@@ -19,7 +19,7 @@ export class TopManager extends Component {
   //仓库存货：商品类型，数量
   public AllWarehouseGoodsDict: { [GoodsType: string]: WarehouseGood } = {};
   //玩家数据
-  public Player: Player = { ID: 0, Name: "", Level: 1, Money: 0, Character: [], ShelveMaxGoodsNumber: 30, Talent: [] };
+  public Player: Player = { ID: 0, Name: "", Level: 1, Money: 0, Character: [], ShelveMaxGoodsNumber: 30, Talent: [], totalEarnings: 0, daysPassed: 0, monthExpenses: 0 };
   //员工字典：员工名称 -> [员工类型, 工资, 性格特征, 技能等级]
   public EmployeeDicts: EmployeeDict = {};
   //游戏速度倍率：1为正常速度，2为2倍速，0.5为0.5倍速
@@ -113,7 +113,8 @@ export class TopManager extends Component {
     this.clearAllLocalData(); //清除本地数据
     this.loadLocalData(); //加载本地数据
 
-    if (this.Player == null) {
+    // 初始化玩家数据（如果不存在）
+    if (!this.Player) {
       console.log("没有玩家数据，创建一个新玩家");
       this.Player = {
         ID: 1,
@@ -123,52 +124,79 @@ export class TopManager extends Component {
         Character: ["Character1"],
         ShelveMaxGoodsNumber: 30,
         Talent: [],
+        totalEarnings: 0,
+        daysPassed: 0,
+        monthExpenses: 0,
       };
-    } else {
-      console.log("玩家数据加载成功");
-      return;
     }
 
-    this.MyStoreDict = {
-      八一服装店: {
-        StoreType: "服装店",
-        CashRegisterLevel: 0,
-        StoreLevel: 0,
-        RentCost: 1000,
-        Area: 100,
-        FootTraffic: 100,
-      },
-      新华花店: {
-        StoreType: "花店",
-        CashRegisterLevel: 0,
-        StoreLevel: 0,
-        RentCost: 1000,
-        Area: 100,
-        FootTraffic: 100,
-      },
-    };
-    this.StoreShelveDicts = {
-      八一服装店: {
-        1: { GoodsType: "便宜女装", number: 10 },
-        2: { GoodsType: "便宜男装", number: 20 },
-        3: { GoodsType: "一般男装", number: 30 },
-        4: { GoodsType: "一般男装", number: 30 },
-      },
-      新华花店: {
-        1: { GoodsType: "便宜花束", number: 50 },
-      },
-    };
-    this.AllWarehouseGoodsDict = {
-      便宜女装: { LeftNumber: 10, Price: 22, Popularity: 50, Cost: 10 },
-      便宜男装: { LeftNumber: 20, Price: 11, Popularity: 50, Cost: 10 },
-      一般男装: { LeftNumber: 30, Price: 69, Popularity: 50, Cost: 19 },
-      一般女装: { LeftNumber: 40, Price: 119, Popularity: 50, Cost: 20 },
-      昂贵男装: { LeftNumber: 10, Price: 188, Popularity: 50, Cost: 99 },
-      昂贵女装: { LeftNumber: 10, Price: 399, Popularity: 50, Cost: 99 },
-      便宜花束: { LeftNumber: 70, Price: 8, Popularity: 50, Cost: 10 },
-      一般花束: { LeftNumber: 80, Price: 16, Popularity: 50, Cost: 10 },
-      昂贵花束: { LeftNumber: 90, Price: 30, Popularity: 50, Cost: 10 },
-    };
+    // 初始化商店数据（如果不存在）
+    if (!this.MyStoreDict || Object.keys(this.MyStoreDict).length === 0) {
+      console.log("没有商店数据，创建初始商店");
+      this.MyStoreDict = {
+        八一服装店: {
+          StoreType: "服装店",
+          CashRegisterLevel: 0,
+          StoreLevel: 0,
+          RentCost: 1000,
+          Area: 100,
+          FootTraffic: 100,
+          Employees: {},
+          isOpen: true,
+          dailyIncome: 0,
+          dailyCustomer: 0,
+          totalIncome: 0,
+          popularity: 50,
+          dailyExpenses: 0,
+          employeeExpenses: 0,
+          cleanliness: 80,
+          serviceRating: 5,
+          monthlyComplaintCount: 0,
+        },
+        新华花店: {
+          StoreType: "花店",
+          CashRegisterLevel: 0,
+          StoreLevel: 0,
+          RentCost: 1000,
+          Area: 100,
+          FootTraffic: 100,
+          Employees: {},
+          isOpen: true,
+          dailyIncome: 0,
+          dailyCustomer: 0,
+          totalIncome: 0,
+          popularity: 50,
+          dailyExpenses: 0,
+          employeeExpenses: 0,
+          cleanliness: 80,
+          serviceRating: 5,
+          monthlyComplaintCount: 0,
+        },
+      };
+      this.StoreShelveDicts = {
+        八一服装店: {
+          1: { GoodsType: "便宜女装", number: 10 },
+          2: { GoodsType: "便宜男装", number: 20 },
+          3: { GoodsType: "一般男装", number: 30 },
+          4: { GoodsType: "一般男装", number: 30 },
+        },
+        新华花店: {
+          1: { GoodsType: "便宜花束", number: 50 },
+        },
+      };
+      this.AllWarehouseGoodsDict = {
+        便宜女装: { LeftNumber: 10, Price: 22, Popularity: 50, Cost: 10 },
+        便宜男装: { LeftNumber: 20, Price: 11, Popularity: 50, Cost: 10 },
+        一般男装: { LeftNumber: 30, Price: 69, Popularity: 50, Cost: 19 },
+        一般女装: { LeftNumber: 40, Price: 119, Popularity: 50, Cost: 20 },
+        昂贵男装: { LeftNumber: 10, Price: 188, Popularity: 50, Cost: 99 },
+        昂贵女装: { LeftNumber: 10, Price: 399, Popularity: 50, Cost: 99 },
+        便宜花束: { LeftNumber: 70, Price: 8, Popularity: 50, Cost: 10 },
+        一般花束: { LeftNumber: 80, Price: 16, Popularity: 50, Cost: 10 },
+        昂贵花束: { LeftNumber: 90, Price: 30, Popularity: 50, Cost: 10 },
+      };
+    }
+
     this.saveLocalData();
   }
 
@@ -216,31 +244,41 @@ export class TopManager extends Component {
       RentCost: RentCost,
       Area: Area,
       FootTraffic: FootTraffic,
+      Employees: {},
+      isOpen: true,
+      dailyIncome: 0,
+      dailyCustomer: 0,
+      totalIncome: 0,
+      popularity: 50,
+      dailyExpenses: 0,
+      employeeExpenses: 0,
+      cleanliness: 80,
+      serviceRating: 5,
+      monthlyComplaintCount: 0,
     };
     // 初始化该商店的货架数据
     this.StoreShelveDicts[StoreName] = {
       [shelveIndex]: { GoodsType: "空", number: 0 }
     };
-    this.localStoreMyStoreDict();
-    this.localStoreShelveGoodsDict();
+    this.localSave("store");
+    this.localSave("shelve");
   }
   addNewShelve(StoreName: string) {
-    // 从 StoreShelveDicts 获取该商店的货架数量
-    const storeShelves = this.StoreShelveDicts[StoreName];
-    let shelveIndex = storeShelves ? Object.keys(storeShelves).length + 1 : 1;
     // 确保该商店的货架字典存在
     if (!this.StoreShelveDicts[StoreName]) {
       this.StoreShelveDicts[StoreName] = {};
     }
+    // 获取该商店的货架数量作为新索引
+    const shelveIndex = Object.keys(this.StoreShelveDicts[StoreName]).length + 1;
     this.StoreShelveDicts[StoreName][shelveIndex] = { GoodsType: "空", number: 0 };
-    this.localStoreShelveGoodsDict();
+    this.localSave("shelve");
   }
 
   updateShelveData(storeName: string, shelveIndex: number, GoodsType: string, leftNumber: number) {
     if (this.StoreShelveDicts[storeName]) {
       this.StoreShelveDicts[storeName][shelveIndex] = { GoodsType: GoodsType, number: leftNumber };
     }
-    this.localStoreShelveGoodsDict();
+    this.localSave("shelve");
   }
   updateWarehouseData(
     GoodsType: string,
@@ -253,57 +291,37 @@ export class TopManager extends Component {
       this.AllWarehouseGoodsDict[GoodsType].Popularity = Popularity;
       this.AllWarehouseGoodsDict[GoodsType].Cost = cost;
     }
-    this.localStoreAllWarehouseGoodsDict();
+    this.localSave("warehouse");
   }
 
-  localStoreShelveGoodsDict() {
-    // 本地存储 货架数据,以商店名称为key
-    localStorage.setItem(
-      "StoreShelveDicts",
-      JSON.stringify(this.StoreShelveDicts)
-    );
-  }
-  localStoreMyStoreDict() {
-    // 本地存储 店铺数据,店铺名称以及货架编号
-    localStorage.setItem(
-      "MyStoreDict",
-      JSON.stringify(this.MyStoreDict)
-    );
-  }
-  localStorePlayer() {
-    // 本地存储玩家数据
-    localStorage.setItem("Player", JSON.stringify(this.Player));
-  }
-  localStoreAllWarehouseGoodsDict() {
-    // 本地存储，仓库所有商品数量,商品名称以及商品数量
-    localStorage.setItem(
-      "AllWarehouseGoodsDict",
-      JSON.stringify(this.AllWarehouseGoodsDict)
-    );
-  }
-  loadLocalData() {
-    this.StoreShelveDicts = JSON.parse(localStorage.getItem("StoreShelveDicts"));
-    this.MyStoreDict = JSON.parse(
-      localStorage.getItem("MyStoreDict")
-    );
-    this.AllWarehouseGoodsDict = JSON.parse(
-      localStorage.getItem("AllWarehouseGoodsDict")
-    );
-
-    this.Player = JSON.parse(localStorage.getItem("Player"));
-    if (this.Player == null) {
-      console.log("没有玩家数据，创建一个新玩家,进入GameInitialScene");
+  // 统一本地存储方法
+  // type: "shelve" | "store" | "player" | "warehouse" | "all"
+  localSave(type: "shelve" | "store" | "player" | "warehouse" | "all") {
+    if (type === "shelve" || type === "all") {
+      localStorage.setItem("StoreShelveDicts", JSON.stringify(this.StoreShelveDicts));
     }
+    if (type === "store" || type === "all") {
+      localStorage.setItem("MyStoreDict", JSON.stringify(this.MyStoreDict));
+    }
+    if (type === "player" || type === "all") {
+      localStorage.setItem("Player", JSON.stringify(this.Player));
+    }
+    if (type === "warehouse" || type === "all") {
+      localStorage.setItem("AllWarehouseGoodsDict", JSON.stringify(this.AllWarehouseGoodsDict));
+    }
+  }
+
+  loadLocalData() {
+    this.StoreShelveDicts = JSON.parse(localStorage.getItem("StoreShelveDicts")) || {};
+    this.MyStoreDict = JSON.parse(localStorage.getItem("MyStoreDict")) || {};
+    this.AllWarehouseGoodsDict = JSON.parse(localStorage.getItem("AllWarehouseGoodsDict")) || {};
+    this.Player = JSON.parse(localStorage.getItem("Player"));
   }
   clearAllLocalData() {
     localStorage.clear();
   }
   saveLocalData() {
-    this.localStoreShelveGoodsDict();
-    this.localStoreMyStoreDict();
-    this.localStorePlayer();
-    this.localStoreAllWarehouseGoodsDict();
-    console.log(localStorage.getItem("AllWarehouseGoodsDict"));
+    this.localSave("all");
   }
 
 

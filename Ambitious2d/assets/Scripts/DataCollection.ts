@@ -22,6 +22,9 @@ export interface Player {
   Character: string[];
   ShelveMaxGoodsNumber: number;
   Talent: (keyof typeof TalentDict)[];
+  totalEarnings: number;  // 累计盈利
+  daysPassed: number;     // 经营天数
+  monthExpenses: number;  // 月度花费
 }
 
 // 单个店铺信息（对应 MyStoreDict 的值）
@@ -32,6 +35,21 @@ export interface StoreInfo {
   Area: number;
   RentCost: number;
   FootTraffic: number;
+  Employees: EmployeeDict;  // 雇员信息
+  // 经营状态
+  isOpen: boolean;         // 是否营业中
+  // 店铺统计数据
+  dailyIncome: number;    // 今日收入
+  dailyCustomer: number;   // 今日客流量
+  totalIncome: number;    // 累计收入
+  popularity: number;      // 声望/满意度 0-100
+  // 财务支出
+  dailyExpenses: number;    // 每日支出
+  employeeExpenses: number;  // 员工支出
+  // 评价
+  cleanliness: number;      // 整洁度 0-100
+  serviceRating: number;     // 服务评分 0-5
+  monthlyComplaintCount: number;  // 投诉次数
 }
 
 // 货架上的商品
