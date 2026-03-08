@@ -19,7 +19,6 @@ export class StoreScript extends Component {
     public ShelvePrefab:Prefab=null;
     @property(Prefab)
     public CustomerPrefab:Prefab=null;
-    public ShelveList: number[] = null;
 
     public popularity: number = 10;
     private customerSpawnTimer: number = 0;
@@ -68,7 +67,12 @@ export class StoreScript extends Component {
 
         // 检查是否到了生成新顾客的时间
         if (this.customerSpawnTimer >= this.customerSpawnInterval) {
-            this.newCustomerCome(this.ShelveList.length, 1);
+            // 从 StoreShelveDicts 获取货架数量
+            const shelveData = TopManager.Instance.StoreShelveDicts[this.StoreName];
+            const shelveCount = shelveData ? Object.keys(shelveData).length : 0;
+            if (shelveCount > 0) {
+                this.newCustomerCome(shelveCount, 1);
+            }
             this.customerSpawnTimer = 0;
         }
     }
