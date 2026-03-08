@@ -1,4 +1,5 @@
 import { _decorator, Component, director, Node } from 'cc';
+import { TopManager } from '../TopManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('StartNodeScripts')
@@ -26,11 +27,20 @@ export class StartNodeScripts extends Component {
     }
 
     loadGame() {
-        // 载入游戏逻辑: 可在此处读取存档、初始化场景等
+        // 载入游戏逻辑: 读取存档、初始化场景等
         console.log('载入游戏');
+
+        // 加载本地存储的数据
+        TopManager.Instance.loadLocalData();
+
+        // 设置为老玩家模式
+        if (TopManager.Instance.Player) {
+            TopManager.Instance.Player.isNewPlayer = false;
+            TopManager.Instance.localSave("player");
+        }
+
         // 加载场景 GameScene
         director.loadScene("GameScene");
-
     }
 
     quitGame() {

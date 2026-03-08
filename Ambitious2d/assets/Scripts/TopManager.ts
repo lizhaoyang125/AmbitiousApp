@@ -19,7 +19,7 @@ export class TopManager extends Component {
   //仓库存货：商品类型，数量
   public AllWarehouseGoodsDict: { [GoodsType: string]: WarehouseGood } = {};
   //玩家数据
-  public Player: Player = { ID: 0, Name: "", Level: 1, Money: 0, Character: [], ShelveMaxGoodsNumber: 30, Talent: [], totalEarnings: 0, daysPassed: 0, monthExpenses: 0 };
+  public Player: Player = { isNewPlayer: true, ID: 0, Name: "", Level: 1, Money: 0, Character: [], ShelveMaxGoodsNumber: 30, Talent: [], totalEarnings: 0, daysPassed: 0, monthExpenses: 0, rent: 200, livingStatus: "破旧的城中村", expPerDay: 10, currentStoreName: "" };
   //员工字典：员工名称 -> [员工类型, 工资, 性格特征, 技能等级]
   public EmployeeDicts: EmployeeDict = {};
   //游戏速度倍率：1为正常速度，2为2倍速，0.5为0.5倍速
@@ -65,8 +65,12 @@ export class TopManager extends Component {
       return;
     }
     TopManager._instance = this;
-    // 初始化数据
-    this.initialData();
+    // 加载本地数据
+    this.loadLocalData();
+    // 如果没有数据，则初始化
+    if (!this.Player || !this.MyStoreDict || Object.keys(this.MyStoreDict).length === 0) {
+      this.initialDataForTest();
+    }
     // 确保节点在场景切换时不被销毁
     if (!this.node.parent) {
       console.warn(
@@ -80,6 +84,7 @@ export class TopManager extends Component {
     for (const key in this.MyStoreDict) {
       if (this.MyStoreDict.hasOwnProperty(key)) {
         this.CurrentStoreName = key;
+        this.Player.currentStoreName = key;
         break; // 只获取第一个元素
       }
     }
@@ -109,7 +114,7 @@ export class TopManager extends Component {
       console.log("1分钟过去了");
     }
   }
-  initialData() {
+  initialDataForTest() {
     this.clearAllLocalData(); //清除本地数据
     this.loadLocalData(); //加载本地数据
 
@@ -117,6 +122,7 @@ export class TopManager extends Component {
     if (!this.Player) {
       console.log("没有玩家数据，创建一个新玩家");
       this.Player = {
+        isNewPlayer: true,
         ID: 1,
         Name: "Player1",
         Level: 1,
@@ -127,6 +133,10 @@ export class TopManager extends Component {
         totalEarnings: 0,
         daysPassed: 0,
         monthExpenses: 0,
+        rent: 200,
+        livingStatus: "破旧的城中村",
+        expPerDay: 10,
+        currentStoreName: "",
       };
     }
 
@@ -142,6 +152,9 @@ export class TopManager extends Component {
           Area: 100,
           FootTraffic: 100,
           Employees: {},
+          location: "商业街",
+          shelfCount: 4,
+          maxShelves: 8,
           isOpen: true,
           dailyIncome: 0,
           dailyCustomer: 0,
@@ -161,6 +174,9 @@ export class TopManager extends Component {
           Area: 100,
           FootTraffic: 100,
           Employees: {},
+          location: "社区店铺",
+          shelfCount: 1,
+          maxShelves: 6,
           isOpen: true,
           dailyIncome: 0,
           dailyCustomer: 0,
@@ -235,8 +251,9 @@ export class TopManager extends Component {
     RentCost: number,
     Area: number,
     FootTraffic: number,
+    location: string,
+    maxShelves: number,
   ) {
-    let shelveIndex = 1;
     this.MyStoreDict[StoreName] = {
       StoreType: StoreType,
       CashRegisterLevel: CashRegisterLevel,
@@ -245,6 +262,9 @@ export class TopManager extends Component {
       Area: Area,
       FootTraffic: FootTraffic,
       Employees: {},
+      location: location,
+      shelfCount: 2,
+      maxShelves: maxShelves,
       isOpen: true,
       dailyIncome: 0,
       dailyCustomer: 0,
@@ -256,14 +276,24 @@ export class TopManager extends Component {
       serviceRating: 5,
       monthlyComplaintCount: 0,
     };
-    // 初始化该商店的货架数据
+    // 初始化该商店的货架数据（2个货架）
     this.StoreShelveDicts[StoreName] = {
-      [shelveIndex]: { GoodsType: "空", number: 0 }
+      1: { GoodsType: "空", number: 0 },
+      2: { GoodsType: "空", number: 0 }
     };
     this.localSave("store");
     this.localSave("shelve");
   }
   addNewShelve(StoreName: string) {
+    const store = this.MyStoreDict[StoreName];
+    if (!store) return;
+
+    // 检查是否达到最大货架数
+    if (store.shelfCount >= store.maxShelves) {
+      console.log("已达到最大货架数量！");
+      return;
+    }
+
     // 确保该商店的货架字典存在
     if (!this.StoreShelveDicts[StoreName]) {
       this.StoreShelveDicts[StoreName] = {};
@@ -271,7 +301,10 @@ export class TopManager extends Component {
     // 获取该商店的货架数量作为新索引
     const shelveIndex = Object.keys(this.StoreShelveDicts[StoreName]).length + 1;
     this.StoreShelveDicts[StoreName][shelveIndex] = { GoodsType: "空", number: 0 };
+    // 更新货架数量
+    store.shelfCount = shelveIndex;
     this.localSave("shelve");
+    this.localSave("store");
   }
 
   updateShelveData(storeName: string, shelveIndex: number, GoodsType: string, leftNumber: number) {

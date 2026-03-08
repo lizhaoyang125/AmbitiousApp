@@ -14,7 +14,7 @@ export class StoreScript extends Component {
     @property(Label)
     public SpeedLabel:Label=null;
 
-    public StoreName:string="";
+    public StoreName:string="八一服装店";
     @property(Prefab)
     public ShelvePrefab:Prefab=null;
     @property(Prefab)
@@ -27,17 +27,32 @@ export class StoreScript extends Component {
 
     protected onLoad(): void {
         this.StoreName = TopManager.Instance.CurrentStoreName;
-        // 从 StoreShelveDicts 获取该商店的货架索引列表
-        this.ShelveList = Object.keys(TopManager.Instance.StoreShelveDicts[this.StoreName] || {}).map(Number);
-        console.log(this.StoreName + "商店脚本开始运行onLoad");
+        console.log("商店名称:", this.StoreName);
     }
 
     start() {
         console.log(this.StoreName + "商店脚本开始运行");
-        for (let index = 0; index < this.ShelveList.length; index++) {
-            this.createShelvePrefab(100 * ((index % 2) * 2 - 1), 150 - 100 * (index >> 1), this.ShelveList[index]);
+        this.StoreName = TopManager.Instance.CurrentStoreName;
+
+        // 从 StoreShelveDicts 直接获取货架数据
+        const shelveData = TopManager.Instance.StoreShelveDicts[this.StoreName];
+        console.log("货架数据:", shelveData);
+
+        if (shelveData) {
+            const shelveKeys = Object.keys(shelveData);
+            console.log("货架数量:", shelveKeys.length);
+
+            for (let index = 0; index < shelveKeys.length; index++) {
+                const shelveId = parseInt(shelveKeys[index]);
+                this.createShelvePrefab(100 * ((index % 2) * 2 - 1), 150 - 100 * (index >> 1), shelveId);
+            }
+
+            if (shelveKeys.length > 0) {
+                this.newCustomerCome(shelveKeys.length, 1);
+            }
+        } else {
+            console.error("没有找到货架数据:", this.StoreName);
         }
-        this.newCustomerCome(this.ShelveList.length, 1);
     }
 
     update(deltaTime: number) {
