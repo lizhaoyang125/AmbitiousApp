@@ -25,12 +25,19 @@ export class ShelveScript extends Component {
     public CurrentGoodsNumber:number = 30;
 
     start(){
-        const topManager = TopManager.Instance;  
-        console.log("ShelveScript start, ShelveID:"+this.ShelveID);
+        const topManager = TopManager.Instance;
+        // 从 Player 获取当前店铺名称
+        this.CurrentStoreName = topManager.Player.currentStoreName;
+        // 从店铺信息获取店铺类型
+        const storeInfo = topManager.MyStoreDict[this.CurrentStoreName];
+        if (storeInfo) {
+            this.CurrentStoreType = storeInfo.StoreType;
+        }
+        console.log("ShelveScript start, ShelveID:"+this.ShelveID + ", StoreName:" + this.CurrentStoreName + ", StoreType:" + this.CurrentStoreType);
         let collider=this.node.getComponent(BoxCollider2D);
         collider.on(Contact2DType.BEGIN_CONTACT,this.onBeginContact,this);
         collider.on(Contact2DType.END_CONTACT,this.onEndContact,this);
-        
+
         this.CurrentGood = topManager.StoreShelveDicts[this.CurrentStoreName][this.ShelveID].GoodsType;
         this.CurrentGoodsNumber = TopManager.Instance.StoreShelveDicts[this.CurrentStoreName][this.ShelveID].number;
         this.ShelveGood.spriteFrame = TopManager.Instance.AvatarArray[GoodsFrameDict[this.CurrentGood]];
@@ -62,11 +69,21 @@ export class ShelveScript extends Component {
     public changeSpriteFrame() {        //上架货物选择
         //this.GoodChooseToggle.toggleItems[2].isChecked = true;
         console.log("changeSpriteFrame");
+        if (!this.StoreGoodList || this.StoreGoodList.length === 0) {
+            console.error("StoreGoodList is empty!");
+            return;
+        }
         this.GoodChooseToggle.node.active = true;
         for (let i = 0; i < this.StoreGoodList.length; i++) {
+            const goodName = this.StoreGoodList[i];
+            const warehouseGood = TopManager.Instance.AllWarehouseGoodsDict[goodName];
+            if (!warehouseGood) {
+                console.error("商品不存在于仓库中:", goodName);
+                continue;
+            }
             this.GoodChooseToggle.toggleItems[i].node.active = true;
-            let LeftNumber:number = TopManager.Instance.AllWarehouseGoodsDict[this.StoreGoodList[i]]["LeftNumber"];
-            this.GoodChooseToggle.toggleItems[i].node.getChildByName("Label").getComponent(Label).string = this.StoreGoodList[i];
+            let LeftNumber:number = warehouseGood.LeftNumber;
+            this.GoodChooseToggle.toggleItems[i].node.getChildByName("Label").getComponent(Label).string = goodName;
             this.GoodChooseToggle.toggleItems[i].node.getChildByName("NumberLabel").getComponent(Label).string = "("+LeftNumber.toString()+")";
         }
     }

@@ -46,6 +46,35 @@ export class InitialNodeScripts extends Component {
     }
 
     enterGame() {
+        TopManager.Instance.clearAllLocalData();
+        // 清除内存中的数据
+        TopManager.Instance.MyStoreDict = {};
+        TopManager.Instance.StoreShelveDicts = {};
+        TopManager.Instance.AllWarehouseGoodsDict = {};
+        // 重新初始化仓库商品数据
+        TopManager.Instance.initialData();
+
+        // 如果 Player 为 null，创建一个新的
+        if (!TopManager.Instance.Player) {
+            TopManager.Instance.Player = {
+                isNewPlayer: true,
+                ID: 1,
+                Name: "",
+                Level: 1,
+                Money: 0,
+                Character: [],
+                ShelveMaxGoodsNumber: 30,
+                Talent: [],
+                totalEarnings: 0,
+                daysPassed: 0,
+                monthExpenses: 0,
+                rent: 200,
+                livingStatus: "破旧的城中村",
+                expPerDay: 10,
+                currentStoreName: ""
+            };
+        }
+
         // 保存玩家名称和设置新玩家标记
         const name = this.nameEditBox.string.trim() || "玩家";
         TopManager.Instance.Player.Name = name;

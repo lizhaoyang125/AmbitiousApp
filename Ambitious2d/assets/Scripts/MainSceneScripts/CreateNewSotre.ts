@@ -169,21 +169,21 @@ export class CreateNewStore extends Component {
 
         // 更新当前店铺名称
         TopManager.Instance.Player.currentStoreName = storeName;
-        TopManager.Instance.CurrentStoreName = storeName;
 
-        // 保存数据
-        TopManager.Instance.localSave("player");
+        // 保存所有数据
+        TopManager.Instance.localSave("all");
 
         this.showTip(`创建成功！\n店铺: ${storeName}\n类型: ${this.selectedStoreConfig.name}\n位置: ${this.selectedLocationConfig.name}\n最大货架: ${this.selectedLocationConfig.maxShelves}\n花费: ${cost}金币`);
 
         // 清空输入
         this.storeNameInput.string = "";
 
-        // 关闭新店面板
+        // 关闭新店面板并更新家园显示
         if (this.homeNode) {
             const homeScript = this.homeNode.getComponent(HomeNodeScript);
             if (homeScript) {
                 homeScript.closeNewStorePanel();
+                homeScript.updatePlayerInfo(); // 更新玩家信息显示
             }
         }
 

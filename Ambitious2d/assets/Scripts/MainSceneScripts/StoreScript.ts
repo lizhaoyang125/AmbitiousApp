@@ -25,13 +25,37 @@ export class StoreScript extends Component {
     private customerSpawnInterval: number = 5; // 默认每 5 秒生成一个顾客
 
     protected onLoad(): void {
-        this.StoreName = TopManager.Instance.CurrentStoreName;
+        this.StoreName = TopManager.Instance.Player.currentStoreName;
+        // 如果没有商店名称，隐藏整个店铺节点
+        if (!this.StoreName) {
+            this.node.active = false;
+            return;
+        }
         console.log("商店名称:", this.StoreName);
     }
 
+    // 当节点被激活时调用
+    protected onEnable(): void {
+        // 重新获取商店名称并初始化
+        this.StoreName = TopManager.Instance.Player.currentStoreName;
+        if (this.StoreName) {
+            this.initStore();
+        }
+    }
+
     start() {
+        // 如果没有商店名称，直接返回
+        if (!this.StoreName) {
+            return;
+        }
+
+        this.initStore();
+    }
+
+    // 初始化商店
+    initStore() {
         console.log(this.StoreName + "商店脚本开始运行");
-        this.StoreName = TopManager.Instance.CurrentStoreName;
+        this.StoreName = TopManager.Instance.Player.currentStoreName;
 
         // 从 StoreShelveDicts 直接获取货架数据
         const shelveData = TopManager.Instance.StoreShelveDicts[this.StoreName];
@@ -55,6 +79,11 @@ export class StoreScript extends Component {
     }
 
     update(deltaTime: number) {
+        // 如果没有商店名称，直接返回
+        if (!this.StoreName) {
+            return;
+        }
+
         this.TimeLabel.string = TopManager.Instance.GameTime;
         this.TotalMoneyLabel.string = "余额："+TopManager.Instance.Player.Money.toString();
         this.SpeedLabel.string = "速度：" + TopManager.Instance.GameSpeed + "x";

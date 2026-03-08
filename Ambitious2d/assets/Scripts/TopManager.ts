@@ -11,7 +11,6 @@ const { ccclass, property } = _decorator;
 @ccclass("TopManager")
 export class TopManager extends Component {
   private static _instance: TopManager;
-  public CurrentStoreName: string = ""; //当前商店名称
   //商店数据结构：商店名称 -> 商店信息
   public MyStoreDict: { [StoreName: string]: StoreInfo } = {};
   //货架数据结构：以商店名称为key，每个商店有自己的货架字典（货架索引 -> 商品信息）
@@ -67,9 +66,10 @@ export class TopManager extends Component {
     TopManager._instance = this;
     // 加载本地数据
     this.loadLocalData();
-    // 如果没有数据，则初始化
+    // 如果没有数据，则初始化（仅用于测试，正式游戏应移除）
     if (!this.Player || !this.MyStoreDict || Object.keys(this.MyStoreDict).length === 0) {
-      this.initialDataForTest();
+      // 可以在这里调用初始数据方法，或者让玩家手动创建
+      console.log("没有数据，需要手动初始化");
     }
     // 确保节点在场景切换时不被销毁
     if (!this.node.parent) {
@@ -83,12 +83,11 @@ export class TopManager extends Component {
     }
     for (const key in this.MyStoreDict) {
       if (this.MyStoreDict.hasOwnProperty(key)) {
-        this.CurrentStoreName = key;
         this.Player.currentStoreName = key;
         break; // 只获取第一个元素
       }
     }
-    console.log("TopManager is loaded! current store:" + this.CurrentStoreName);
+    console.log("TopManager is loaded! current store:" + this.Player.currentStoreName);
   }
   loadScene() {
     director.loadScene("WarehouseScene");
@@ -113,6 +112,83 @@ export class TopManager extends Component {
       this.Timer1S = 0;
       console.log("1分钟过去了");
     }
+  }
+  initialData() {
+      // 初始化商店数据（如果不存在）
+      this.MyStoreDict = {};
+      this.StoreShelveDicts = {};
+      this.AllWarehouseGoodsDict = {
+        // 服装店商品
+        便宜女装: { LeftNumber: 0, Price: 22, Popularity: 50, Cost: 10 },
+        便宜男装: { LeftNumber: 0, Price: 11, Popularity: 50, Cost: 10 },
+        一般男装: { LeftNumber: 0, Price: 69, Popularity: 50, Cost: 19 },
+        一般女装: { LeftNumber: 0, Price: 119, Popularity: 50, Cost: 20 },
+        昂贵男装: { LeftNumber: 0, Price: 188, Popularity: 50, Cost: 99 },
+        昂贵女装: { LeftNumber: 0, Price: 399, Popularity: 50, Cost: 99 },
+        // 花店商品
+        便宜花束: { LeftNumber: 0, Price: 8, Popularity: 50, Cost: 10 },
+        一般花束: { LeftNumber: 0, Price: 16, Popularity: 50, Cost: 10 },
+        昂贵花束: { LeftNumber: 0, Price: 30, Popularity: 50, Cost: 10 },
+        // 书店商品
+        励志书籍: { LeftNumber: 0, Price: 25, Popularity: 50, Cost: 10 },
+        工具书籍: { LeftNumber: 0, Price: 45, Popularity: 50, Cost: 20 },
+        言情书籍: { LeftNumber: 0, Price: 30, Popularity: 50, Cost: 12 },
+        科幻书籍: { LeftNumber: 0, Price: 35, Popularity: 50, Cost: 15 },
+        漫画书籍: { LeftNumber: 0, Price: 20, Popularity: 50, Cost: 8 },
+        // 电器店商品
+        电视: { LeftNumber: 0, Price: 2000, Popularity: 50, Cost: 1000 },
+        冰箱: { LeftNumber: 0, Price: 1500, Popularity: 50, Cost: 800 },
+        洗衣机: { LeftNumber: 0, Price: 1200, Popularity: 50, Cost: 600 },
+        空调: { LeftNumber: 0, Price: 1800, Popularity: 50, Cost: 900 },
+        电脑: { LeftNumber: 0, Price: 3500, Popularity: 50, Cost: 1800 },
+        手机: { LeftNumber: 0, Price: 2000, Popularity: 50, Cost: 1000 },
+        平板: { LeftNumber: 0, Price: 2500, Popularity: 50, Cost: 1300 },
+        // 餐厅商品
+        快餐: { LeftNumber: 0, Price: 15, Popularity: 50, Cost: 8 },
+        盖浇饭: { LeftNumber: 0, Price: 20, Popularity: 50, Cost: 10 },
+        面条: { LeftNumber: 0, Price: 18, Popularity: 50, Cost: 9 },
+        炒菜: { LeftNumber: 0, Price: 35, Popularity: 50, Cost: 18 },
+        火锅: { LeftNumber: 0, Price: 80, Popularity: 50, Cost: 40 },
+        烧烤: { LeftNumber: 0, Price: 50, Popularity: 50, Cost: 25 },
+        // 便利店商品
+        矿泉水: { LeftNumber: 0, Price: 2, Popularity: 50, Cost: 1 },
+        方便面: { LeftNumber: 0, Price: 5, Popularity: 50, Cost: 2 },
+        饼干: { LeftNumber: 0, Price: 10, Popularity: 50, Cost: 5 },
+        饮料: { LeftNumber: 0, Price: 6, Popularity: 50, Cost: 3 },
+        香烟: { LeftNumber: 0, Price: 25, Popularity: 50, Cost: 15 },
+        电池: { LeftNumber: 0, Price: 8, Popularity: 50, Cost: 4 },
+        // 药店商品
+        感冒药: { LeftNumber: 0, Price: 15, Popularity: 50, Cost: 8 },
+        退烧药: { LeftNumber: 0, Price: 20, Popularity: 50, Cost: 10 },
+        创可贴: { LeftNumber: 0, Price: 5, Popularity: 50, Cost: 2 },
+        维生素: { LeftNumber: 0, Price: 30, Popularity: 50, Cost: 15 },
+        止咳药: { LeftNumber: 0, Price: 18, Popularity: 50, Cost: 9 },
+        胃药: { LeftNumber: 0, Price: 22, Popularity: 50, Cost: 11 },
+        // 文具店商品
+        铅笔: { LeftNumber: 0, Price: 1, Popularity: 50, Cost: 0.5 },
+        橡皮: { LeftNumber: 0, Price: 2, Popularity: 50, Cost: 1 },
+        笔记本: { LeftNumber: 0, Price: 8, Popularity: 50, Cost: 4 },
+        钢笔: { LeftNumber: 0, Price: 15, Popularity: 50, Cost: 8 },
+        文件夹: { LeftNumber: 0, Price: 10, Popularity: 50, Cost: 5 },
+        胶水: { LeftNumber: 0, Price: 5, Popularity: 50, Cost: 2 },
+        // 玩具店商品
+        积木: { LeftNumber: 0, Price: 50, Popularity: 50, Cost: 25 },
+        玩具车: { LeftNumber: 0, Price: 40, Popularity: 50, Cost: 20 },
+        毛绒玩具: { LeftNumber: 0, Price: 60, Popularity: 50, Cost: 30 },
+        遥控飞机: { LeftNumber: 0, Price: 150, Popularity: 50, Cost: 80 },
+        拼图: { LeftNumber: 0, Price: 35, Popularity: 50, Cost: 18 },
+        娃娃: { LeftNumber: 0, Price: 45, Popularity: 50, Cost: 22 },
+        // 宠物店商品
+        狗粮: { LeftNumber: 0, Price: 30, Popularity: 50, Cost: 15 },
+        猫粮: { LeftNumber: 0, Price: 28, Popularity: 50, Cost: 14 },
+        宠物玩具: { LeftNumber: 0, Price: 20, Popularity: 50, Cost: 10 },
+        宠物笼: { LeftNumber: 0, Price: 80, Popularity: 50, Cost: 40 },
+        宠物零食: { LeftNumber: 0, Price: 15, Popularity: 50, Cost: 8 },
+        水族箱: { LeftNumber: 0, Price: 200, Popularity: 50, Cost: 100 },
+      }
+
+    this.saveLocalData();
+
   }
   initialDataForTest() {
     this.clearAllLocalData(); //清除本地数据
@@ -201,15 +277,73 @@ export class TopManager extends Component {
         },
       };
       this.AllWarehouseGoodsDict = {
+        // 服装店商品
         便宜女装: { LeftNumber: 10, Price: 22, Popularity: 50, Cost: 10 },
         便宜男装: { LeftNumber: 20, Price: 11, Popularity: 50, Cost: 10 },
         一般男装: { LeftNumber: 30, Price: 69, Popularity: 50, Cost: 19 },
         一般女装: { LeftNumber: 40, Price: 119, Popularity: 50, Cost: 20 },
         昂贵男装: { LeftNumber: 10, Price: 188, Popularity: 50, Cost: 99 },
         昂贵女装: { LeftNumber: 10, Price: 399, Popularity: 50, Cost: 99 },
+        // 花店商品
         便宜花束: { LeftNumber: 70, Price: 8, Popularity: 50, Cost: 10 },
         一般花束: { LeftNumber: 80, Price: 16, Popularity: 50, Cost: 10 },
         昂贵花束: { LeftNumber: 90, Price: 30, Popularity: 50, Cost: 10 },
+        // 书店商品
+        励志书籍: { LeftNumber: 30, Price: 25, Popularity: 50, Cost: 10 },
+        工具书籍: { LeftNumber: 20, Price: 45, Popularity: 50, Cost: 20 },
+        言情书籍: { LeftNumber: 30, Price: 30, Popularity: 50, Cost: 12 },
+        科幻书籍: { LeftNumber: 25, Price: 35, Popularity: 50, Cost: 15 },
+        漫画书籍: { LeftNumber: 40, Price: 20, Popularity: 50, Cost: 8 },
+        // 电器店商品
+        电视: { LeftNumber: 5, Price: 2000, Popularity: 50, Cost: 1000 },
+        冰箱: { LeftNumber: 5, Price: 1500, Popularity: 50, Cost: 800 },
+        洗衣机: { LeftNumber: 5, Price: 1200, Popularity: 50, Cost: 600 },
+        空调: { LeftNumber: 8, Price: 1800, Popularity: 50, Cost: 900 },
+        电脑: { LeftNumber: 10, Price: 3500, Popularity: 50, Cost: 1800 },
+        手机: { LeftNumber: 15, Price: 2000, Popularity: 50, Cost: 1000 },
+        平板: { LeftNumber: 10, Price: 2500, Popularity: 50, Cost: 1300 },
+        // 餐厅商品
+        快餐: { LeftNumber: 50, Price: 15, Popularity: 50, Cost: 8 },
+        盖浇饭: { LeftNumber: 40, Price: 20, Popularity: 50, Cost: 10 },
+        面条: { LeftNumber: 40, Price: 18, Popularity: 50, Cost: 9 },
+        炒菜: { LeftNumber: 30, Price: 35, Popularity: 50, Cost: 18 },
+        火锅: { LeftNumber: 20, Price: 80, Popularity: 50, Cost: 40 },
+        烧烤: { LeftNumber: 25, Price: 50, Popularity: 50, Cost: 25 },
+        // 便利店商品
+        矿泉水: { LeftNumber: 100, Price: 2, Popularity: 50, Cost: 1 },
+        方便面: { LeftNumber: 80, Price: 5, Popularity: 50, Cost: 2 },
+        饼干: { LeftNumber: 60, Price: 10, Popularity: 50, Cost: 5 },
+        饮料: { LeftNumber: 70, Price: 6, Popularity: 50, Cost: 3 },
+        香烟: { LeftNumber: 30, Price: 25, Popularity: 50, Cost: 15 },
+        电池: { LeftNumber: 50, Price: 8, Popularity: 50, Cost: 4 },
+        // 药店商品
+        感冒药: { LeftNumber: 40, Price: 15, Popularity: 50, Cost: 8 },
+        退烧药: { LeftNumber: 30, Price: 20, Popularity: 50, Cost: 10 },
+        创可贴: { LeftNumber: 60, Price: 5, Popularity: 50, Cost: 2 },
+        维生素: { LeftNumber: 40, Price: 30, Popularity: 50, Cost: 15 },
+        止咳药: { LeftNumber: 35, Price: 18, Popularity: 50, Cost: 9 },
+        胃药: { LeftNumber: 30, Price: 22, Popularity: 50, Cost: 11 },
+        // 文具店商品
+        铅笔: { LeftNumber: 100, Price: 1, Popularity: 50, Cost: 0.5 },
+        橡皮: { LeftNumber: 80, Price: 2, Popularity: 50, Cost: 1 },
+        笔记本: { LeftNumber: 50, Price: 8, Popularity: 50, Cost: 4 },
+        钢笔: { LeftNumber: 30, Price: 15, Popularity: 50, Cost: 8 },
+        文件夹: { LeftNumber: 40, Price: 10, Popularity: 50, Cost: 5 },
+        胶水: { LeftNumber: 50, Price: 5, Popularity: 50, Cost: 2 },
+        // 玩具店商品
+        积木: { LeftNumber: 30, Price: 50, Popularity: 50, Cost: 25 },
+        玩具车: { LeftNumber: 25, Price: 40, Popularity: 50, Cost: 20 },
+        毛绒玩具: { LeftNumber: 20, Price: 60, Popularity: 50, Cost: 30 },
+        遥控飞机: { LeftNumber: 15, Price: 150, Popularity: 50, Cost: 80 },
+        拼图: { LeftNumber: 30, Price: 35, Popularity: 50, Cost: 18 },
+        娃娃: { LeftNumber: 20, Price: 45, Popularity: 50, Cost: 22 },
+        // 宠物店商品
+        狗粮: { LeftNumber: 40, Price: 30, Popularity: 50, Cost: 15 },
+        猫粮: { LeftNumber: 40, Price: 28, Popularity: 50, Cost: 14 },
+        宠物玩具: { LeftNumber: 35, Price: 20, Popularity: 50, Cost: 10 },
+        宠物笼: { LeftNumber: 15, Price: 80, Popularity: 50, Cost: 40 },
+        宠物零食: { LeftNumber: 50, Price: 15, Popularity: 50, Cost: 8 },
+        水族箱: { LeftNumber: 10, Price: 200, Popularity: 50, Cost: 100 },
       };
     }
 
@@ -352,6 +486,7 @@ export class TopManager extends Component {
   }
   clearAllLocalData() {
     localStorage.clear();
+    
   }
   saveLocalData() {
     this.localSave("all");

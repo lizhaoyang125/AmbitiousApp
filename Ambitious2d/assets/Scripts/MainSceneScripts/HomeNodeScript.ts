@@ -1,6 +1,7 @@
 import { _decorator, Component, Label, RichText, Node, director } from 'cc';
 import { LivingStatusDict, TalentDict } from '../DataCollection';
 import { TopManager } from '../TopManager';
+import { StoreScript } from './StoreScript';
 const { ccclass, property } = _decorator;
 
 @ccclass('HomeNodeScript')
@@ -32,6 +33,15 @@ export class HomeNodeScript extends Component {
     
     
     start() {
+        // 默认隐藏新店面板
+        if (this.newStoreNode) {
+            this.newStoreNode.active = false;
+            this.isNewStoreNodeShown = false;
+            if (this.CreateStoreBtnLabel) {
+                this.CreateStoreBtnLabel.string = "开新店";
+            }
+        }
+        this.storeNode.active = false;
         this.updatePlayerInfo();
     }
 
@@ -43,9 +53,9 @@ export class HomeNodeScript extends Component {
         const player = TopManager.Instance.Player;
         const storeCount = Object.keys(TopManager.Instance.MyStoreDict).length;
 
-        // 更新标签显示（包含状态、房租、经验值）
+        // 更新标签显示（包含现金、状态、房租、经验值）
         if (this.LivingStatusLabel) {
-            this.LivingStatusLabel.string = `${player.livingStatus}  房租:${player.rent}/月  经验:+${player.expPerDay}/天`;
+            this.LivingStatusLabel.string = `现金:${player.Money} \n  ${player.livingStatus}  房租:${player.rent}/月  经验:+${player.expPerDay}/天`;
         }
 
         // 获取居住状态描述
@@ -103,8 +113,6 @@ export class HomeNodeScript extends Component {
     }
     goToStore() {
         if (TopManager.Instance.Player.currentStoreName) {
-            // 隐藏家园节点
-            this.node.active = false;
             // 隐藏新店面板（如果显示的话）
             if (this.newStoreNode) {
                 this.newStoreNode.active = false;
@@ -113,9 +121,16 @@ export class HomeNodeScript extends Component {
                     this.CreateStoreBtnLabel.string = "开新店";
                 }
             }
+            // 隐藏家园节点
+            this.node.active = false;
             // 显示店铺节点
             if (this.storeNode) {
                 this.storeNode.active = true;
+                // 强制触发 StoreScript 的初始化
+                const storeScript = this.storeNode.getComponent(StoreScript);
+                if (storeScript) {
+                    storeScript.initStore();
+                }
             }
             console.log("前往店铺: " + TopManager.Instance.Player.currentStoreName);
         } else {
