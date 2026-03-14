@@ -1,5 +1,6 @@
-import { _decorator, Component, Node,Vec3 ,Sprite,CCInteger} from 'cc';
+import { _decorator, Component, Node,Vec3 ,Sprite,CCInteger, Label} from 'cc';
 import { TopManager } from '../TopManager';
+import { CustomerCommentList } from '../DataCollection';
 const { ccclass, property } = _decorator;
 
 @ccclass('CustomerScript')
@@ -9,6 +10,9 @@ export class CustomerScript extends Component {
     public speed:number=100;
     @property(Sprite)
     public CustomerMask: Sprite = null; // 卡牌正面
+    @property(Label)
+    public CommentLabel: Label= null;
+
     public ShelveNumber:number=0;
     public DstShelve:number=0;
 
@@ -21,6 +25,7 @@ export class CustomerScript extends Component {
     private MoveState:number=0;
     public BuyGood:string="";
     public BuyPrice:number=0;
+    private hasShownComment:boolean=false;
 
     onLoad(){
         console.log("CustomerScript onLoad ");
@@ -62,6 +67,23 @@ export class CustomerScript extends Component {
         }
     }
     takeGoods(deltaTime:number){
+        // 第一次进入取货状态时，显示不满意评论（只显示一次）
+        if(!this.hasShownComment && this.CommentLabel && this.CommentLabel.node){
+            this.hasShownComment = true;
+            const dissatisfyComments = CustomerCommentList.filter(c => c.name === "不满意");
+            if(dissatisfyComments.length > 0){
+                const randomComment = dissatisfyComments[Math.floor(Math.random() * dissatisfyComments.length)];
+                this.CommentLabel.string = randomComment.comment;
+                this.CommentLabel.node.active = true;
+                // 3秒后隐藏评论
+                setTimeout(() => {
+                    if(this.CommentLabel && this.CommentLabel.node){
+                        this.CommentLabel.node.active = false;
+                        this.CommentLabel.string = "";
+                    }
+                }, 3000);
+            }
+        }
         this.CustomerMask.fillRange=this.cdTimer / this.cdTime;
         this.cdTimer-=deltaTime;
         if(this.cdTimer<=this.cdTime/2){

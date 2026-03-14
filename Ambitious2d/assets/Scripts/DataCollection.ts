@@ -243,3 +243,15 @@ export const GoodsFrameDict: { [key: string]: number } = {
   宠物零食: 56,
   水族箱: 57,
 };
+export interface Component {
+  name: string;        // 店铺类型名称
+  comment: string;        // 开店费用
+}
+export const CustomerCommentList: Component[] = [
+  { name: "满意", comment: "这家店真好！" },
+  { name: "满意", comment: "这家店不错" },
+  { name: "不满意", comment: "一件东西都没有，开什么店" },
+  { name: "不满意", comment: "服务态度差" },
+  { name: "一般", comment: "一般般" },
+  { name: "非常满意", comment: "非常满意" },
+];
