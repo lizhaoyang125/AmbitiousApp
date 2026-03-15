@@ -46,6 +46,7 @@ export class StartNodeScripts extends Component {
     quitGame() {
         // 退出游戏逻辑: 可在此处退出应用、返回主菜单等
         console.log('退出游戏');
+        director.loadScene("MapScene");
     }
     
 }

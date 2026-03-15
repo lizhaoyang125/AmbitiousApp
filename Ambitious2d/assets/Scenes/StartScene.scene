@@ -783,7 +783,7 @@
     "_string": "新游戏",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
+    "_actualFontSize": 20.107296137339056,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1109,7 +1109,7 @@
     "_string": "读取存档",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
+    "_actualFontSize": 20.107296137339056,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1435,7 +1435,7 @@
     "_string": "退出游戏",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
+    "_actualFontSize": 20.107296137339056,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1605,11 +1605,13 @@
   },
   {
     "__type__": "cc.ClickEvent",
-    "target": null,
+    "target": {
+      "__id__": 8
+    },
     "component": "",
-    "_componentId": "",
-    "handler": "",
-    "customEventData": ""
+    "_componentId": "40621MRKixEE4Xa2X5augdE",
+    "handler": "quitGame",
+    "customEventData": "1"
   },
   {
     "__type__": "cc.UITransform",

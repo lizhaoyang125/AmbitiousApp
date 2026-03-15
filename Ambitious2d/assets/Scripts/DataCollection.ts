@@ -255,3 +255,12 @@ export const CustomerCommentList: Component[] = [
   { name: "一般", comment: "一般般" },
   { name: "非常满意", comment: "非常满意" },
 ];
+export interface GoodsConfig {
+  storeType: string;
+  name: string;        // 商品名称
+  FrameID: number;        // 商品图标ID
+  price: number;        // 商品价格
+  comment: string;        // 商品描述
+  leftNumber: number;        // 商品库存
+  Popularity: number;        // 商品受欢迎程度
+}
