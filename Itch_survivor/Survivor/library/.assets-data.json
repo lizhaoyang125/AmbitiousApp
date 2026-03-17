@@ -1,0 +1,47 @@
+{
+  "56bf984e-a45a-421d-b463-e125dac0db36": {
+    "url": "db://assets/game_scene.scene",
+    "value": {
+      "depends": [
+        "56bf984e-a45a-421d-b463-e125dac0db36",
+        "951249e0-9f16-456d-8b85-a6ca954da16b@f9941",
+        "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941"
+      ],
+      "dependScripts": [
+        "eb9b54c5-52d8-46a2-a21f-c50072407b34",
+        "64484c15-595d-4720-bead-4fe79b5e83e1"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e501dcca-9325-4d2c-bd7b-20badbd13663": {
+    "url": "db://assets/start_scene.scene",
+    "value": {
+      "depends": [
+        "e501dcca-9325-4d2c-bd7b-20badbd13663"
+      ],
+      "dependScripts": []
+    },
+    "versionCode": 1
+  },
+  "30a356e0-21f2-4119-901f-e12ed7225719": {
+    "url": "db://assets/scripts",
+    "value": {},
+    "versionCode": 1
+  },
+  "e651d7a4-6b0f-4678-a5e8-fe75b5f44ce2": {
+    "url": "db://assets/scripts/Node.prefab",
+    "value": {},
+    "versionCode": 1
+  },
+  "64484c15-595d-4720-bead-4fe79b5e83e1": {
+    "url": "db://assets/scripts/player_sprite.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "eb9b54c5-52d8-46a2-a21f-c50072407b34": {
+    "url": "db://assets/scripts/camera_follow.ts",
+    "value": {},
+    "versionCode": 1
+  }
+}

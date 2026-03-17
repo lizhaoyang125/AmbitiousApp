@@ -1,0 +1,745 @@
+23:14:24 debug: 2026/3/17下午11:14:24
+23:14:24 debug: Project: D:\github_worspace\AmbitiousApp\Itch_survivor\Survivor
+23:14:24 debug: Targets: editor,preview
+23:14:24 debug: Packer deriver version file lost or format incorrect: Error: ENOENT: no such file or directory, open 'D:\github_worspace\AmbitiousApp\Itch_survivor\Survivor\temp\programming\packer-driver\VERSION'
+23:14:24 debug: Clearing out the targets...
+23:14:24 debug: Engine path: C:\ProgramData\cocos\editors\Creator\3.8.4\resources\resources\3d\engine
+23:14:24 debug: Initializing target [Editor]
+23:14:24 debug: Loading cache
+23:14:24 debug: Record file loaded failed with error: Error: ENOENT: no such file or directory, open 'D:\github_worspace\AmbitiousApp\Itch_survivor\Survivor\temp\programming\packer-driver\targets\editor\main-record.json'
+23:14:24 debug: Loading cache costs 0.33980000019073486ms.
+23:14:24 debug: Engine features shipped in editor: base,gfx-webgl,gfx-webgl2,gfx-empty,gfx-webgpu,3d,animation,skeletal-animation,2d,ui,particle,particle-2d,physics-framework,physics-2d-framework,physics-2d-box2d-wasm,intersection-2d,primitive,profiler,occlusion-query,geometry-renderer,debug-renderer,audio,video,xr,light-probe,terrain,webview,tween,tiled-map,spine,dragon-bones,marionette,procedural-animation,custom-pipeline,custom-pipeline-builtin-scripts,custom-pipeline-post-process,legacy-pipeline,websocket,websocket-server,meshopt
+23:14:24 debug: Our import map(foo:/bar): {
+  "imports": {
+    "cc": "cce:/internal/x/cc"
+  }
+}
+23:14:24 debug: Initializing target [Preview]
+23:14:24 debug: Loading cache
+23:14:24 debug: Record file loaded failed with error: Error: ENOENT: no such file or directory, open 'D:\github_worspace\AmbitiousApp\Itch_survivor\Survivor\temp\programming\packer-driver\targets\preview\main-record.json'
+23:14:24 debug: Loading cache costs 0.32749998569488525ms.
+23:14:24 debug: Our import map(foo:/bar): {
+  "imports": {
+    "cc": "cce:/internal/x/cc"
+  }
+}
+23:14:24 debug: Sync engine features: 2d,animation,audio,base,custom-pipeline,dragon-bones,gfx-webgl,gfx-webgl2,intersection-2d,particle-2d,physics-2d-box2d,profiler,spine,tiled-map,tween,ui,video,webview
+23:14:24 debug: Reset databases. Enumerated domains: [
+  {
+    "root": "db://internal/",
+    "physical": "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.4\\resources\\resources\\3d\\engine\\editor\\assets"
+  },
+  {
+    "root": "db://assets/",
+    "physical": "D:\\github_worspace\\AmbitiousApp\\Itch_survivor\\Survivor\\assets"
+  }
+]
+23:14:24 debug: Our import map(foo:/bar): {
+  "imports": {
+    "cc": "cce:/internal/x/cc",
+    "db://internal/": "file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/",
+    "db://assets/": "file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/"
+  }
+}
+23:14:24 debug: Our import map(foo:/bar): {
+  "imports": {
+    "cc": "cce:/internal/x/cc",
+    "db://internal/": "file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/",
+    "db://assets/": "file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/"
+  }
+}
+23:14:24 debug: Pulling asset-db.
+23:14:24 debug: Fetch asset-db cost: 4.804799973964691ms.
+23:14:24 debug: Build iteration starts.
+Number of accumulated asset changes: 4
+Feature changed: false
+23:14:24 debug: Target(editor) build started.
+23:14:24 debug: Inspect cce:/internal/x/cc
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/base from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/base.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/gfx-webgl from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/gfx-webgl.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/gfx-webgl2 from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/gfx-webgl2.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/gfx-empty from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/gfx-empty.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/gfx-webgpu from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/gfx-webgpu.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/3d from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/3d.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/animation from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/animation.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/skeletal-animation from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/skeletal-animation.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/2d from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/2d.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/sorting from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/sorting.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/ui from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/ui.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/particle from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/particle.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/particle-2d from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/particle-2d.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/physics-framework from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/physics-framework.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/physics-2d-framework from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/physics-2d-framework.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/physics-2d-box2d-wasm from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/physics-2d-box2d-wasm.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/intersection-2d from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/intersection-2d.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/primitive from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/primitive.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/profiler from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/profiler.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/geometry-renderer from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/geometry-renderer.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/audio from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/audio.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/video from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/video.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/xr from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/xr.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/light-probe from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/light-probe.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/terrain from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/terrain.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/webview from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/webview.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/tween from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/tween.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/tiled-map from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/tiled-map.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/spine from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/spine.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/dragon-bones from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/dragon-bones.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/custom-pipeline from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/custom-pipeline.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/custom-pipeline-post-process from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/custom-pipeline-post-process.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/legacy-pipeline from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/legacy-pipeline.
+23:14:24 debug: Inspect cce:/internal/x/prerequisite-imports
+23:14:24 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:14:24 debug: Inspect file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts
+23:14:24 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as cce:/internal/code-quality/cr.mjs.
+23:14:24 debug: Inspect cce:/internal/code-quality/cr.mjs
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as cce:/internal/x/cc.
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as cce:/internal/x/cc.
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as cce:/internal/x/cc.
+23:14:24 debug: Resolve cc/env from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as external dependency cc/env.
+23:14:24 debug: Resolve ./builtin-pipeline-types from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:14:24 debug: Inspect file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts as cce:/internal/x/cc.
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts as cce:/internal/x/cc.
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts as cce:/internal/x/cc.
+23:14:24 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:14:24 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:14:24 debug: Inspect file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts
+23:14:24 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as cce:/internal/code-quality/cr.mjs.
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as cce:/internal/x/cc.
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as cce:/internal/x/cc.
+23:14:24 debug: Resolve cc/env from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as external dependency cc/env.
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as cce:/internal/x/cc.
+23:14:24 debug: Resolve ./builtin-pipeline-types from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:14:24 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:14:24 debug: Inspect file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts as cce:/internal/x/cc.
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts as cce:/internal/x/cc.
+23:14:24 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts as cce:/internal/x/cc.
+23:14:24 debug: Target(editor) ends with cost 688.6675000190735ms.
+23:14:24 debug: Target(preview) build started.
+23:14:24 debug: Inspect cce:/internal/x/cc
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/2d from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/2d.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/sorting from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/sorting.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/animation from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/animation.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/audio from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/audio.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/base from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/base.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/custom-pipeline from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/custom-pipeline.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/dragon-bones from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/dragon-bones.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/gfx-webgl from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/gfx-webgl.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/gfx-webgl2 from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/gfx-webgl2.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/intersection-2d from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/intersection-2d.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/particle-2d from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/particle-2d.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/physics-2d-box2d from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/physics-2d-box2d.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/physics-2d-framework from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/physics-2d-framework.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/profiler from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/profiler.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/spine from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/spine.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/tiled-map from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/tiled-map.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/tween from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/tween.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/ui from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/ui.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/video from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/video.
+23:14:24 debug: Resolve cce:/internal/x/cc-fu/webview from cce:/internal/x/cc as external dependency cce:/internal/x/cc-fu/webview.
+23:14:24 debug: Inspect cce:/internal/x/prerequisite-imports
+23:14:24 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:14:24 debug: Inspect file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts
+23:14:24 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as cce:/internal/code-quality/cr.mjs.
+23:14:24 debug: Inspect cce:/internal/code-quality/cr.mjs
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as cce:/internal/x/cc.
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as cce:/internal/x/cc.
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as cce:/internal/x/cc.
+23:14:25 debug: Resolve cc/env from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as external dependency cc/env.
+23:14:25 debug: Resolve ./builtin-pipeline-types from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:14:25 debug: Inspect file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts as cce:/internal/x/cc.
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts as cce:/internal/x/cc.
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts as cce:/internal/x/cc.
+23:14:25 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:14:25 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:14:25 debug: Inspect file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts
+23:14:25 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as cce:/internal/code-quality/cr.mjs.
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as cce:/internal/x/cc.
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as cce:/internal/x/cc.
+23:14:25 debug: Resolve cc/env from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as external dependency cc/env.
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as cce:/internal/x/cc.
+23:14:25 debug: Resolve ./builtin-pipeline-types from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:14:25 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:14:25 debug: Inspect file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts as cce:/internal/x/cc.
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts as cce:/internal/x/cc.
+23:14:25 debug: Resolve cc from file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts as cce:/internal/x/cc.
+23:14:25 debug: Target(preview) ends with cost 730.8157000541687ms.
+23:14:28 debug: Pulling asset-db.
+23:14:29 debug: Fetch asset-db cost: 1110.5956000089645ms.
+23:14:29 debug: Build iteration starts.
+Number of accumulated asset changes: 4
+Feature changed: false
+23:14:29 debug: Target(editor) build started.
+23:14:29 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:00:20 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:00:25 GMT+0800 (中国标准时间)
+23:14:29 debug: Inspect cce:/internal/x/prerequisite-imports
+23:14:29 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:14:29 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:14:30 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:14:30 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:14:30 debug: Target(editor) ends with cost 480.3439999818802ms.
+23:14:30 debug: Target(preview) build started.
+23:14:30 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:00:20 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:00:26 GMT+0800 (中国标准时间)
+23:14:30 debug: Inspect cce:/internal/x/prerequisite-imports
+23:14:30 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:14:30 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:14:30 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:14:30 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:14:30 debug: Target(preview) ends with cost 56.554300010204315ms.
+23:27:44 debug: Dispatch build request for time accumulated 1 asset changes.
+23:27:44 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+23:27:44 debug: Target(editor) build started.
+23:27:44 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:00:25 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:13:40 GMT+0800 (中国标准时间)
+23:27:44 debug: Inspect cce:/internal/x/prerequisite-imports
+23:27:44 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:27:44 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:27:44 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:27:44 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:27:44 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:27:44 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+23:27:44 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:27:44 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:27:44 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:27:44 debug: Target(editor) ends with cost 74.33749997615814ms.
+23:27:44 debug: Target(preview) build started.
+23:27:44 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:00:26 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:13:41 GMT+0800 (中国标准时间)
+23:27:44 debug: Inspect cce:/internal/x/prerequisite-imports
+23:27:45 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:27:45 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:27:45 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:27:45 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:27:45 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:27:45 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+23:27:45 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:27:45 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:27:45 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:27:45 debug: Target(preview) ends with cost 99.00630003213882ms.
+23:34:32 debug: Dispatch build request for time accumulated 1 asset changes.
+23:34:32 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+23:34:32 debug: Target(editor) build started.
+23:34:32 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:13:40 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:20:28 GMT+0800 (中国标准时间)
+23:34:32 debug: Inspect cce:/internal/x/prerequisite-imports
+23:34:32 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:34:32 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:34:32 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:34:32 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:34:32 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:34:32 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Tue Mar 17 2026 23:27:44 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Tue Mar 17 2026 23:33:31 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+23:34:32 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+23:34:32 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:34:32 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:34:32 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:34:32 debug: Target(editor) ends with cost 85.3982999920845ms.
+23:34:32 debug: Target(preview) build started.
+23:34:32 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:13:41 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:20:28 GMT+0800 (中国标准时间)
+23:34:32 debug: Inspect cce:/internal/x/prerequisite-imports
+23:34:32 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:34:32 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:34:32 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:34:32 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:34:32 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:34:32 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Tue Mar 17 2026 23:27:44 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Tue Mar 17 2026 23:33:31 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+23:34:32 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+23:34:32 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:34:32 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:34:32 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:34:32 debug: Target(preview) ends with cost 87.77180004119873ms.
+23:35:34 debug: Dispatch build request for time accumulated 1 asset changes.
+23:35:34 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+23:35:34 debug: Target(editor) build started.
+23:35:34 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:20:28 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:21:30 GMT+0800 (中国标准时间)
+23:35:34 debug: Inspect cce:/internal/x/prerequisite-imports
+23:35:34 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:35:34 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:35:34 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:35:34 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:35:34 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:35:34 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Tue Mar 17 2026 23:33:31 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Tue Mar 17 2026 23:35:30 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+23:35:34 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+23:35:34 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:35:34 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:35:34 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:35:34 debug: Target(editor) ends with cost 76.54680001735687ms.
+23:35:34 debug: Target(preview) build started.
+23:35:34 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:20:28 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:21:30 GMT+0800 (中国标准时间)
+23:35:34 debug: Inspect cce:/internal/x/prerequisite-imports
+23:35:34 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:35:34 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:35:34 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:35:34 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:35:34 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:35:34 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Tue Mar 17 2026 23:33:31 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Tue Mar 17 2026 23:35:30 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+23:35:34 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+23:35:34 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:35:34 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:35:34 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:35:34 debug: Target(preview) ends with cost 120.43110001087189ms.
+23:39:15 debug: Dispatch build request for time accumulated 1 asset changes.
+23:39:15 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+23:39:15 debug: Target(editor) build started.
+23:39:15 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:21:30 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:25:11 GMT+0800 (中国标准时间)
+23:39:15 debug: Inspect cce:/internal/x/prerequisite-imports
+23:39:15 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:39:15 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:39:15 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:39:15 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:39:15 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:39:15 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:39:15 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:39:15 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:39:15 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:39:15 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:39:15 debug: Target(editor) ends with cost 83.79650002717972ms.
+23:39:15 debug: Target(preview) build started.
+23:39:15 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:21:30 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:25:11 GMT+0800 (中国标准时间)
+23:39:15 debug: Inspect cce:/internal/x/prerequisite-imports
+23:39:15 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:39:15 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:39:15 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:39:15 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:39:15 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:39:15 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:39:15 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:39:15 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:39:15 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:39:15 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:39:15 debug: Target(preview) ends with cost 130.712700009346ms.
+23:46:28 debug: Dispatch build request for time accumulated 1 asset changes.
+23:46:28 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+23:46:28 debug: Target(editor) build started.
+23:46:28 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:25:11 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:32:24 GMT+0800 (中国标准时间)
+23:46:28 debug: Inspect cce:/internal/x/prerequisite-imports
+23:46:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:46:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:46:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:46:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:46:28 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:46:28 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:38:19 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:46:26 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:46:28 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:46:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:46:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:46:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:46:28 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:46:28 debug: Target(editor) ends with cost 80.81029999256134ms.
+23:46:28 debug: Target(preview) build started.
+23:46:28 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:25:11 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:32:24 GMT+0800 (中国标准时间)
+23:46:28 debug: Inspect cce:/internal/x/prerequisite-imports
+23:46:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:46:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:46:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:46:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:46:28 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:46:28 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:38:19 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:46:26 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:46:28 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:46:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:46:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:46:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:46:28 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:46:28 debug: Target(preview) ends with cost 100.31049996614456ms.
+23:51:01 debug: Dispatch build request for time accumulated 1 asset changes.
+23:51:01 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+23:51:01 debug: Target(editor) build started.
+23:51:01 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:32:24 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:36:57 GMT+0800 (中国标准时间)
+23:51:01 debug: Inspect cce:/internal/x/prerequisite-imports
+23:51:01 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:51:01 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:51:01 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:51:01 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:51:01 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:51:01 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:46:26 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:50:45 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:51:01 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:51:01 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:01 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:01 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:01 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:51:01 debug: Target(editor) ends with cost 79.4689000248909ms.
+23:51:01 debug: Target(preview) build started.
+23:51:01 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:32:24 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:36:57 GMT+0800 (中国标准时间)
+23:51:01 debug: Inspect cce:/internal/x/prerequisite-imports
+23:51:01 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:51:01 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:51:01 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:51:01 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:51:01 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:51:01 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:46:26 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:50:45 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:51:01 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:51:01 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:01 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:01 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:01 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:51:01 debug: Target(preview) ends with cost 99.44789999723434ms.
+23:51:42 debug: Dispatch build request for time accumulated 1 asset changes.
+23:51:42 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+23:51:42 debug: Target(editor) build started.
+23:51:42 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:36:57 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:37:38 GMT+0800 (中国标准时间)
+23:51:42 debug: Inspect cce:/internal/x/prerequisite-imports
+23:51:42 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:51:42 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:51:42 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:51:42 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:51:42 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:51:42 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:50:45 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:51:30 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:51:42 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:51:42 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:42 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:42 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:42 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:51:42 debug: Target(editor) ends with cost 83.31129997968674ms.
+23:51:42 debug: Target(preview) build started.
+23:51:42 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:36:57 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:37:38 GMT+0800 (中国标准时间)
+23:51:42 debug: Inspect cce:/internal/x/prerequisite-imports
+23:51:42 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:51:42 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:51:42 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:51:42 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:51:42 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:51:42 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:50:45 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:51:30 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:51:42 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:51:42 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:42 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:42 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:51:42 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:51:42 debug: Target(preview) ends with cost 94.61570000648499ms.
+23:54:03 debug: Dispatch build request for time accumulated 1 asset changes.
+23:54:03 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+23:54:03 debug: Target(editor) build started.
+23:54:03 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:37:38 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:39:59 GMT+0800 (中国标准时间)
+23:54:03 debug: Inspect cce:/internal/x/prerequisite-imports
+23:54:03 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:54:03 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:54:03 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:54:03 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:54:03 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:54:03 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:51:30 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:54:00 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:54:03 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:54:03 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:54:03 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:54:03 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:54:03 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:54:03 debug: Target(editor) ends with cost 77.42329996824265ms.
+23:54:03 debug: Target(preview) build started.
+23:54:03 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:37:38 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:39:59 GMT+0800 (中国标准时间)
+23:54:03 debug: Inspect cce:/internal/x/prerequisite-imports
+23:54:03 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:54:03 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:54:03 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:54:03 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:54:03 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:54:03 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:51:30 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:54:00 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:54:03 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:54:03 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:54:03 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:54:03 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:54:03 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:54:03 debug: Target(preview) ends with cost 118.74739998579025ms.
+23:55:20 debug: Dispatch build request for time accumulated 1 asset changes.
+23:55:20 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+23:55:20 debug: Target(editor) build started.
+23:55:20 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:39:59 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:41:16 GMT+0800 (中国标准时间)
+23:55:20 debug: Inspect cce:/internal/x/prerequisite-imports
+23:55:20 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:55:20 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:55:20 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:55:20 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:55:20 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:55:20 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:54:00 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:55:19 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:55:20 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:55:20 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:55:20 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:55:20 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:55:20 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:55:20 debug: Target(editor) ends with cost 79.14740002155304ms.
+23:55:20 debug: Target(preview) build started.
+23:55:20 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:39:59 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:41:16 GMT+0800 (中国标准时间)
+23:55:20 debug: Inspect cce:/internal/x/prerequisite-imports
+23:55:20 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:55:20 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:55:20 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:55:20 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:55:20 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:55:20 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:54:00 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:55:19 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:55:20 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:55:20 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:55:20 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:55:20 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:55:20 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:55:20 debug: Target(preview) ends with cost 103.23559999465942ms.
+23:56:35 debug: Dispatch build request for time accumulated 1 asset changes.
+23:56:35 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+23:56:35 debug: Target(editor) build started.
+23:56:35 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:41:16 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:42:31 GMT+0800 (中国标准时间)
+23:56:35 debug: Inspect cce:/internal/x/prerequisite-imports
+23:56:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:56:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:56:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:56:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:56:35 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:56:35 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:55:19 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:56:32 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:56:35 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:56:35 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:56:35 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:56:35 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:56:35 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:56:35 debug: Target(editor) ends with cost 81.12849998474121ms.
+23:56:35 debug: Target(preview) build started.
+23:56:35 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:41:16 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:42:32 GMT+0800 (中国标准时间)
+23:56:35 debug: Inspect cce:/internal/x/prerequisite-imports
+23:56:36 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:56:36 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:56:36 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:56:36 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:56:36 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:56:36 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:55:19 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:56:32 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:56:36 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:56:36 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:56:36 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:56:36 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:56:36 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:56:36 debug: Target(preview) ends with cost 84.50249999761581ms.
+23:58:38 debug: Dispatch build request for time accumulated 1 asset changes.
+23:58:38 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+23:58:38 debug: Target(editor) build started.
+23:58:38 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:42:31 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:44:34 GMT+0800 (中国标准时间)
+23:58:38 debug: Inspect cce:/internal/x/prerequisite-imports
+23:58:38 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:58:38 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:58:38 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:58:38 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:58:38 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:58:38 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:56:32 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:58:06 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:58:38 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:58:38 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:38 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:38 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:38 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:58:38 debug: Target(editor) ends with cost 96.84990000724792ms.
+23:58:38 debug: Target(preview) build started.
+23:58:38 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:42:32 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:44:34 GMT+0800 (中国标准时间)
+23:58:38 debug: Inspect cce:/internal/x/prerequisite-imports
+23:58:38 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:58:38 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:58:38 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:58:38 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:58:38 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:58:38 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:56:32 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:58:06 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:58:38 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:58:38 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:38 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:38 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:38 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:58:39 debug: Target(preview) ends with cost 93.6269000172615ms.
+23:58:46 debug: Dispatch build request for time accumulated 2 asset changes.
+23:58:46 debug: Build iteration starts.
+Number of accumulated asset changes: 2
+Feature changed: false
+23:58:46 debug: Target(editor) build started.
+23:58:46 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:44:34 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:44:42 GMT+0800 (中国标准时间)
+23:58:46 debug: Inspect cce:/internal/x/prerequisite-imports
+23:58:46 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:58:46 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:58:46 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:58:46 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:58:46 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:58:46 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:58:06 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:58:40 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:58:46 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:46 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:58:46 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Tue Mar 17 2026 23:35:30 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Tue Mar 17 2026 23:58:43 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+23:58:46 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:58:46 debug: Target(editor) ends with cost 118.1220999956131ms.
+23:58:46 debug: Target(preview) build started.
+23:58:46 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:44:34 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:44:42 GMT+0800 (中国标准时间)
+23:58:46 debug: Inspect cce:/internal/x/prerequisite-imports
+23:58:46 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+23:58:46 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+23:58:46 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+23:58:46 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+23:58:46 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+23:58:46 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:58:06 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Tue Mar 17 2026 23:58:40 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+23:58:46 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+23:58:46 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+23:58:46 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Tue Mar 17 2026 23:35:30 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Tue Mar 17 2026 23:58:43 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+23:58:46 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:58:46 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+23:58:46 debug: Target(preview) ends with cost 123.82789999246597ms.
+00:01:28 debug: Dispatch build request for time accumulated 1 asset changes.
+00:01:28 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+00:01:28 debug: Target(editor) build started.
+00:01:28 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:44:42 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:47:24 GMT+0800 (中国标准时间)
+00:01:28 debug: Inspect cce:/internal/x/prerequisite-imports
+00:01:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+00:01:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+00:01:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+00:01:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+00:01:28 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+00:01:28 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+00:01:28 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Tue Mar 17 2026 23:58:43 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Wed Mar 18 2026 00:00:47 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+00:01:28 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+00:01:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:01:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:01:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:01:28 debug: Target(editor) ends with cost 210.88160002231598ms.
+00:01:28 debug: Target(preview) build started.
+00:01:28 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:44:42 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:47:24 GMT+0800 (中国标准时间)
+00:01:28 debug: Inspect cce:/internal/x/prerequisite-imports
+00:01:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+00:01:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+00:01:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+00:01:28 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+00:01:28 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+00:01:28 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+00:01:28 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Tue Mar 17 2026 23:58:43 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Wed Mar 18 2026 00:00:47 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+00:01:28 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+00:01:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:01:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:01:28 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:01:28 debug: Target(preview) ends with cost 208.21299999952316ms.
+00:03:50 debug: Dispatch build request for time accumulated 1 asset changes.
+00:03:50 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+00:03:50 debug: Target(editor) build started.
+00:03:50 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:47:24 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:49:46 GMT+0800 (中国标准时间)
+00:03:50 debug: Inspect cce:/internal/x/prerequisite-imports
+00:03:50 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+00:03:50 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+00:03:50 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+00:03:50 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+00:03:50 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+00:03:50 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+00:03:50 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Wed Mar 18 2026 00:00:47 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Wed Mar 18 2026 00:03:49 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+00:03:50 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+00:03:50 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:03:50 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:03:50 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:03:50 debug: Target(editor) ends with cost 80.08980000019073ms.
+00:03:50 debug: Target(preview) build started.
+00:03:50 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:47:24 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:49:46 GMT+0800 (中国标准时间)
+00:03:50 debug: Inspect cce:/internal/x/prerequisite-imports
+00:03:50 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+00:03:50 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+00:03:50 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+00:03:50 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+00:03:50 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+00:03:50 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+00:03:50 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Wed Mar 18 2026 00:00:47 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Wed Mar 18 2026 00:03:49 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+00:03:50 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+00:03:50 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:03:50 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:03:50 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:03:51 debug: Target(preview) ends with cost 94.88159996271133ms.
+00:06:35 debug: Dispatch build request for time accumulated 1 asset changes.
+00:06:35 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+00:06:35 debug: Target(editor) build started.
+00:06:35 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:49:46 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:52:31 GMT+0800 (中国标准时间)
+00:06:35 debug: Inspect cce:/internal/x/prerequisite-imports
+00:06:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+00:06:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+00:06:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+00:06:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+00:06:35 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+00:06:35 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:58:40 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Wed Mar 18 2026 00:05:54 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+00:06:35 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+00:06:35 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:06:35 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:06:35 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:06:35 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+00:06:35 debug: Target(editor) ends with cost 75.14429998397827ms.
+00:06:35 debug: Target(preview) build started.
+00:06:35 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:49:46 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 08:52:31 GMT+0800 (中国标准时间)
+00:06:35 debug: Inspect cce:/internal/x/prerequisite-imports
+00:06:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+00:06:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+00:06:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+00:06:35 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+00:06:35 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+00:06:35 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Tue Mar 17 2026 23:58:40 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Wed Mar 18 2026 00:05:54 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+00:06:35 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+00:06:35 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:06:35 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:06:35 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:06:35 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+00:06:35 debug: Target(preview) ends with cost 125.47530001401901ms.
+00:14:04 debug: Dispatch build request for time accumulated 2 asset changes.
+00:14:04 debug: Build iteration starts.
+Number of accumulated asset changes: 2
+Feature changed: false
+00:14:04 debug: Target(editor) build started.
+00:14:04 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:52:31 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 09:00:00 GMT+0800 (中国标准时间)
+00:14:04 debug: Inspect cce:/internal/x/prerequisite-imports
+00:14:04 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+00:14:04 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+00:14:04 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+00:14:04 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+00:14:04 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+00:14:04 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Wed Mar 18 2026 00:05:54 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Wed Mar 18 2026 00:11:48 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+00:14:04 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:14:04 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+00:14:04 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Wed Mar 18 2026 00:03:49 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Wed Mar 18 2026 00:11:54 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+00:14:04 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:14:04 debug: Target(editor) ends with cost 106.26690000295639ms.
+00:14:04 debug: Target(preview) build started.
+00:14:04 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Thu Jan 01 1970 08:52:31 GMT+0800 (中国标准时间), Current mtime: Thu Jan 01 1970 09:00:00 GMT+0800 (中国标准时间)
+00:14:04 debug: Inspect cce:/internal/x/prerequisite-imports
+00:14:04 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+00:14:04 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+00:14:04 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+00:14:04 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.4/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+00:14:04 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts.
+00:14:04 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts. Last mtime: Wed Mar 18 2026 00:05:54 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34, Current mtime: Wed Mar 18 2026 00:11:48 GMT+0800 (中国标准时间)@eb9b54c5-52d8-46a2-a21f-c50072407b34
+00:14:04 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/camera_follow.ts as cce:/internal/x/cc.
+00:14:04 debug: Resolve file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts from cce:/internal/x/prerequisite-imports as file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts.
+00:14:04 debug: Detected change: file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts. Last mtime: Wed Mar 18 2026 00:03:49 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1, Current mtime: Wed Mar 18 2026 00:11:54 GMT+0800 (中国标准时间)@64484c15-595d-4720-bead-4fe79b5e83e1
+00:14:04 debug: Inspect file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:14:04 debug: Resolve cc from file:///D:/github_worspace/AmbitiousApp/Itch_survivor/Survivor/assets/scripts/player_sprite.ts as cce:/internal/x/cc.
+00:14:04 debug: Target(preview) ends with cost 129.59729999303818ms.

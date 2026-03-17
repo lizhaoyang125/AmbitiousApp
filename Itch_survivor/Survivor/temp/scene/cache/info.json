@@ -1,0 +1,11 @@
+{
+    "systemInfo": {
+        "arch": "x64",
+        "cpu": "12th Gen Intel(R) Core(TM) i5-12600K",
+        "version": "Windows 10 Pro"
+    },
+    "sceneListMap": {
+        "56bf984e-a45a-421d-b463-e125dac0db36": "D:\\github_worspace\\AmbitiousApp\\Itch_survivor\\Survivor\\assets\\game_scene.scene"
+    },
+    "deviceMd5": "cbf56b1e7379ee7478e54add75bf46c5"
+}
