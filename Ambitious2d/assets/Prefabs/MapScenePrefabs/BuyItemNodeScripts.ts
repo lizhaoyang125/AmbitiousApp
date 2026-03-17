@@ -18,10 +18,10 @@ export class BuyItemNodeScripts extends Component {
     @property(Button)
     buyBtn: Button = null;
 
-    public goodsType: string = "";
+    public goodsType: string = "便宜男装";
 
     start() {
-        this.goodsType = "便宜男装";
+        //this.goodsType = "便宜男装";
         this.initItemInfo();
     }
 
