@@ -1,4 +1,5 @@
 import { _decorator, Component, input, Input, Vec2 } from 'cc';
+import { enemy_sprite } from './enemy_sprite';
 const { ccclass, property } = _decorator;
 
 @ccclass('player_sprite')
@@ -9,7 +10,11 @@ export class player_sprite extends Component {
     @property
     startAtCenter: boolean = true; // 是否在屏幕中央开始
 
+    @property
+    collisionRadius: number = 30; // 碰撞半径
+
     private _keys: Set<string> = new Set();
+    private _isGameOver: boolean = false;
 
     start() {
         // 如果设置了在屏幕中央开始 (1280x720)
@@ -40,6 +45,9 @@ export class player_sprite extends Component {
     }
 
     update(deltaTime: number) {
+        // 如果已经Game Over，不再检测碰撞
+        if (this._isGameOver) return;
+
         const moveDir = new Vec2(0, 0);
 
         // W键 - 向上
@@ -69,6 +77,42 @@ export class player_sprite extends Component {
             const newY = currentPos.y + moveDir.y * this.speed * deltaTime;
 
             this.node.setPosition(newX, newY, currentPos.z);
+        }
+
+        // 检测碰撞
+        this.checkCollision();
+    }
+
+    checkCollision() {
+        // 从GameNode下查找所有敌人
+        const canvas = this.node.scene.getChildByName('Canvas');
+        const gameNode = canvas?.getChildByName('GameNode');
+        if (!gameNode) return;
+
+        const playerPos = this.node.position;
+
+        for (let i = gameNode.children.length - 1; i >= 0; i--) {
+            const child = gameNode.children[i];
+            // 跳过PlayerSprite自身
+            if (child.name === 'PlayerSprite') continue;
+
+            // 检查是否有enemy_sprite组件
+            const enemyComp = child.getComponent(enemy_sprite);
+            if (!enemyComp) continue;
+
+            const enemyPos = child.position;
+            const dx = playerPos.x - enemyPos.x;
+            const dy = playerPos.y - enemyPos.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            // 碰撞检测
+            if (dist < this.collisionRadius) {
+                console.log('Game Over');
+                this._isGameOver = true;
+                // 回收敌人到对象池，而不是销毁
+                enemyComp.recycle();
+                return;
+            }
         }
     }
 }
