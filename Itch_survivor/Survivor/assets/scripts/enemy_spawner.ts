@@ -16,6 +16,9 @@ export class enemy_spawner extends Component {
     @property
     maxEnemies: number = 20; // 最大敌人数量
 
+    // 活着的敌人列表
+    enemyList: Node[] = [];
+
     // 对象池
     private _pool: NodePool = new NodePool();
 
@@ -53,18 +56,16 @@ export class enemy_spawner extends Component {
         return null;
     }
 
-    getEnemyCount(): number {
-        const canvas = this.node.scene.getChildByName('Canvas');
-        const gameNode = canvas?.getChildByName('GameNode');
-        if (!gameNode) return 0;
-
-        let count = 0;
-        for (const child of gameNode.children) {
-            if (child.getComponent(enemy_sprite)) {
-                count++;
-            }
+    // 从enemyList中移除敌人
+    removeEnemy(enemy: Node) {
+        const index = this.enemyList.indexOf(enemy);
+        if (index > -1) {
+            this.enemyList.splice(index, 1);
         }
-        return count;
+    }
+
+    getEnemyCount(): number {
+        return this.enemyList.length;
     }
 
     // 从对象池获取敌人，或创建新敌人
@@ -72,10 +73,8 @@ export class enemy_spawner extends Component {
         let enemy: Node;
 
         if (this._pool.size() > 0) {
-            // 从池中取
             enemy = this._pool.get()!;
         } else {
-            // 池为空，创建新的
             enemy = instantiate(this.enemyPrefab);
         }
 
@@ -84,6 +83,9 @@ export class enemy_spawner extends Component {
 
     // 回收敌人到对象池
     putEnemyToPool(enemy: Node) {
+        // 从列表中移除
+        this.removeEnemy(enemy);
+        // 放回池中
         this._pool.put(enemy);
     }
 
@@ -127,12 +129,43 @@ export class enemy_spawner extends Component {
         enemy.setPosition(pos.x, pos.y, 0);
         enemy.active = true;
 
+        // 添加到敌人列表
+        this.enemyList.push(enemy);
+
         // 设置敌人目标为Player
         const enemyScript = enemy.getComponent(enemy_sprite);
         if (enemyScript) {
             enemyScript.speed = this.enemySpeed;
             enemyScript.target = this._player;
         }
+    }
+
+    // 寻找最近的敌人
+    getNearestEnemy(): Node | null {
+        if (this.enemyList.length === 0) return null;
+
+        const playerNode = this.findPlayer();
+        if (!playerNode) return null;
+
+        const playerPos = playerNode.position;
+        let nearestEnemy: Node | null = null;
+        let minDistSq = Infinity;
+
+        for (const enemy of this.enemyList) {
+            if (!enemy || !enemy.active) continue;
+
+            const enemyPos = enemy.position;
+            const dx = playerPos.x - enemyPos.x;
+            const dy = playerPos.y - enemyPos.y;
+            const distSq = dx * dx + dy * dy;
+
+            if (distSq < minDistSq) {
+                minDistSq = distSq;
+                nearestEnemy = enemy;
+            }
+        }
+
+        return nearestEnemy;
     }
 
     getRandomEdgePosition(width: number, height: number): { x: number, y: number } {
