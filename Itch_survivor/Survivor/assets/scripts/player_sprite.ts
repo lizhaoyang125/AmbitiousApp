@@ -1,6 +1,11 @@
 import { _decorator, Component, input, Input, Vec2 } from 'cc';
 import { enemy_sprite } from './enemy_sprite';
+import { exp_gem } from './exp_gem';
+import { game_manager } from './game_manager';
 const { ccclass, property } = _decorator;
+
+// 玩家单例（供其他脚本访问）
+let _playerSprite: player_sprite | null = null;
 
 @ccclass('player_sprite')
 export class player_sprite extends Component {
@@ -13,10 +18,28 @@ export class player_sprite extends Component {
     @property
     collisionRadius: number = 30; // 碰撞半径
 
+    @property
+    magnetRadius: number = 100; // 吸铁石半径
+
+    // ============ 玩家属性（供技能修改） ============
+    @property
+    damage: number = 1; // 攻击力
+
+    @property
+    pierce: number = 0; // 穿透数量
+
+    @property
+    expMultiplier: number = 1; // 经验获取倍率
+
+    // 静态实例（供其他脚本访问）
+    static instance: player_sprite | null = null;
+
     private _keys: Set<string> = new Set();
     private _isGameOver: boolean = false;
 
     start() {
+        // 保存静态实例
+        _playerSprite = player_sprite.instance = this;
         // 如果设置了在屏幕中央开始 (1280x720)
         if (this.startAtCenter) {
             this.node.setPosition(640, 360, 0); // 屏幕中央
@@ -45,6 +68,9 @@ export class player_sprite extends Component {
     }
 
     update(deltaTime: number) {
+        // 如果暂停了，跳过
+        if (game_manager.instance?.isPaused) return;
+
         // 如果已经Game Over，不再检测碰撞
         if (this._isGameOver) return;
 
@@ -81,6 +107,34 @@ export class player_sprite extends Component {
 
         // 检测碰撞
         this.checkCollision();
+
+        // 检测经验球（吸铁石效果）
+        this.checkExpGems();
+    }
+
+    // 吸铁石效果：检测经验球
+    checkExpGems() {
+        const canvas = this.node.scene.getChildByName('Canvas');
+        const gameNode = canvas?.getChildByName('GameNode');
+        if (!gameNode) return;
+
+        const playerPos = this.node.position;
+
+        for (const child of gameNode.children) {
+            // 检查是否是经验球
+            const gemComp = child.getComponent(exp_gem);
+            if (!gemComp) continue;
+
+            const gemPos = child.position;
+            const dx = playerPos.x - gemPos.x;
+            const dy = playerPos.y - gemPos.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            // 距离小于100，触发吸入
+            if (dist < this.magnetRadius) {
+                gemComp.attractToPlayer({ x: playerPos.x, y: playerPos.y });
+            }
+        }
     }
 
     checkCollision() {

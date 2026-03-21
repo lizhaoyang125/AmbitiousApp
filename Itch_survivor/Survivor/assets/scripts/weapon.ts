@@ -1,6 +1,8 @@
 import { _decorator, Component, Prefab, instantiate, Vec3 } from 'cc';
 import { enemy_spawner } from './enemy_spawner';
 import { bullet_sprite } from './bullet_sprite';
+import { game_manager } from './game_manager';
+import { player_sprite } from './player_sprite';
 const { ccclass, property } = _decorator;
 
 @ccclass('weapon')
@@ -33,12 +35,26 @@ export class weapon extends Component {
     }
 
     update(deltaTime: number) {
+        // 如果暂停了，跳过
+        if (game_manager.instance?.isPaused) return;
+
+        // 计算实际发射间隔（考虑射速加成）
+        const actualFireInterval = this.getActualFireInterval();
         this._timer += deltaTime;
 
-        if (this._timer >= this.fireInterval) {
+        if (this._timer >= actualFireInterval) {
             this._timer = 0;
             this.fire();
         }
+    }
+
+    // 获取实际发射间隔（考虑玩家射速加成）
+    getActualFireInterval(): number {
+        if (player_sprite.instance) {
+            const fireRateMult = (player_sprite.instance as any).fireRateMultiplier || 1;
+            return this.fireInterval * fireRateMult;
+        }
+        return this.fireInterval;
     }
 
     fire() {
@@ -77,11 +93,18 @@ export class weapon extends Component {
         const normX = dirX / length;
         const normY = dirY / length;
 
+        // 从玩家单例读取属性
+        const player = player_sprite.instance;
+        const damage = player ? player.damage : 1;
+        const pierce = player ? player.pierce : 0;
+
         // 设置子弹属性
         const bulletScript = bullet.getComponent(bullet_sprite);
         if (bulletScript) {
             bulletScript.direction = new Vec3(normX, normY, 0);
             bulletScript.speed = this.bulletSpeed;
+            bulletScript.damage = damage;
+            bulletScript.pierce = pierce;
         }
 
         // 添加到场景

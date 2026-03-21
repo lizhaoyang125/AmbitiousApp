@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "BulletSprite",
+    "_name": "ExpGem",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "BulletSprite",
+    "_name": "ExpGem",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -76,8 +76,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 25,
-      "height": 25
+      "width": 26,
+      "height": 26
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -88,7 +88,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "926IMJnmxGoI+FlT7/PN6K"
+    "fileId": "46wKPQcslB5ZAJ6FGpVbG2"
   },
   {
     "__type__": "cc.Sprite",
@@ -113,12 +113,12 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "caf6c452-31e1-4dc6-91a8-dcce1443d02a@f9941",
+      "__uuid__": "f12a23c4-b924-4322-a260-3d982428f1e8@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
     "_fillType": 0,
-    "_sizeMode": 0,
+    "_sizeMode": 1,
     "_fillCenter": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -133,10 +133,10 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "8fc8q8vKxF6rmKk48lLzTo"
+    "fileId": "a5N5LjR+ZNSZNCLBHUElij"
   },
   {
-    "__type__": "bd7c7WbFr9IH5XqU4L9pmGO",
+    "__type__": "7a01aIl7Q1H9IUrRaQ5dQ9i",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -147,16 +147,13 @@
     "__prefab": {
       "__id__": 7
     },
-    "collisionRadius": 20,
-    "hitEffectPrefab": {
-      "__uuid__": "3b0a2836-8afc-4607-a874-41ba16dd37b9",
-      "__expectedType__": "cc.Prefab"
-    },
+    "expValue": 1,
+    "moveSpeed": 200,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "73hPA32fFBCpknJ+sGvQHg"
+    "fileId": "d2zQhSmr5Pb5qZCgcd5iZd"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -166,7 +163,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "11mj9acXFDioZIREl5luTe",
+    "fileId": "7a2Owda5hACqOvKmieX6tu",
     "targetOverrides": null
   }
 ]
