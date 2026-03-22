@@ -1,4 +1,4 @@
-import { _decorator, Component, Vec3, Prefab, instantiate } from 'cc';
+import { _decorator, Component, Vec3, Prefab, instantiate, AudioSource, Node } from 'cc';
 import { enemy_spawner } from './enemy_spawner';
 import { enemy_sprite } from './enemy_sprite';
 import { game_manager } from './game_manager';
@@ -21,6 +21,9 @@ export class bullet_sprite extends Component {
 
     @property(Prefab)
     hitEffectPrefab: Prefab = null; // 击中特效预制体
+
+    @property(AudioSource)
+    hitAudio: AudioSource = null; // 击中音效
 
     // 已击中的敌人列表（用于穿透）
     private _hitEnemies: Set<string> = new Set();
@@ -59,6 +62,9 @@ export class bullet_sprite extends Component {
 
     // 生成击中特效
     spawnHitEffect(position: Vec3) {
+        // 播放击中音效（不在子弹节点上播放，避免子弹销毁时音效中断）
+        this.playHitAudio();
+
         if (!this.hitEffectPrefab) return;
 
         const effect = instantiate(this.hitEffectPrefab);
@@ -66,6 +72,33 @@ export class bullet_sprite extends Component {
         const gameNode = canvas?.getChildByName('GameNode');
         effect.parent = gameNode || this.node.parent;
         effect.setPosition(position.x, position.y, 0);
+    }
+
+    // 播放击中音效（在 GameNode 上播放，避免子弹销毁时音效中断）
+    playHitAudio() {
+        if (!this.hitAudio) return;
+
+        const canvas = this.node.scene.getChildByName('Canvas');
+        const gameNode = canvas?.getChildByName('GameNode');
+        if (!gameNode) return;
+
+        // 创建一个独立的节点播放音效
+        const audioNode = new Node('HitAudio');
+        audioNode.parent = gameNode;
+        audioNode.setPosition(this.node.position);
+
+        // 添加 AudioSource 组件
+        const audioSource = audioNode.addComponent(AudioSource);
+        audioSource.clip = this.hitAudio.clip;
+        audioSource.volume = this.hitAudio.volume;
+        audioSource.play();
+
+        // 0.5秒后销毁节点（假设音效最长0.5秒）
+        setTimeout(() => {
+            if (audioNode && audioNode.isValid) {
+                audioNode.destroy();
+            }
+        }, 500);
     }
 
     checkCollision() {
@@ -93,8 +126,9 @@ export class bullet_sprite extends Component {
                     enemyComp.takeDamage(this.damage);
                 }
 
-                // 生成特效
+                // 生成特效和音效
                 this.spawnHitEffect(enemyPos);
+                this.playHitAudio();
 
                 // 记录已击中的敌人
                 this._hitEnemies.add(enemy.uuid);

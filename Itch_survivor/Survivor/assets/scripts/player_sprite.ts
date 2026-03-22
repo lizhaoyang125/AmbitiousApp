@@ -1,4 +1,4 @@
-import { _decorator, Component, input, Input, Vec2 } from 'cc';
+import { _decorator, Component, input, Input, Vec2, AudioSource } from 'cc';
 import { enemy_sprite } from './enemy_sprite';
 import { exp_gem } from './exp_gem';
 import { game_manager } from './game_manager';
@@ -30,6 +30,9 @@ export class player_sprite extends Component {
 
     @property
     expMultiplier: number = 1; // 经验获取倍率
+
+    @property(AudioSource)
+    gameOverAudio: AudioSource = null; // Game Over 音效
 
     // 静态实例（供其他脚本访问）
     static instance: player_sprite | null = null;
@@ -162,6 +165,10 @@ export class player_sprite extends Component {
             // 碰撞检测
             if (dist < this.collisionRadius) {
                 console.log('Game Over');
+                // 播放 Game Over 音效
+                if (this.gameOverAudio) {
+                    this.gameOverAudio.play();
+                }
                 this._isGameOver = true;
                 // 回收敌人到对象池，而不是销毁
                 enemyComp.recycle();

@@ -1,4 +1,4 @@
-import { _decorator, Component, Prefab, instantiate, Vec3 } from 'cc';
+import { _decorator, Component, Prefab, instantiate, Vec3, AudioSource } from 'cc';
 import { enemy_spawner } from './enemy_spawner';
 import { bullet_sprite } from './bullet_sprite';
 import { game_manager } from './game_manager';
@@ -15,6 +15,9 @@ export class weapon extends Component {
 
     @property
     bulletSpeed: number = 400; // 子弹速度
+
+    @property(AudioSource)
+    shootAudio: AudioSource = null; // 射击音效
 
     private _timer: number = 0;
     private _spawner: enemy_spawner | null = null;
@@ -73,6 +76,11 @@ export class weapon extends Component {
         // 寻找最近敌人
         const nearestEnemy = this._spawner.getNearestEnemy();
         if (!nearestEnemy) return; // 没有敌人，不发射
+
+        // 播放射击音效
+        if (this.shootAudio) {
+            this.shootAudio.play();
+        }
 
         // 创建子弹
         const bullet = instantiate(this.bulletPrefab);
