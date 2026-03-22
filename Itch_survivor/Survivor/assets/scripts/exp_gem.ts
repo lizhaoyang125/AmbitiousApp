@@ -1,6 +1,5 @@
 import { _decorator, Component, Sprite, Color } from 'cc';
 import { game_manager } from './game_manager';
-import { player_sprite } from './player_sprite';
 const { ccclass, property } = _decorator;
 
 @ccclass('exp_gem')
@@ -70,18 +69,13 @@ export class exp_gem extends Component {
 
     // 被玩家收集
     collect() {
-        // 计算实际经验值（考虑经验倍率）
-        let actualExp = this.expValue;
-        if (player_sprite.instance) {
-            actualExp = Math.floor(this.expValue * player_sprite.instance.expMultiplier);
-        }
-
+        // 经验球的值已经在生成时应用了倍率，直接使用
         // 通知game_manager增加经验
         const canvas = this.node.scene.getChildByName('Canvas');
         const gameNode = canvas?.getChildByName('GameNode');
         const gameManager = gameNode?.getComponent('game_manager');
         if (gameManager) {
-            gameManager.addExp(actualExp);
+            gameManager.addExp(this.expValue);
         }
 
         // 销毁经验球

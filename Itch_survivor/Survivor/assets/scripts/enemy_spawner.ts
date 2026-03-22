@@ -16,6 +16,9 @@ export class enemy_spawner extends Component {
     @property
     maxEnemies: number = 20; // 最大敌人数量
 
+    @property
+    minSpawnDistance: number = 300; // 最小生成距离（离玩家）
+
     // 活着的敌人列表
     enemyList: Node[] = [];
 
@@ -117,8 +120,16 @@ export class enemy_spawner extends Component {
         const width = designSize.width;
         const height = designSize.height;
 
-        // 在屏幕边缘随机生成位置
-        const pos = this.getRandomEdgePosition(width, height);
+        // 在屏幕边缘随机生成位置（确保离玩家足够远）
+        let pos = this.getRandomEdgePosition(width, height);
+
+        // 检查距离，如果不满足条件，重新生成（最多尝试10次）
+        let attempts = 0;
+        while (this._player && this.getDistance(pos, this._player.position) < this.minSpawnDistance) {
+            pos = this.getRandomEdgePosition(width, height);
+            attempts++;
+            if (attempts >= 10) break;
+        }
 
         // 从对象池获取敌人
         const enemy = this.getEnemyFromPool();
@@ -192,5 +203,12 @@ export class enemy_spawner extends Component {
         }
 
         return { x, y };
+    }
+
+    // 计算两点之间的距离
+    getDistance(pos1: { x: number, y: number }, pos2: { x: number, y: number }): number {
+        const dx = pos1.x - pos2.x;
+        const dy = pos1.y - pos2.y;
+        return Math.sqrt(dx * dx + dy * dy);
     }
 }

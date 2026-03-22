@@ -58,7 +58,7 @@ export const SKILL_POOL: Skill[] = [
         desc: "经验获取+1",
         action: () => {
             if (player_sprite.instance) {
-                player_sprite.instance.expMultiplier += 0.5;
+                player_sprite.instance.expMultiplier += 1;
                 console.log('经验获取+1! 当前倍率:', player_sprite.instance.expMultiplier);
             }
         }
@@ -142,6 +142,12 @@ export class level_up_panel extends Component {
 
         // 显示面板
         this.node.active = true;
+
+        // 将面板层级移到最前面，避免被Player挡住
+        const parent = this.node.parent;
+        if (parent) {
+            this.node.setSiblingIndex(parent.children.length - 1);
+        }
     }
 
     // 随机获取技能
@@ -209,6 +215,12 @@ export class level_up_panel extends Component {
 
         // 显示面板
         this.node.active = true;
+
+        // 将面板层级移到最前面，避免被Player挡住
+        const parent = this.node.parent;
+        if (parent) {
+            this.node.setSiblingIndex(parent.children.length - 1);
+        }
     }
 
     // 获取当前显示的技能

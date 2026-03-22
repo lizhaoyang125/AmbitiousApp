@@ -1,5 +1,7 @@
-import { _decorator, Component, Node, Prefab, instantiate, ProgressBar, director } from 'cc';
+import { _decorator, Component, Node, Prefab, instantiate, ProgressBar, director, AudioSource } from 'cc';
 import { level_up_panel, SKILL_POOL, Skill } from './level_up_panel';
+import { player_sprite } from './player_sprite';
+import { exp_gem } from './exp_gem';
 const { ccclass, property } = _decorator;
 
 // 全局游戏管理器实例
@@ -20,6 +22,10 @@ export class game_manager extends Component {
     // 升级面板
     @property(level_up_panel)
     levelUpPanel: level_up_panel = null;
+
+    // 背景音乐
+    @property(AudioSource)
+    bgmAudio: AudioSource = null;
 
     // 当前经验值
     currentExp: number = 0;
@@ -52,7 +58,20 @@ export class game_manager extends Component {
             this.findLevelUpPanel();
         }
         this.updateExpBar();
+
+        // 播放背景音乐
+        this.playBGM();
+
         console.log(`游戏开始! 等级: ${this.currentLevel}, 经验: ${this.currentExp}/${this.expToLevelUp}`);
+    }
+
+    // 播放背景音乐
+    playBGM() {
+        if (this.bgmAudio) {
+            this.bgmAudio.loop = true; // 循环播放
+            this.bgmAudio.play();
+            console.log('背景音乐开始播放');
+        }
     }
 
     // 查找升级面板
@@ -205,6 +224,13 @@ export class game_manager extends Component {
         const gameNode = canvas?.getChildByName('GameNode');
         gem.parent = gameNode || this.node.parent;
         gem.setPosition(position.x, position.y, 0);
+
+        // 根据玩家经验倍率设置经验球的值
+        const expGemComp = gem.getComponent(exp_gem);
+        if (expGemComp && player_sprite.instance) {
+            const baseExp = 1;
+            expGemComp.expValue = Math.floor(baseExp * player_sprite.instance.expMultiplier);
+        }
 
         this.expGemList.push(gem);
     }
