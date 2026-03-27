@@ -1,0 +1,19 @@
+
+*.meta
+
+library/*
+temp/*
+
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+build/*
+
+# Node.js
+node_modules/

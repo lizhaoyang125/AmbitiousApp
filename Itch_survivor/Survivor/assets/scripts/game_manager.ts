@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, instantiate, ProgressBar, director, AudioSource } from 'cc';
+import { _decorator, Component, Node, Prefab, instantiate, ProgressBar, director, AudioSource, Label } from 'cc';
 import { level_up_panel, SKILL_POOL, Skill } from './level_up_panel';
 import { player_sprite } from './player_sprite';
 import { exp_gem } from './exp_gem';
@@ -18,6 +18,23 @@ export class game_manager extends Component {
     // 经验条 - 可在编辑器中拖入，或自动查找
     @property(ProgressBar)
     expBar: ProgressBar = null;
+    @property(Node)
+    gameOverNode: Node = null; // 游戏结束界面
+
+    @property(Label)
+    gameTimeLabel: Label = null; // 游戏时间 Label
+
+    @property(Label)
+    killCountLabel: Label = null; // 击杀数 Label
+
+    @property
+    isGameOver: boolean = false; // 游戏是否结束
+
+    // 游戏时间（秒）
+    gameTime: number = 0;
+
+    // 击杀数
+    killCount: number = 0;
 
     // 升级面板
     @property(level_up_panel)
@@ -57,6 +74,12 @@ export class game_manager extends Component {
         if (!this.levelUpPanel) {
             this.findLevelUpPanel();
         }
+
+        // 初始化游戏结束界面（默认隐藏）
+        if (this.gameOverNode) {
+            this.gameOverNode.active = false;
+        }
+
         this.updateExpBar();
 
         // 播放背景音乐
@@ -72,6 +95,85 @@ export class game_manager extends Component {
             this.bgmAudio.play();
             console.log('背景音乐开始播放');
         }
+    }
+
+    // 游戏结束
+    onGameOver() {
+        if (this.isGameOver) return;
+        this.isGameOver = true;
+        this.pauseGame();
+
+        // 更新结算面板显示
+        this.updateGameOverUI();
+
+        // 显示游戏结束界面
+        if (this.gameOverNode) {
+            this.gameOverNode.active = true;
+        }
+
+        console.log('游戏结束!');
+    }
+
+    // 更新游戏结束界面
+    updateGameOverUI() {
+        if (!this.gameOverNode) return;
+
+        // 格式化时间（分:秒）
+        const minutes = Math.floor(this.gameTime / 60);
+        const seconds = Math.floor(this.gameTime % 60);
+        const secondsStr = seconds < 10 ? '0' + seconds : seconds.toString();
+        const timeStr = `${minutes}:${secondsStr}`;
+
+        // 更新 Label 显示
+        if (this.gameTimeLabel) {
+            this.gameTimeLabel.string = `存活时间: ${timeStr}`;
+        }
+        if (this.killCountLabel) {
+            this.killCountLabel.string = `击杀数: ${this.killCount}`;
+        }
+    }
+
+    // 增加击杀数
+    addKillCount(count: number = 1) {
+        this.killCount += count;
+    }
+
+    // 重新开始游戏
+    restartGame() {
+        // 隐藏游戏结束界面
+        if (this.gameOverNode) {
+            this.gameOverNode.active = false;
+        }
+
+        // 重置游戏状态
+        this.isGameOver = false;
+        this.currentExp = 0;
+        this.currentLevel = 1;
+        this.expToLevelUp = 10;
+        this._isLevelingUp = false;
+        this.gameTime = 0;
+        this.killCount = 0;
+
+        // 重置玩家状态
+        if (player_sprite.instance) {
+            player_sprite.instance.resetPlayer();
+        }
+
+        // 清空经验球
+        for (const gem of this.expGemList) {
+            if (gem && gem.isValid) {
+                gem.destroy();
+            }
+        }
+        this.expGemList = [];
+
+        // 更新经验条
+        this.updateExpBar();
+
+        // 恢复游戏
+        this.resumeGame();
+
+        console.log('游戏重新开始!');
     }
 
     // 查找升级面板
@@ -244,6 +346,12 @@ export class game_manager extends Component {
     }
 
     update(_deltaTime: number) {
+        // 如果游戏暂停或结束，不计时
+        if (this.isPaused || this.isGameOver) return;
+
+        // 计时
+        this.gameTime += _deltaTime;
+
         // 清理已销毁的经验球
         for (let i = this.expGemList.length - 1; i >= 0; i--) {
             const gem = this.expGemList[i];

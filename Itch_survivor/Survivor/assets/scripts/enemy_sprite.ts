@@ -75,6 +75,9 @@ export class enemy_sprite extends Component {
 
     // 死亡处理
     onDead() {
+        // 增加击杀数
+        game_manager.instance?.addKillCount(1);
+
         // 掉落经验球
         const canvas = this.node.scene.getChildByName('Canvas');
         if (canvas) {

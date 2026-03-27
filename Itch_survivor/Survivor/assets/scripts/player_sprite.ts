@@ -1,4 +1,4 @@
-import { _decorator, Component, input, Input, Vec2, AudioSource } from 'cc';
+import { _decorator, Component, input, Input, Vec2, AudioSource, ProgressBar, Label } from 'cc';
 import { enemy_sprite } from './enemy_sprite';
 import { exp_gem } from './exp_gem';
 import { game_manager } from './game_manager';
@@ -23,6 +23,12 @@ export class player_sprite extends Component {
 
     // ============ 玩家属性（供技能修改） ============
     @property
+    maxHp: number = 10; // 最大生命值
+
+    @property
+    currentHp: number = 10; // 当前生命值
+
+    @property
     damage: number = 1; // 攻击力
 
     @property
@@ -34,15 +40,40 @@ export class player_sprite extends Component {
     @property(AudioSource)
     gameOverAudio: AudioSource = null; // Game Over 音效
 
+    @property(ProgressBar)
+    hpBar: ProgressBar = null; // 生命值条
+
+    @property(Label)
+    hpLabel: Label = null; // 生命值数值显示
+
     // 静态实例（供其他脚本访问）
     static instance: player_sprite | null = null;
 
     private _keys: Set<string> = new Set();
     private _isGameOver: boolean = false;
 
+    // 初始值（用于重置）
+    private _initialMaxHp: number = 10;
+    private _initialSpeed: number = 200;
+    private _initialCollisionRadius: number = 30;
+    private _initialMagnetRadius: number = 100;
+    private _initialDamage: number = 1;
+    private _initialPierce: number = 0;
+    private _initialExpMultiplier: number = 1;
+
     start() {
         // 保存静态实例
         _playerSprite = player_sprite.instance = this;
+
+        // 保存初始值（用于重置）
+        this._initialMaxHp = this.maxHp;
+        this._initialSpeed = this.speed;
+        this._initialCollisionRadius = this.collisionRadius;
+        this._initialMagnetRadius = this.magnetRadius;
+        this._initialDamage = this.damage;
+        this._initialPierce = this.pierce;
+        this._initialExpMultiplier = this.expMultiplier;
+
         // 如果设置了在屏幕中央开始 (1280x720)
         if (this.startAtCenter) {
             this.node.setPosition(640, 360, 0); // 屏幕中央
@@ -54,12 +85,41 @@ export class player_sprite extends Component {
         input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         // 监听键盘释放事件
         input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
+
+        // 初始化HP显示
+        this.updateHpBar();
     }
 
     onDestroy() {
         // 移除事件监听
         input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
+    }
+
+    // 重置玩家状态（用于重新开始游戏）
+    resetPlayer() {
+        this._keys.clear();
+        this._isGameOver = false;
+
+        // 重置属性到初始值
+        this.maxHp = this._initialMaxHp;
+        this.currentHp = this._initialMaxHp;
+        this.speed = this._initialSpeed;
+
+        // 更新HP显示
+        this.updateHpBar();
+        this.collisionRadius = this._initialCollisionRadius;
+        this.magnetRadius = this._initialMagnetRadius;
+        this.damage = this._initialDamage;
+        this.pierce = this._initialPierce;
+        this.expMultiplier = this._initialExpMultiplier;
+
+        // 重置位置到屏幕中央
+        if (this.startAtCenter) {
+            this.node.setPosition(640, 360, 0);
+        } else {
+            this.node.setPosition(0, 0, 0);
+        }
     }
 
     onKeyDown(event: any) {
@@ -140,6 +200,35 @@ export class player_sprite extends Component {
         }
     }
 
+    // 玩家受伤
+    takeDamage(amount: number) {
+        this.currentHp -= amount;
+        this.updateHpBar();
+        console.log(`玩家受伤! 当前HP: ${this.currentHp}/${this.maxHp}`);
+
+        if (this.currentHp <= 0) {
+            this.currentHp = 0;
+            this.updateHpBar();
+            console.log('Game Over');
+            // 播放 Game Over 音效
+            if (this.gameOverAudio) {
+                this.gameOverAudio.play();
+            }
+            this._isGameOver = true;
+            // 调用游戏管理器的游戏结束
+            game_manager.instance?.onGameOver();
+        }
+    }
+
+    // 更新生命条显示
+    updateHpBar() {
+        if (!this.hpBar) return;
+        this.hpBar.progress = this.maxHp > 0 ? this.currentHp / this.maxHp : 0;
+        if (this.hpLabel) {
+            this.hpLabel.string = `${this.currentHp}/${this.maxHp}`;
+        }
+    }
+
     checkCollision() {
         // 从GameNode下查找所有敌人
         const canvas = this.node.scene.getChildByName('Canvas');
@@ -164,13 +253,9 @@ export class player_sprite extends Component {
 
             // 碰撞检测
             if (dist < this.collisionRadius) {
-                console.log('Game Over');
-                // 播放 Game Over 音效
-                if (this.gameOverAudio) {
-                    this.gameOverAudio.play();
-                }
-                this._isGameOver = true;
-                // 回收敌人到对象池，而不是销毁
+                // 玩家受伤
+                this.takeDamage(1);
+                // 回收敌人到对象池
                 enemyComp.recycle();
                 return;
             }
