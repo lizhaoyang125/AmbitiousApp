@@ -32,5 +32,125 @@
   "rect-snap-configs": {
     "enableSnapping": true,
     "snapThreshold": 4
+  },
+  "camera-infos": {
+    "b3b6ffd9-986c-409e-a500-f2cc3b867d9a": {
+      "position": {
+        "x": 639.9999999999998,
+        "y": 360,
+        "z": 5000
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "viewCenter": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "contentRect": {
+        "x": 0,
+        "y": 5.0577436455489087e-14,
+        "width": 359.64444444444445,
+        "height": 202.3
+      },
+      "scale": 0.28097222222222223
+    },
+    "9e510faa-ddd2-4fa5-9529-6b374cd75273": {
+      "position": {
+        "x": 693.0466666666666,
+        "y": 428.62,
+        "z": 5000
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "viewCenter": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "contentRect": {
+        "x": 0,
+        "y": 78.125,
+        "width": 1050,
+        "height": 700
+      },
+      "scale": 0.7
+    },
+    "8faf9b57-2e1f-48b1-94b6-c90a6055cba0": {
+      "position": {
+        "x": 801.7525742385039,
+        "y": 365.0380714345051,
+        "z": 5000
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "viewCenter": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "contentRect": {
+        "x": -220.50777549180847,
+        "y": 83.94079163235452,
+        "width": 735.7,
+        "height": 202.3
+      },
+      "scale": 0.3598398393296232
+    }
+  },
+  "camera-uuids": [
+    "b3b6ffd9-986c-409e-a500-f2cc3b867d9a",
+    "9e510faa-ddd2-4fa5-9529-6b374cd75273",
+    "8faf9b57-2e1f-48b1-94b6-c90a6055cba0"
+  ],
+  "camera": {
+    "color": [
+      48,
+      48,
+      48,
+      255
+    ],
+    "fov": 45,
+    "far": 10000,
+    "near": 0.01,
+    "wheelSpeed": 0.01,
+    "wanderSpeed": 10,
+    "enableAcceleration": true,
+    "size": "__default_design__",
+    "far2D": 10000,
+    "near2D": 1,
+    "wheelSpeed2D": 6,
+    "iso": 0,
+    "aperture": 19,
+    "shutter": 7
+  },
+  "scene_view": {
+    "isSceneLightOn": true,
+    "output_device": "__default_design__"
+  },
+  "float-window": {
+    "position": {
+      "cc": {
+        "Camera": {
+          "dock": false,
+          "top": null,
+          "bottom": 10,
+          "left": null,
+          "right": 10
+        }
+      }
+    }
   }
 }
