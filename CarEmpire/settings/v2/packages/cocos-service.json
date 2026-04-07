@@ -8,13 +8,13 @@
   "appConfigMaps": [
     {
       "app_id": "UNKNOW",
-      "config_id": "bf60ed"
+      "config_id": "bb906c"
     }
   ],
   "configs": [
     {
       "app_id": "UNKNOW",
-      "config_id": "bf60ed",
+      "config_id": "bb906c",
       "config_name": "Default",
       "config_remarks": "",
       "services": []
