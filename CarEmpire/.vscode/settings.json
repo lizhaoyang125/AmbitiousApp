@@ -1,5 +1,15 @@
 {
   "files.exclude": {
     "**/*.meta": true
+  },
+  "mcpServers": {
+    "MiniMax": {
+      "command": "C:\\Users\\admin\\.local\\bin\\uvx.exe",
+      "args": ["minimax-coding-plan-mcp"],
+      "env": {
+        "MINIMAX_API_KEY": "sk-cp-q-qMDnpfMXJQYF-Jz8nvS5l0OpPLhXjMuLtu1GqSVvsbjc5BWoqJ_KDLEO8YJInXZx5t9pVsG1nHR6bZOyEpHHFc_R9EICSmeQmlhekJpWyiIcXIW48FsW8",
+        "MINIMAX_API_HOST": "https://api.minimaxi.com"
+      }
+    }
   }
 }

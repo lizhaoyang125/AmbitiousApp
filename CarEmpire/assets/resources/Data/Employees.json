@@ -1,0 +1,22 @@
+[
+    {
+        "id": "emp_001",
+        "name": "张技术",
+        "avatar": "textures/avatars/man_1",
+        "level": "A",
+        "ability": { "design": 20, "engine": 80, "software": 30 },
+        "salary": 5000,
+        "energy": 100,
+        "maxEnergy": 100
+    },
+    {
+        "id": "emp_002",
+        "name": "艾达·代码",
+        "avatar": "textures/avatars/woman_1",
+        "level": "S",
+        "ability": { "design": 40, "engine": 20, "software": 95 },
+        "salary": 12000,
+        "energy": 100,
+        "maxEnergy": 120
+    }
+]

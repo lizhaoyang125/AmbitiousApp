@@ -1,0 +1,11 @@
+[
+    {
+        "id": "part_v6_engine",
+        "name": "V6 双涡轮增压引擎",
+        "category": "Engine",
+        "cost": 3500,
+        "stats": { "perf": 70, "lux": 10, "tech": 20 },
+        "unlockTechId": "tech_internal_combustion_2",
+        "desc": "澎湃动力，油老虎的快乐。"
+    }
+]

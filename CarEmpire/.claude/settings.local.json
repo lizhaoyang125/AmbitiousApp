@@ -2,7 +2,26 @@
   "permissions": {
     "allow": [
       "Skill(update-config)",
-      "Skill(update-config:*)"
+      "Skill(update-config:*)",
+      "Bash(code --list-extensions)",
+      "WebFetch(domain:platform.minimaxi.com)",
+      "Bash(python generate_puppy.py)",
+      "Bash(pip install *)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -m pip install requests -q)",
+      "Bash(pip show *)",
+      "Bash(/c/ProgramData/Anaconda3/python.exe generate_puppy.py)",
+      "Bash(powershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\")",
+      "Bash(\"C:/Users/admin/.local/bin/uv.exe\" run *)",
+      "Bash(claude mcp *)",
+      "Bash(powershell -Command \"claude mcp add -s user MiniMax --env MINIMAX_API_KEY=sk-cp-q-qMDnpfMXJQYF-Jz8nvS5l0OpPLhXjMuLtu1GqSVvsbjc5BWoqJ_KDLEO8YJInXZx5t9pVsG1nHR6bZOyEpHHFc_R9EICSmeQmlhekJpWyiIcXIW48FsW8 --env MINIMAX_API_HOST=https://api.minimaxi.com -- uvx minimax-coding-plan-mcp -y\")",
+      "Bash(where claude *)",
+      "Bash(powershell -Command \"\\(Get-Command uvx\\).Source\")",
+      "Bash(powershell -Command \"& 'C:\\\\Users\\\\admin\\\\.local\\\\bin\\\\uvx.exe' --version\")",
+      "Bash(powershell -Command \"& 'C:\\\\Users\\\\admin\\\\.local\\\\bin\\\\uvx.exe' minimax-coding-plan-mcp --help\")",
+      "Bash(powershell -Command '$env:MINIMAX_API_KEY='\\\\''sk-cp-q-qMDnpfMXJQYF-Jz8nvS5l0OpPLhXjMuLtu1GqSVvsbjc5BWoqJ_KDLEO8YJInXZx5t9pVsG1nHR6bZOyEpHHFc_R9EICSmeQmlhekJpWyiIcXIW48FsW8'\\\\''; $env:MINIMAX_API_HOST='\\\\''https://api.minimaxi.com'\\\\''; & '\\\\''C:\\\\Users\\\\admin\\\\.local\\\\bin\\\\uvx.exe'\\\\'' minimax-coding-plan-mcp')",
+      "WebFetch(domain:minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com)",
+      "mcp__mcpServers__understand_image"
     ]
   }
 }
