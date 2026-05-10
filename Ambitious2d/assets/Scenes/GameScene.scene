@@ -176,7 +176,7 @@
     "_priority": 0,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 465.99999999999994,
+    "_orthoHeight": 466,
     "_near": 0,
     "_far": 2000,
     "_color": {
@@ -693,7 +693,7 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.085836909871247,
+    "_actualFontSize": 21.11587982832618,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1030,7 +1030,7 @@
     "_string": "扩建",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.085836909871247,
+    "_actualFontSize": 21.11587982832618,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1354,7 +1354,7 @@
     "_string": "上一家店",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.085836909871247,
+    "_actualFontSize": 21.11587982832618,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1678,7 +1678,7 @@
     "_string": "上一家店",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.085836909871247,
+    "_actualFontSize": 21.11587982832618,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -2002,7 +2002,7 @@
     "_string": "回家",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.085836909871247,
+    "_actualFontSize": 21.11587982832618,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -2326,7 +2326,7 @@
     "_string": "加速",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.085836909871247,
+    "_actualFontSize": 21.11587982832618,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -2652,7 +2652,7 @@
     "_string": "减速",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.085836909871247,
+    "_actualFontSize": 21.11587982832618,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -2978,7 +2978,7 @@
     "_string": "去市场",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.085836909871247,
+    "_actualFontSize": 21.11587982832618,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -3224,7 +3224,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 79.97669865534856,
+      "width": 79.97769698476404,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -3257,7 +3257,7 @@
     "_string": "时间xxxx",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.085836909871247,
+    "_actualFontSize": 21.11587982832618,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -3356,7 +3356,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 99.97087331918569,
+      "width": 99.97212845717019,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -3389,7 +3389,7 @@
     "_string": "余额：xxxx",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.085836909871247,
+    "_actualFontSize": 21.11587982832618,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -3488,7 +3488,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 42.243517296945946,
+      "width": 42.24406352469592,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -3521,7 +3521,7 @@
     "_string": "label",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.085836909871247,
+    "_actualFontSize": 21.11587982832618,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -3657,7 +3657,7 @@
         "__id__": 115
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 292
@@ -12172,7 +12172,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 430,
-      "height": 931.9999999999998
+      "height": 932
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

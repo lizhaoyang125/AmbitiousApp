@@ -11,6 +11,8 @@ export interface IEmployee {
         design: number;  // 设计能力（影响外观评分）
         engine: number;  // 工程能力（影响性能评分）
         software: number; // 软件能力（影响智能评分）
+        marketing: number; // 营销能力（影响销售评分）
+        
     };
     salary: number;      // 月薪
     energy: number;      // 当前体力
