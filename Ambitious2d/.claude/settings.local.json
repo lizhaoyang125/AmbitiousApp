@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"D:\\\\github_worspace\\\\AmbitiousApp\\\\Ambitious2d\\\\.claude\\\\skills\\\\game_designer\")"
+    ],
+    "additionalDirectories": [
+      "D:\\github_worspace\\AmbitiousApp\\Ambitious2d\\.claude\\skills"
+    ]
+  }
+}

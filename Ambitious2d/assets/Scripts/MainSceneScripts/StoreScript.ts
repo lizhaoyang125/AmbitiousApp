@@ -2,6 +2,7 @@ import { _decorator, Component, Label, Node, Prefab, instantiate, Vec3 ,Sprite} 
 import { ShelveScript } from './ShelveScript';
 import { TopManager } from '../TopManager';
 import { CustomerScript } from './CustomerScript';
+import { HomeNodeScript } from './HomeNodeScript';
 const { ccclass, property } = _decorator;
 
 @ccclass('StoreScript')
@@ -61,20 +62,34 @@ export class StoreScript extends Component {
         const shelveData = TopManager.Instance.StoreShelveDicts[this.StoreName];
         console.log("货架数据:", shelveData);
 
-        if (shelveData) {
-            const shelveKeys = Object.keys(shelveData);
-            console.log("货架数量:", shelveKeys.length);
+        // 如果没有货架数据，创建一个默认的两个空货架
+        if (!shelveData || Object.keys(shelveData).length === 0) {
+            console.warn("没有找到货架数据，为商店创建默认货架:", this.StoreName);
+            TopManager.Instance.StoreShelveDicts[this.StoreName] = {
+                1: { GoodsType: "空", number: 0 },
+                2: { GoodsType: "空", number: 0 }
+            };
+            TopManager.Instance.localSave("shelve");
+            // 重新获取数据
+            const newShelveData = TopManager.Instance.StoreShelveDicts[this.StoreName];
+            this.createShelvesFromData(newShelveData);
+            return;
+        }
 
-            for (let index = 0; index < shelveKeys.length; index++) {
-                const shelveId = parseInt(shelveKeys[index]);
-                this.createShelvePrefab(100 * ((index % 2) * 2 - 1), 150 - 100 * (index >> 1), shelveId);
-            }
+        this.createShelvesFromData(shelveData);
+    }
 
-            if (shelveKeys.length > 0) {
-                this.newCustomerCome(shelveKeys.length, 1);
-            }
-        } else {
-            console.error("没有找到货架数据:", this.StoreName);
+    createShelvesFromData(shelveData: any) {
+        const shelveKeys = Object.keys(shelveData);
+        console.log("货架数量:", shelveKeys.length);
+
+        for (let index = 0; index < shelveKeys.length; index++) {
+            const shelveId = parseInt(shelveKeys[index]);
+            this.createShelvePrefab(100 * ((index % 2) * 2 - 1), 150 - 100 * (index >> 1), shelveId);
+        }
+
+        if (shelveKeys.length > 0) {
+            this.newCustomerCome(shelveKeys.length, 1);
         }
     }
 
@@ -116,6 +131,29 @@ export class StoreScript extends Component {
         TopManager.Instance.slowDown();
     }
 
+    // 返回家园（回家按钮）
+    public backHome() {
+        // 隐藏店铺节点
+        this.node.active = false;
+
+        // 查找并显示 HomeNode
+        const canvas = this.node.parent;
+        if (canvas) {
+            const homeNode = canvas.getChildByName("HomeNode");
+            if (homeNode) {
+                homeNode.active = true;
+                // 调用 HomeNodeScript 的更新方法刷新界面
+                const homeScript = homeNode.getComponent(HomeNodeScript);
+                if (homeScript) {
+                    homeScript.updatePlayerInfo();
+                }
+                console.log("返回家园成功");
+            } else {
+                console.error("没有找到 HomeNode");
+            }
+        }
+    }
+
     createShelvePrefab(x: number, y: number, id: number) {
         if (this.ShelvePrefab) {
             const newShelve = instantiate(this.ShelvePrefab);
@@ -155,6 +193,7 @@ export class StoreScript extends Component {
             console.error("CustomerPrefab is not set!");
         }
     }
+    
 
 
 }
