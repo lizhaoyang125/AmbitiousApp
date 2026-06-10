@@ -1,0 +1,11 @@
+{
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": ["flowus"],
+  "permissions": {
+    "allow": [
+      "mcp__mcpServers__web_search",
+      "WebSearch",
+      "Bash(claude mcp *)"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "flowus": {
+      "type": "http",
+      "url": "https://mcp.allflow.cn/message?token=xGFbRG2B4GImCahNUwkSbZ3qXQokRjJGSHUnMQI0"
+    }
+  }
+}
