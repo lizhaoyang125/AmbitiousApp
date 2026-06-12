@@ -46,8 +46,11 @@
     <!-- 顶栏 -->
     <div class="hud__topbar">
       <div class="hud__info">
+        <button class="hud__btn hud__btn--secondary" id="btnBackToMenu">← 返回</button>
         <span class="hud__day" id="dayDisplay">Day 1 - 周一</span>
         <span class="hud__weather" id="homeWeatherDisplay">☀️</span>
+        <span class="hud__player" id="playerNameDisplay"></span>
+        <span class="hud__trait" id="playerTraitDisplay"></span>
       </div>
       <div class="hud__info hud__info--center">
         <span class="hud__money" id="homeMoneyDisplay">$0</span>
@@ -134,7 +137,8 @@
         <span class="hud__weather" id="weatherDisplay">☀️</span>
       </div>
       <div class="hud__info hud__info--center">
-        <!-- 居中的空区域 -->
+        <span class="hud__store-name" id="storeNameDisplay"></span>
+        <span class="hud__store-type" id="storeTypeDisplay"></span>
       </div>
       <div class="hud__info hud__info--right">
         <span class="hud__money" id="storeMoneyDisplay">$0</span>
@@ -147,6 +151,9 @@
         <span class="hud__rating" id="ratingDisplay">⭐ 0.0</span>
       </div>
     </div>
+
+    <!-- 货架区域 -->
+    <div class="store-shelves" id="storeShelves"></div>
 
     <!-- 底部工具栏 -->
     <div class="hud__bottom">
@@ -177,6 +184,70 @@
 
   <!-- Toast -->
   <div class="toast" id="toast"></div>
+
+  <!-- Modal: 开设新店 -->
+  <div class="modal" id="modal-new-store" aria-hidden="true">
+    <div class="modal__panel modal__panel--lg">
+      <h2 class="modal__title">开设新店</h2>
+
+      <!-- Step 1: 选择类型 + 输入店名 -->
+      <div class="modal__step" id="step-type">
+        <p class="modal__desc">选择店铺类型</p>
+        <div class="type-grid" id="type-grid"></div>
+        <div class="store-name-input">
+          <label class="store-name-label" for="input-store-name">店铺名称</label>
+          <input type="text" class="input" id="input-store-name" placeholder="请输入店铺名称" maxlength="10" autocomplete="off">
+        </div>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" id="btn-store-cancel">取消</button>
+          <button class="btn btn--primary" id="btn-type-next" disabled>下一步</button>
+        </div>
+      </div>
+
+      <!-- Step 2: 选择面积 -->
+      <div class="modal__step" id="step-area" hidden>
+        <p class="modal__desc">选择店铺规模</p>
+        <div class="area-grid" id="area-grid"></div>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" id="btn-area-back">上一步</button>
+          <button class="btn btn--primary" id="btn-area-next" disabled>下一步</button>
+        </div>
+      </div>
+
+      <!-- Step 3: 选择位置 -->
+      <div class="modal__step" id="step-location" hidden>
+        <p class="modal__desc">选择店铺位置</p>
+        <div class="location-grid" id="location-grid"></div>
+        <div class="store-preview" id="store-preview"></div>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" id="btn-location-back">上一步</button>
+          <button class="btn btn--primary" id="btn-location-next" disabled>下一步</button>
+        </div>
+      </div>
+
+      <!-- Step 4: 确认开设 -->
+      <div class="modal__step" id="step-confirm" hidden>
+        <p class="modal__desc">确认开设店铺</p>
+        <div class="store-summary" id="store-summary"></div>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" id="btn-confirm-back">上一步</button>
+          <button class="btn btn--primary" id="btn-store-confirm">确认开设</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: 货架商品选择 -->
+  <div class="modal" id="modal-shelf-item" aria-hidden="true">
+    <div class="modal__panel">
+      <h2 class="modal__title">分配商品</h2>
+      <p class="modal__desc">选择商品放入货架</p>
+      <div class="item-grid" id="item-grid"></div>
+      <div class="modal__actions">
+        <button class="btn btn--secondary" id="btn-shelf-item-cancel">取消</button>
+      </div>
+    </div>
+  </div>
 
   <script src="main.js"></script>
 </body>

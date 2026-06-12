@@ -51,6 +51,10 @@ const SaveManager = {
     localStorage.setItem(this.KEY, JSON.stringify(data));
   },
 
+  clear() {
+    localStorage.removeItem(this.KEY);
+  },
+
   formatDate(timestamp) {
     const d = new Date(timestamp);
     const pad = n => String(n).padStart(2, '0');
@@ -207,6 +211,9 @@ function onContinue() {
   const save = SaveManager.load();
   if (save) {
     showToast(`继续游戏\n玩家: ${save.playerName}\n第 ${save.dayReached} 天`);
+    setTimeout(() => {
+      window.location.href = '../MainScene/MainScene.html';
+    }, 800);
   }
 }
 
@@ -336,10 +343,17 @@ function onTraitConfirm() {
     money: selectedTrait.id === 'fallen_aristocrat' ? 50000 : 0
   };
 
+  // 新游戏：先清除旧存档，再保存新存档
+  SaveManager.clear();
   SaveManager.save(saveData);
   closeModal(modalNewGame);
 
   showToast(`游戏开始！\n玩家: ${playerName}\n特性: ${selectedTrait.name}`);
+
+  // 跳转到 MainScene
+  setTimeout(() => {
+    window.location.href = '../MainScene/MainScene.html';
+  }, 800);
 }
 
 // ============================================
