@@ -86,10 +86,24 @@
         </div>
       </div>
       <div class="tab-panel" id="panel-talent">
-        <div class="panel-placeholder">
-          <span class="panel-placeholder__icon">👥</span>
-          <span class="panel-placeholder__title">人才市场</span>
-          <span class="panel-placeholder__hint">建设中，敬请期待...</span>
+        <div class="panel-header">
+          <span class="panel-header__title">👥 人才市场</span>
+          <span class="panel-header__hint">可招募员工到店铺工作</span>
+        </div>
+        <div class="talent-list" id="talent-list"></div>
+        <div class="recruit-tip" id="recruit-tip">
+          <span>💡 每位员工有不同技能，雇佣前请仔细查看</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="panel-employee">
+        <div class="panel-header">
+          <span class="panel-header__title">👔 员工管理</span>
+          <span class="panel-header__count" id="employee-count">在职: 0人</span>
+        </div>
+        <div class="employee-list" id="employee-list"></div>
+        <div class="employee-empty" id="employee-empty">
+          <span class="employee-empty__icon">👔</span>
+          <span class="employee-empty__text">还没有员工，快去人才市场招募吧！</span>
         </div>
       </div>
       <div class="tab-panel" id="panel-overview">
@@ -122,6 +136,7 @@
       <button class="tab tab--active" data-tab="purchase">进货市场</button>
       <button class="tab" data-tab="bill">账单复盘</button>
       <button class="tab" data-tab="talent">人才市场</button>
+      <button class="tab" data-tab="employee">员工管理</button>
       <button class="tab" data-tab="overview">产业总览</button>
     </div>
   </div>
@@ -154,6 +169,27 @@
 
     <!-- 货架区域 -->
     <div class="store-shelves" id="storeShelves"></div>
+
+    <!-- 柜台区域 -->
+    <div class="store-counter" id="storeCounter">
+      <div class="store-counter__header">
+        <span class="store-counter__title">🧾 柜台</span>
+        <span class="store-counter__status" id="counterStatus">空闲</span>
+      </div>
+      <div class="store-counter__area">
+        <div class="counter-box" id="counterBox">
+          <span class="counter-box__icon">🪑</span>
+          <span class="counter-box__label">收银台</span>
+        </div>
+        <div class="counter-info" id="counterInfo">
+          <span class="counter-info__cashier" id="counterCashierName">未安排</span>
+          <span class="counter-info__hint">点击分配收银员</span>
+        </div>
+        <div class="counter-queue" id="counterQueue">
+          <span class="counter-queue__text">等候顾客: <span id="queueCount">0</span>人</span>
+        </div>
+      </div>
+    </div>
 
     <!-- 底部工具栏 -->
     <div class="hud__bottom">
@@ -245,6 +281,18 @@
       <div class="item-grid" id="item-grid"></div>
       <div class="modal__actions">
         <button class="btn btn--secondary" id="btn-shelf-item-cancel">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: 选择收银员 -->
+  <div class="modal" id="modal-counter" aria-hidden="true">
+    <div class="modal__panel">
+      <h2 class="modal__title">安排收银员</h2>
+      <p class="modal__desc">选择谁来站柜台</p>
+      <div class="cashier-list" id="cashier-list"></div>
+      <div class="modal__actions">
+        <button class="btn btn--secondary" id="btn-counter-cancel">取消</button>
       </div>
     </div>
   </div>

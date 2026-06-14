@@ -30,8 +30,30 @@
     },
     stores: [],           // 已开设的店铺列表
     currentStoreId: null, // 当前所在店铺ID
-    employees: []         // 员工列表
+    employees: [],         // 员工列表
+    counter: {
+      cashier: null,        // 当前收银员 { type: 'player'|'employee', id, name, icon }
+      isBusy: false,
+      queueCount: 0,
+    }
   };
+
+  // ============================================
+  // Talent Pool (人才库 — 每次打开随机生成)
+  // ============================================
+  const TALENT_POOL = [
+    { id: 't1', name: '张三', icon: '🧑', skill: '销售高手', skillDesc: '接待效率+30%', wage: 80, trait: '健谈' },
+    { id: 't2', name: '李四', icon: '👩', skill: '理货达人', skillDesc: '货架容量+20%', wage: 70, trait: '细心' },
+    { id: 't3', name: '王五', icon: '🧔', skill: '库存专家', skillDesc: '仓库损耗-25%', wage: 90, trait: '稳重' },
+    { id: 't4', name: '赵六', icon: '👨‍🦰', skill: '快手', skillDesc: '收银速度+40%', wage: 85, trait: '麻利' },
+    { id: 't5', name: '小美', icon: '👩‍🦱', skill: '亲和力', skillDesc: '顾客满意度+20%', wage: 75, trait: '温柔' },
+    { id: 't6', name: '阿强', icon: '🧑‍🦲', skill: '耐久', skillDesc: '无需休息，连续工作', wage: 100, trait: '勤劳' },
+    { id: 't7', name: '老周', icon: '👴', skill: '经验丰富', skillDesc: '全局效率+15%', wage: 110, trait: '老练' },
+    { id: 't8', name: '小刘', icon: '👱', skill: '新手', skillDesc: '学习成长中', wage: 50, trait: '勤奋' },
+  ];
+
+  // 当前人才市场列表
+  let currentTalents = [];
 
   // ============================================
   // Store Configuration
@@ -214,7 +236,8 @@
         house: GameState.house,
         stores: GameState.stores,
         currentStoreId: GameState.currentStoreId,
-        employees: GameState.employees
+        employees: GameState.employees,
+        counter: GameState.counter
       };
       localStorage.setItem(this.KEY, JSON.stringify(saveData));
     },
@@ -293,6 +316,22 @@
   const storeNameDisplay = $('storeNameDisplay');
   const storeTypeDisplay = $('storeTypeDisplay');
   const storeShelves = $('storeShelves');
+  const storeCounter = $('storeCounter');
+  const counterStatus = $('counterStatus');
+  const queueCount = $('queueCount');
+  const counterCashierName = $('counterCashierName');
+
+  // Talent & Employee panels
+  const talentList = $('talent-list');
+  const recruitTip = $('recruit-tip');
+  const employeeList = $('employee-list');
+  const employeeEmpty = $('employee-empty');
+  const employeeCount = $('employee-count');
+
+  // Counter cashier modal
+  const modalCounter = $('modal-counter');
+  const cashierList = $('cashier-list');
+  const btnCounterCancel = $('btn-counter-cancel');
 
   // Selected shelf state
   let selectedShelfIndex = -1;
@@ -329,6 +368,7 @@
         GameState.stores = saveData.stores || [];
         GameState.currentStoreId = saveData.currentStoreId || null;
         GameState.employees = saveData.employees || [];
+        GameState.counter = saveData.counter || { cashier: null, isBusy: false, queueCount: 0 };
       }
     } catch (e) {
       console.warn('读取存档失败:', e);
@@ -350,6 +390,8 @@
     updateStoreButton();
     switchTab(GameState.currentTab);
     updateSpeedButton(GameState.speed);
+    refreshTalentList();
+    renderEmployeeList();
   }
 
   function updateDay(day, weekday) {
@@ -504,6 +546,7 @@
     storeHUD.hidden = false;
     renderCurrentStoreInfo();
     renderShelves();
+    renderCounter();
     showToast('已进入店铺');
   }
 
@@ -513,6 +556,251 @@
     const typeConfig = STORE_TYPE_CONFIG[store.type];
     if (storeNameDisplay) storeNameDisplay.textContent = store.name;
     if (storeTypeDisplay) storeTypeDisplay.textContent = typeConfig ? `${typeConfig.icon} ${typeConfig.label}` : '';
+  }
+
+  function renderCounter() {
+    if (!storeCounter) return;
+    const { cashier, isBusy, queueCount: qCount } = GameState.counter;
+
+    if (counterStatus) {
+      counterStatus.textContent = isBusy ? '营业中' : '空闲';
+      counterStatus.classList.toggle('store-counter__status--busy', isBusy);
+    }
+    if (queueCount) {
+      queueCount.textContent = qCount;
+    }
+    if (counterCashierName) {
+      if (cashier) {
+        const icon = cashier.icon || '🧑';
+        counterCashierName.textContent = `${icon} ${cashier.name}`;
+      } else {
+        counterCashierName.textContent = '未安排';
+      }
+    }
+  }
+
+  // ============================================
+  // 人才市场
+  // ============================================
+  function refreshTalentList() {
+    if (!talentList) return;
+
+    // 每次随机选2-4个人才展示
+    const shuffled = [...TALENT_POOL].sort(() => Math.random() - 0.5);
+    currentTalents = shuffled.slice(0, 3 + Math.floor(Math.random() * 2));
+
+    talentList.innerHTML = currentTalents.map(t => `
+      <div class="talent-card" data-talent-id="${t.id}">
+        <div class="talent-card__avatar">${t.icon}</div>
+        <div class="talent-card__info">
+          <div class="talent-card__name">${t.name}</div>
+          <div class="talent-card__skill">⭐ ${t.skill}</div>
+          <div class="talent-card__desc">${t.skillDesc} · ${t.trait}</div>
+        </div>
+        <div class="talent-card__wage">
+          <div class="talent-card__wage-label">日薪</div>
+          <div class="talent-card__wage-value">$${t.wage}</div>
+        </div>
+      </div>
+    `).join('');
+
+    talentList.querySelectorAll('.talent-card').forEach(card => {
+      card.addEventListener('click', () => hireTalent(card.dataset.talentId));
+    });
+  }
+
+  function hireTalent(talentId) {
+    const talent = currentTalents.find(t => t.id === talentId);
+    if (!talent) return;
+
+    // 检查是否已雇佣
+    if (GameState.employees.find(e => e.talentId === talentId)) {
+      showToast(`${talent.name} 已经在你的店铺工作了！`);
+      return;
+    }
+
+    const employee = {
+      id: `emp_${Date.now()}`,
+      talentId: talent.id,
+      name: talent.name,
+      icon: talent.icon,
+      skill: talent.skill,
+      skillDesc: talent.skillDesc,
+      wage: talent.wage,
+      trait: talent.trait,
+      assignedStoreId: null,
+      role: null, // 'cashier' | null
+    };
+
+    GameState.employees.push(employee);
+    SaveManager.save();
+
+    renderTalentList();
+    renderEmployeeList();
+    showToast(`🎉 成功雇佣 ${talent.icon} ${talent.name}！\n日薪 $${talent.wage}`);
+  }
+
+  function renderTalentList() {
+    if (!talentList) return;
+    // 刷新人才列表
+    refreshTalentList();
+  }
+
+  // ============================================
+  // 员工管理
+  // ============================================
+  function renderEmployeeList() {
+    if (!employeeList || !employeeEmpty || !employeeCount) return;
+
+    employeeCount.textContent = `在职: ${GameState.employees.length}人`;
+
+    if (GameState.employees.length === 0) {
+      employeeList.innerHTML = '';
+      employeeEmpty.style.display = 'flex';
+      return;
+    }
+
+    employeeEmpty.style.display = 'none';
+
+    employeeList.innerHTML = GameState.employees.map(emp => {
+      const isCashier = GameState.counter.cashier && GameState.counter.cashier.id === emp.id;
+      const store = emp.assignedStoreId ? GameState.stores.find(s => s.id === emp.assignedStoreId) : null;
+      return `
+        <div class="employee-card ${isCashier ? 'employee-card--on-duty' : ''}" data-emp-id="${emp.id}">
+          <div class="employee-card__avatar">${emp.icon}</div>
+          <div class="employee-card__info">
+            <div class="employee-card__name">${emp.name}</div>
+            <div class="employee-card__status ${isCashier ? 'employee-card__status--active' : ''}">
+              ${isCashier ? '✅ 收银员' : '待命'}
+            </div>
+            <div class="employee-card__assignment">⭐ ${emp.skill} · ${emp.skillDesc}</div>
+          </div>
+          <div class="employee-card__actions">
+            ${!isCashier ? `<button class="btn btn--small btn--primary btn-assign-cashier">安排收银</button>` : ''}
+            <button class="btn btn--small btn--danger btn-fire">解雇</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    employeeList.querySelectorAll('.btn-assign-cashier').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        assignCashier(btn.closest('.employee-card').dataset.empId);
+      });
+    });
+
+    employeeList.querySelectorAll('.btn-fire').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        fireEmployee(btn.closest('.employee-card').dataset.empId);
+      });
+    });
+  }
+
+  function assignCashier(empId) {
+    const emp = GameState.employees.find(e => e.id === empId);
+    if (!emp) return;
+
+    // 如果当前有员工收银员，先解除
+    if (GameState.counter.cashier && GameState.counter.cashier.type === 'employee') {
+      const prev = GameState.employees.find(e => e.id === GameState.counter.cashier.id);
+      if (prev) {
+        prev.role = null;
+      }
+    }
+
+    GameState.counter.cashier = { type: 'employee', id: emp.id, name: emp.name, icon: emp.icon };
+    GameState.counter.isBusy = true;
+    emp.role = 'cashier';
+
+    SaveManager.save();
+    renderCounter();
+    renderEmployeeList();
+    showToast(`✅ ${emp.icon} ${emp.name} 已安排为收银员`);
+  }
+
+  function fireEmployee(empId) {
+    const emp = GameState.employees.find(e => e.id === empId);
+    if (!emp) return;
+
+    // 如果是当前收银员，解除
+    if (GameState.counter.cashier && GameState.counter.cashier.id === empId) {
+      GameState.counter.cashier = { type: 'player' };
+      GameState.counter.isBusy = false;
+    }
+
+    GameState.employees = GameState.employees.filter(e => e.id !== empId);
+    SaveManager.save();
+
+    renderEmployeeList();
+    showToast(`${emp.icon} ${emp.name} 已解雇`);
+  }
+
+  // ============================================
+  // 收银员选择弹窗
+  // ============================================
+  function openCounterModal() {
+    if (!modalCounter || !cashierList) return;
+
+    const cashier = GameState.counter.cashier;
+
+    // 构建选项：玩家 + 已雇佣员工
+    const options = [
+      { type: 'player', id: 'player', name: GameState.playerName || '主角', icon: '🧑' }
+    ];
+
+    GameState.employees.forEach(emp => {
+      options.push({ type: 'employee', id: emp.id, name: emp.name, icon: emp.icon, wage: emp.wage });
+    });
+
+    cashierList.innerHTML = options.map(opt => `
+      <div class="cashier-option ${cashier && cashier.type === opt.type && cashier.id === opt.id ? 'cashier-option--selected' : ''}" data-type="${opt.type}" data-id="${opt.id}">
+        <div class="cashier-option__avatar">${opt.icon}</div>
+        <div class="cashier-option__info">
+          <div class="cashier-option__name">${opt.name}</div>
+          <div class="cashier-option__role">${opt.type === 'player' ? '👑 主角（玩家）' : `员工 · 日薪 $${opt.wage}`}</div>
+        </div>
+        <div class="cashier-option__check">✓</div>
+      </div>
+    `).join('');
+
+    cashierList.querySelectorAll('.cashier-option').forEach(opt => {
+      opt.addEventListener('click', () => selectCashier(opt.dataset.type, opt.dataset.id));
+    });
+
+    modalCounter.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeCounterModal() {
+    if (!modalCounter) return;
+    modalCounter.setAttribute('aria-hidden', 'true');
+  }
+
+  function selectCashier(type, id) {
+    if (type === 'player') {
+      // 解除员工收银员角色
+      if (GameState.counter.cashier && GameState.counter.cashier.type === 'employee') {
+        const prev = GameState.employees.find(e => e.id === GameState.counter.cashier.id);
+        if (prev) prev.role = null;
+      }
+      GameState.counter.cashier = { type: 'player', id: 'player', name: GameState.playerName || '主角' };
+    } else {
+      // 玩家取消收银
+      GameState.counter.cashier = { type: 'player' };
+      assignCashier(id);
+      closeCounterModal();
+      renderCounter();
+      return;
+    }
+
+    GameState.counter.isBusy = !!GameState.counter.cashier;
+    SaveManager.save();
+
+    closeCounterModal();
+    renderCounter();
+    renderEmployeeList();
+    showToast(`收银员已安排: ${GameState.counter.cashier.name}`);
   }
 
   function renderShelves() {
@@ -897,7 +1185,7 @@
     });
 
     btnEmployee.addEventListener('click', () => {
-      showToast(`员工管理\n员工数: ${GameState.employees.length}人`);
+      switchTab('employee');
     });
 
     btnHouse.addEventListener('click', () => {
@@ -960,6 +1248,32 @@
 
     modalShelfItem.addEventListener('click', e => {
       if (e.target === modalShelfItem) closeShelfItemModal();
+    });
+
+    // Counter box click → open cashier modal
+    const counterBox = $('counterBox');
+    if (counterBox) {
+      counterBox.addEventListener('click', () => {
+        openCounterModal();
+      });
+    }
+
+    // Counter modal
+    btnCounterCancel.addEventListener('click', closeCounterModal);
+    modalCounter.addEventListener('click', e => {
+      if (e.target === modalCounter) closeCounterModal();
+    });
+
+    // Employee tab → refresh talent list each time
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        if (tab.dataset.tab === 'talent') {
+          refreshTalentList();
+        }
+        if (tab.dataset.tab === 'employee') {
+          renderEmployeeList();
+        }
+      });
     });
 
     // Keyboard shortcuts
