@@ -32,11 +32,16 @@
     currentStoreId: null, // 当前所在店铺ID
     employees: [],         // 员工列表
     counter: {
-      cashier: null,        // 当前收银员 { type: 'player'|'employee', id, name, icon }
+      cashier: null,
       isBusy: false,
       queueCount: 0,
-    }
+    },
+    customers: [],         // 当前在店内的顾客列表
+    checkoutQueue: [],     // 收银台排队队列
   };
+
+  // 顾客颜色池
+  const CUSTOMER_COLORS = ['#4A90D9', '#E74C3C', '#27AE60', '#F39C12', '#9B59B6', '#1ABC9C', '#E67E22', '#3498DB'];
 
   // ============================================
   // Talent Pool (人才库 — 每次打开随机生成)
@@ -320,6 +325,7 @@
   const counterStatus = $('counterStatus');
   const queueCount = $('queueCount');
   const counterCashierName = $('counterCashierName');
+  const customerTrack = document.getElementById('customerTrack');
 
   // Talent & Employee panels
   const talentList = $('talent-list');
@@ -547,7 +553,17 @@
     renderCurrentStoreInfo();
     renderShelves();
     renderCounter();
+    startCustomerSimulation();
     showToast('已进入店铺');
+  }
+
+  function switchToHomeHUD() {
+    GameState.currentHUD = 'home';
+    homeHUD.hidden = false;
+    storeHUD.hidden = true;
+    stopCustomerSimulation();
+    updatePlayerInfo();
+    showToast('已回到家中');
   }
 
   function renderCurrentStoreInfo() {
@@ -582,6 +598,213 @@
   // ============================================
   // 人才市场
   // ============================================
+
+  // ============================================
+  // 顾客系统
+  // ============================================
+  const customerZone = document.getElementById('customerZone');
+  const customerQueueEl = document.getElementById('customerQueue');
+  let customerTimer = null;
+  let customerTickTimer = null;
+  let checkoutTimer = null;
+  let customerIdCounter = 0;
+
+  // 顾客轨道位置（百分比）
+  const TRACK_ENTRANCE = 3;    // 入口
+  const TRACK_COUNTER  = 75;  // 收银台排队起点
+
+  // 持久化 DOM 元素映射：customerId → div
+  const customerDomMap = new Map();
+
+  function startCustomerSimulation() {
+    stopCustomerSimulation();
+    // 每 3-7 秒随机产生一个顾客
+    scheduleNextCustomer();
+    // 每 1.5 秒处理顾客行为 + 每 2 秒处理收银结算
+    customerTickTimer = setInterval(processCustomerTick, 1500);
+    checkoutTimer = setInterval(processCheckout, 2000);
+  }
+
+  function stopCustomerSimulation() {
+    if (customerTimer) { clearTimeout(customerTimer); customerTimer = null; }
+    if (customerTickTimer) { clearInterval(customerTickTimer); customerTickTimer = null; }
+    if (checkoutTimer) { clearInterval(checkoutTimer); checkoutTimer = null; }
+    GameState.customers = [];
+    GameState.checkoutQueue = [];
+  }
+
+  function scheduleNextCustomer() {
+    const delay = 3000 + Math.random() * 4000; // 3-7秒
+    customerTimer = setTimeout(() => {
+      spawnCustomer();
+      scheduleNextCustomer();
+    }, delay);
+  }
+
+  function spawnCustomer() {
+    const store = GameState.stores.find(s => s.id === GameState.currentStoreId);
+    if (!store) return;
+
+    const customer = {
+      id: ++customerIdCounter,
+      color: CUSTOMER_COLORS[Math.floor(Math.random() * CUSTOMER_COLORS.length)],
+      icon: '🧑',
+      state: 'entering',
+      trackPos: TRACK_ENTRANCE,  // 轨道位置 0-100%
+      targetShelf: null,
+      holding: null,
+    };
+
+    GameState.customers.push(customer);
+    renderCustomers();
+  }
+
+  // 根据货架索引计算轨道上的位置（20%-65%之间）
+  function shelfToTrackPos(shelfIndex, shelfCount) {
+    const min = 20, max = 65;
+    return min + (shelfIndex / Math.max(shelfCount - 1, 1)) * (max - min);
+  }
+
+  function renderCustomers() {
+    if (!customerTrack) return;
+
+    const store = GameState.stores.find(s => s.id === GameState.currentStoreId);
+    const shelfCount = store ? store.shelves.length : 6;
+
+    // 所有活跃顾客（含排队）
+    const activeCustomers = GameState.customers.filter(c => c.state !== 'leaving');
+
+    // === 复用已有 DOM，新增的创建 ===
+    activeCustomers.forEach(c => {
+      let el = customerDomMap.get(c.id);
+      if (!el) {
+        el = document.createElement('div');
+        el.className = 'customer-block';
+        customerTrack.appendChild(el);
+        customerDomMap.set(c.id, el);
+      }
+
+      let pos, animCls;
+      if (c.state === 'queued') {
+        const qIndex = GameState.checkoutQueue.indexOf(c);
+        pos = TRACK_COUNTER + qIndex * 5;
+        animCls = 'customer-block--queuing';
+      } else if (c.state === 'entering') {
+        pos = TRACK_ENTRANCE;
+        animCls = 'customer-block--entering';
+      } else if (c.state === 'shopping') {
+        pos = shelfToTrackPos(c.targetShelf || 0, shelfCount);
+        animCls = 'customer-block--shopping';
+      } else if (c.state === 'going_to_counter') {
+        pos = TRACK_COUNTER - 8;
+        animCls = 'customer-block--shopping';
+      } else {
+        pos = TRACK_COUNTER;
+        animCls = 'customer-block--leaving';
+      }
+
+      pos = Math.min(95, Math.max(0, pos));
+      el.style.left = pos + '%';
+      el.style.background = c.color;
+      el.className = `customer-block ${animCls}`;
+      el.title = c.state === 'queued'
+        ? `排队中 ${c.icon}顾客${c.id}${c.holding && c.holding.length ? ' 🛒' : ''}`
+        : `购物中 ${c.icon}顾客${c.id}${c.holding && c.holding.length ? ' 🛒' : ''}`;
+      el.textContent = c.icon;
+    });
+
+    // === 删除已离开顾客的 DOM ===
+    const activeIds = new Set(activeCustomers.map(c => c.id));
+    for (const [id, el] of customerDomMap) {
+      if (!activeIds.has(id)) {
+        el.remove();
+        customerDomMap.delete(id);
+      }
+    }
+
+    if (queueCount) {
+      queueCount.textContent = GameState.checkoutQueue.length;
+    }
+  }
+
+  function processCustomerTick() {
+    const store = GameState.stores.find(s => s.id === GameState.currentStoreId);
+    if (!store) return;
+
+    GameState.customers.forEach(c => {
+      if (c.state === 'entering') {
+        // 找有货的货架
+        const stocked = store.shelves
+          .map((s, i) => ({ s, i }))
+          .filter(x => x.s && x.s.stock > 0);
+        if (stocked.length > 0) {
+          const pick = stocked[Math.floor(Math.random() * stocked.length)];
+          c.targetShelf = pick.i;
+        } else {
+          // 无货：随机选一个货架格子去逛（不买）
+          c.targetShelf = Math.floor(Math.random() * store.shelves.length);
+        }
+        c.state = 'shopping';
+        c.shoppingTicks = 4; // 4 ticks ≈ 6秒购物时间
+      } else if (c.state === 'shopping') {
+        // 尝试拿商品（每个顾客买1-2件）
+        if (!c.holding) c.holding = [];
+
+        if (c.holding.length < 2) {
+          const shelf = store.shelves[c.targetShelf];
+          if (shelf && shelf.stock > 0) {
+            shelf.stock--;
+            c.holding.push({ ...shelf, stock: 1 });
+            renderShelves();
+          }
+        }
+
+        // 购物计时减1
+        c.shoppingTicks--;
+
+        // 计时结束
+        if (c.shoppingTicks <= 0) {
+          if (c.holding.length > 0) {
+            // 买了好东西 → 去收银台
+            c.state = 'going_to_counter';
+            moveCustomerToCounter(c);
+          } else {
+            // 什么都没买 → 直接离开
+            c.state = 'leaving';
+          }
+        }
+      }
+    });
+
+    // 清理已离开顾客
+    GameState.customers = GameState.customers.filter(c => c.state !== 'leaving');
+    renderCustomers();
+  }
+
+  function moveCustomerToCounter(c) {
+    // 直接入队，不再等setTimeout（确保不丢）
+    c.state = 'queued';
+    GameState.checkoutQueue.push(c);
+    renderCustomers();
+  }
+
+  function processCheckout() {
+    // 有收银员 + 排队 > 0 → 自动结算
+    if (GameState.counter.cashier && GameState.checkoutQueue.length > 0) {
+      const c = GameState.checkoutQueue.shift();
+      // 计算收入
+      const income = c.holding.reduce((sum, item) => sum + (item.baseSellPrice || 0), 0);
+      if (income > 0) {
+        GameState.money += income;
+        updateMoney(GameState.money, income);
+      }
+      c.state = 'leaving';
+      c.holding = null;
+      renderCustomers();
+      SaveManager.save();
+    }
+  }
+
   function refreshTalentList() {
     if (!talentList) return;
 
@@ -809,11 +1032,13 @@
 
     storeShelves.innerHTML = store.shelves.map((item, idx) => {
       if (item) {
+        const stockLow = !item.stock || item.stock === 0;
         return `
-          <div class="shelf-cell shelf-cell--filled" data-index="${idx}">
+          <div class="shelf-cell shelf-cell--filled ${stockLow ? 'shelf-cell--empty-stock' : ''}" data-index="${idx}">
             <span class="shelf-cell__icon">${item.icon}</span>
             <span class="shelf-cell__name">${item.name}</span>
             <span class="shelf-cell__price">$${item.baseSellPrice}</span>
+            <span class="shelf-cell__stock ${stockLow ? 'shelf-cell__stock--zero' : ''}">库存: ${item.stock ?? 0}</span>
           </div>
         `;
       } else {
@@ -870,11 +1095,11 @@
     const item = items.find(i => i.id === itemId);
     if (!item) return;
 
-    store.shelves[selectedShelfIndex] = { ...item };
+    store.shelves[selectedShelfIndex] = { ...item, stock: 3 + Math.floor(Math.random() * 6) }; // 3-8件库存
     closeShelfItemModal();
     renderShelves();
     SaveManager.save();
-    showToast(`已放置 ${item.icon} ${item.name}`);
+    showToast(`已放置 ${item.icon} ${item.name}（${store.shelves[selectedShelfIndex].stock}件）`);
   }
 
   function closeShelfItemModal() {

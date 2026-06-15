@@ -1195,7 +1195,114 @@ body {
   background: rgba(45, 27, 14, 0.6);
 }
 
-.store-counter__header {
+/* ============================================
+   STORE SHOP FLOOR (货架+顾客轨道)
+   ============================================ */
+.store-shop-floor {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* 顾客走动轨道：铺满宽度，固定高度，绝对定位在货架上方 */
+.store-customer-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* 入口区标记 */
+.track-entrance {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.track-entrance__label {
+  font-size: 10px;
+  color: rgba(212, 168, 75, 0.4);
+  writing-mode: vertical-rl;
+  letter-spacing: 2px;
+}
+
+/* 顾客图标：在轨道上绝对定位，靠 transition left 移动 */
+.customer-block {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  border: 2px solid rgba(255,255,255,0.4);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  transition: left 1200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              top 400ms ease,
+              opacity 300ms,
+              transform 200ms;
+  cursor: default;
+  pointer-events: auto;
+}
+
+.customer-block:hover {
+  transform: translateY(-50%) scale(1.25);
+  z-index: 20;
+}
+
+.customer-block--entering {
+  animation: customer-appear 400ms ease-out forwards;
+}
+
+@keyframes customer-appear {
+  from { opacity: 0; transform: translateY(-50%) scale(0.5); }
+  to   { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+
+.customer-block--shopping {
+  animation: customer-browse 1000ms ease-in-out infinite;
+}
+
+.customer-block--queuing {
+  animation: none;
+  transform: translateY(-50%) scale(0.85);
+  opacity: 0.85;
+}
+
+.customer-block--leaving {
+  animation: customer-leave 500ms ease-in forwards;
+}
+
+@keyframes customer-browse {
+  0%   { transform: translateY(-50%) translateY(0px) scale(1); }
+  50%  { transform: translateY(-50%) translateY(-4px) scale(1.05); }
+  100% { transform: translateY(-50%) translateY(0px) scale(1); }
+}
+
+@keyframes customer-leave {
+  from { opacity: 1; transform: translateY(-50%) scale(1); }
+  to   { opacity: 0; transform: translateY(-50%) scale(0.5); }
+}
+
+/* 货架格子（5列） */
+.store-shelves {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-2);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1360,6 +1467,22 @@ body {
   font-size: 9px;
   color: var(--accent-gold);
   margin-top: 2px;
+}
+
+.shelf-cell__stock {
+  font-size: 8px;
+  color: var(--text-dim);
+  margin-top: 1px;
+}
+
+.shelf-cell__stock--zero {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.shelf-cell--empty-stock {
+  border-color: rgba(199, 93, 93, 0.4) !important;
+  background: rgba(199, 93, 93, 0.08);
 }
 
 /* ============================================
