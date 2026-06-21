@@ -15,7 +15,7 @@ Itch_survivor/Survivor/temp/programming/packer-driver/targets/editor/main-record
 Itch_survivor/Survivor/temp/programming/packer-driver/targets/preview/assembly-record.json
 Itch_survivor/Survivor/temp/programming/packer-driver/targets/preview/chunks/cb/cb550bfa09af3d98cc70507734d368ac10b5bae8.js
 Itch_survivor/Survivor/temp/programming/packer-driver/targets/preview/main-record.json
-/CarEmpire/CarEmpire/assets/免费通用UI素材
+*/assets/免费通用UI素材
 
 *.meta
 
@@ -34,5 +34,27 @@ Thumbs.db
 build/*
 
 # Node.js
-node_modules/
-/CarEmpire/assets/免费通用UI素材
+*/node_modules/
+*/CarEmpire/assets/免费通用UI素材
+*/library/
+*/temp/
+*/build/
+*/native
+#//////////////////////////
+# NPM
+#//////////////////////////
+*/node_modules/
+
+#//////////////////////////
+# VSCode
+#//////////////////////////
+*/.vscode/
+
+#//////////////////////////
+# WebStorm
+#//////////////////////////
+*/.idea/
+*/assets/Scripts/DataCollection.ts.meta
+
+*/extensions
+/Itch_survivor/Survivor/extensions
