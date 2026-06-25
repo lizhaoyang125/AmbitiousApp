@@ -6,6 +6,9 @@ const { ccclass, property } = _decorator;
 export class StartSceneCtrl extends Component {
 
     @property(Node)
+    menuPanel: Node = null;
+
+    @property(Node)
     playerInitPanel: Node = null;
 
     start() {
@@ -17,7 +20,10 @@ export class StartSceneCtrl extends Component {
 
     // ==================== 菜单按钮回调 ====================
     onBtnNewGameClick() {
-        // 显示 PlayerInitPanel
+        // 隐藏菜单，显示 PlayerInitPanel
+        if (this.menuPanel) {
+            this.menuPanel.active = false;
+        }
         if (this.playerInitPanel) {
             this.playerInitPanel.active = true;
         }
@@ -40,6 +46,16 @@ export class StartSceneCtrl extends Component {
     }
 
     // ==================== PlayerInitPanel 按钮回调 ====================
+    onBtnBackClick() {
+        // 隐藏 PlayerInitPanel，显示菜单
+        if (this.playerInitPanel) {
+            this.playerInitPanel.active = false;
+        }
+        if (this.menuPanel) {
+            this.menuPanel.active = true;
+        }
+    }
+
     onBtnRandomTraitClick() {
         // 随机选择特性（暂空）
     }
