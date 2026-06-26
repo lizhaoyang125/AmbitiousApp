@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#2D1B0E">
+  <title>无名之辈：白手起家 - 营业场景</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <!-- Background -->
+  <div class="scene-bg"></div>
+
+  <!-- Game World (Placeholder) -->
+  <div class="game-world">
+    <div class="tilemap">
+      <div class="tilemap__grid">
+        <div class="tile tile--floor"></div>
+        <div class="tile tile--floor"></div>
+        <div class="tile tile--shelf"></div>
+        <div class="tile tile--shelf"></div>
+        <div class="tile tile--floor"></div>
+        <div class="tile tile--counter"></div>
+        <div class="tile tile--floor"></div>
+        <div class="tile tile--door"></div>
+        <div class="tile tile--floor"></div>
+        <div class="tile tile--floor"></div>
+        <div class="tile tile--floor"></div>
+        <div class="tile tile--floor"></div>
+        <div class="tile tile--shelf"></div>
+        <div class="tile tile--floor"></div>
+        <div class="tile tile--floor"></div>
+        <div class="tile tile--floor"></div>
+      </div>
+      <p class="tilemap__text">游戏地图区域</p>
+    </div>
+  </div>
+
+  <!-- ============================================
+       HOME HUD LAYER (默认显示)
+       ============================================ -->
+  <div class="hud hud--home" id="homeHUD">
+    <!-- 顶栏 -->
+    <div class="hud__topbar">
+      <div class="hud__info">
+        <button class="hud__btn hud__btn--secondary" id="btnBackToMenu">← 返回</button>
+        <span class="hud__day" id="dayDisplay">Day 1 - 周一</span>
+        <span class="hud__weather" id="homeWeatherDisplay">☀️</span>
+        <span class="hud__player" id="playerNameDisplay"></span>
+        <span class="hud__trait" id="playerTraitDisplay"></span>
+      </div>
+      <div class="hud__info hud__info--center">
+        <span class="hud__money" id="homeMoneyDisplay">$0</span>
+      </div>
+      <div class="hud__info hud__info--right">
+        <div class="warehouse">
+          <div class="warehouse__bar">
+            <div class="warehouse__fill" id="homeWarehouseFill"></div>
+          </div>
+          <span class="warehouse__text" id="homeWarehouseText">0/100</span>
+        </div>
+        <button class="hud__btn hud__btn--primary" id="btnGoToStore">
+          <span class="hud__btn-icon">🏪</span>
+          去店铺
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="hud__content">
+      <div class="tab-panel tab-panel--active" id="panel-purchase">
+        <div class="panel-placeholder">
+          <span class="panel-placeholder__icon">📦</span>
+          <span class="panel-placeholder__title">进货市场</span>
+          <span class="panel-placeholder__hint">建设中，敬请期待...</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="panel-bill">
+        <div class="panel-placeholder">
+          <span class="panel-placeholder__icon">📊</span>
+          <span class="panel-placeholder__title">账单复盘</span>
+          <span class="panel-placeholder__hint">建设中，敬请期待...</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="panel-talent">
+        <div class="panel-header">
+          <span class="panel-header__title">👥 人才市场</span>
+          <span class="panel-header__hint">可招募员工到店铺工作</span>
+        </div>
+        <div class="talent-list" id="talent-list"></div>
+        <div class="recruit-tip" id="recruit-tip">
+          <span>💡 每位员工有不同技能，雇佣前请仔细查看</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="panel-employee">
+        <div class="panel-header">
+          <span class="panel-header__title">👔 员工管理</span>
+          <span class="panel-header__count" id="employee-count">在职: 0人</span>
+        </div>
+        <div class="employee-list" id="employee-list"></div>
+        <div class="employee-empty" id="employee-empty">
+          <span class="employee-empty__icon">👔</span>
+          <span class="employee-empty__text">还没有员工，快去人才市场招募吧！</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="panel-overview">
+        <div class="panel-placeholder">
+          <span class="panel-placeholder__icon">🏢</span>
+          <span class="panel-placeholder__title">产业总览</span>
+          <span class="panel-placeholder__hint">建设中，敬请期待...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 快捷功能栏 -->
+    <div class="hud__shortcuts">
+      <button class="shortcut-btn" id="btn-new-store">
+        <span class="shortcut-btn__icon">🏪</span>
+        <span class="shortcut-btn__label">开设新店</span>
+      </button>
+      <button class="shortcut-btn" id="btn-employee">
+        <span class="shortcut-btn__icon">👥</span>
+        <span class="shortcut-btn__label">员工管理</span>
+      </button>
+      <button class="shortcut-btn" id="btn-house">
+        <span class="shortcut-btn__icon">🏠</span>
+        <span class="shortcut-btn__label" id="house-type">出租屋</span>
+      </button>
+    </div>
+
+    <!-- TabBar (底部固定) -->
+    <div class="hud__tabbar">
+      <button class="tab tab--active" data-tab="purchase">进货市场</button>
+      <button class="tab" data-tab="bill">账单复盘</button>
+      <button class="tab" data-tab="talent">人才市场</button>
+      <button class="tab" data-tab="employee">员工管理</button>
+      <button class="tab" data-tab="overview">产业总览</button>
+    </div>
+  </div>
+
+  <!-- ============================================
+       STORE HUD LAYER
+       ============================================ -->
+  <div class="hud hud--store" id="storeHUD" hidden>
+    <!-- 顶栏 -->
+    <div class="hud__topbar">
+      <div class="hud__info">
+        <span class="hud__time" id="timeDisplay">08:00</span>
+        <span class="hud__weather" id="weatherDisplay">☀️</span>
+      </div>
+      <div class="hud__info hud__info--center">
+        <span class="hud__store-name" id="storeNameDisplay"></span>
+        <span class="hud__store-type" id="storeTypeDisplay"></span>
+      </div>
+      <div class="hud__info hud__info--right">
+        <span class="hud__money" id="storeMoneyDisplay">$0</span>
+        <div class="warehouse">
+          <div class="warehouse__bar">
+            <div class="warehouse__fill" id="warehouseFill"></div>
+          </div>
+          <span class="warehouse__text" id="warehouseText">0/100</span>
+        </div>
+        <span class="hud__rating" id="ratingDisplay">⭐ 0.0</span>
+      </div>
+    </div>
+
+    <!-- 货架+顾客走动区域 -->
+    <div class="store-shop-floor" id="storeShopFloor">
+      <!-- 顾客走动轨道 -->
+      <div class="store-customer-track" id="customerTrack"></div>
+      <!-- 货架 -->
+      <div class="store-shelves" id="storeShelves"></div>
+    </div>
+
+    <!-- 柜台区域 -->
+    <div class="store-counter" id="storeCounter">
+      <div class="store-counter__header">
+        <span class="store-counter__title">🧾 柜台</span>
+        <span class="store-counter__status" id="counterStatus">空闲</span>
+      </div>
+      <div class="store-counter__area">
+        <div class="counter-box" id="counterBox">
+          <span class="counter-box__icon">🪑</span>
+          <span class="counter-box__label">收银台</span>
+        </div>
+        <div class="counter-info" id="counterInfo">
+          <span class="counter-info__cashier" id="counterCashierName">未安排</span>
+          <span class="counter-info__hint">点击分配收银员</span>
+        </div>
+        <div class="counter-queue" id="counterQueue">
+          <span class="counter-queue__text">等候顾客: <span id="queueCount">0</span>人</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部工具栏 -->
+    <div class="hud__bottom">
+      <div class="speed-controls">
+        <button class="speed-btn speed-btn--active" data-speed="1">1x</button>
+        <button class="speed-btn" data-speed="2">2x</button>
+        <button class="speed-btn" data-speed="3">3x</button>
+      </div>
+
+      <!-- 回家按钮区域 - 包含仓库剩余容量 -->
+      <div class="home-btn-area">
+        <div class="home-btn-area__warehouse">
+          <div class="warehouse__bar">
+            <div class="warehouse__fill" id="warehouseFillHome"></div>
+          </div>
+          <span class="home-btn-area__text" id="warehouseTextHome">剩余 100</span>
+        </div>
+        <button class="hud__btn hud__btn--primary" id="btnGoToHome">
+          <span class="hud__btn-icon">🏠</span>
+          回家
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Money Popup -->
+  <div class="money-popup" id="moneyPopup"></div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Modal: 开设新店 -->
+  <div class="modal" id="modal-new-store" aria-hidden="true">
+    <div class="modal__panel modal__panel--lg">
+      <h2 class="modal__title">开设新店</h2>
+
+      <!-- Step 1: 选择类型 + 输入店名 -->
+      <div class="modal__step" id="step-type">
+        <p class="modal__desc">选择店铺类型</p>
+        <div class="type-grid" id="type-grid"></div>
+        <div class="store-name-input">
+          <label class="store-name-label" for="input-store-name">店铺名称</label>
+          <input type="text" class="input" id="input-store-name" placeholder="请输入店铺名称" maxlength="10" autocomplete="off">
+        </div>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" id="btn-store-cancel">取消</button>
+          <button class="btn btn--primary" id="btn-type-next" disabled>下一步</button>
+        </div>
+      </div>
+
+      <!-- Step 2: 选择面积 -->
+      <div class="modal__step" id="step-area" hidden>
+        <p class="modal__desc">选择店铺规模</p>
+        <div class="area-grid" id="area-grid"></div>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" id="btn-area-back">上一步</button>
+          <button class="btn btn--primary" id="btn-area-next" disabled>下一步</button>
+        </div>
+      </div>
+
+      <!-- Step 3: 选择位置 -->
+      <div class="modal__step" id="step-location" hidden>
+        <p class="modal__desc">选择店铺位置</p>
+        <div class="location-grid" id="location-grid"></div>
+        <div class="store-preview" id="store-preview"></div>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" id="btn-location-back">上一步</button>
+          <button class="btn btn--primary" id="btn-location-next" disabled>下一步</button>
+        </div>
+      </div>
+
+      <!-- Step 4: 确认开设 -->
+      <div class="modal__step" id="step-confirm" hidden>
+        <p class="modal__desc">确认开设店铺</p>
+        <div class="store-summary" id="store-summary"></div>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" id="btn-confirm-back">上一步</button>
+          <button class="btn btn--primary" id="btn-store-confirm">确认开设</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: 货架商品选择 -->
+  <div class="modal" id="modal-shelf-item" aria-hidden="true">
+    <div class="modal__panel">
+      <h2 class="modal__title">分配商品</h2>
+      <p class="modal__desc">选择商品放入货架</p>
+      <div class="item-grid" id="item-grid"></div>
+      <div class="modal__actions">
+        <button class="btn btn--secondary" id="btn-shelf-item-cancel">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: 选择收银员 -->
+  <div class="modal" id="modal-counter" aria-hidden="true">
+    <div class="modal__panel">
+      <h2 class="modal__title">安排收银员</h2>
+      <p class="modal__desc">选择谁来站柜台</p>
+      <div class="cashier-list" id="cashier-list"></div>
+      <div class="modal__actions">
+        <button class="btn btn--secondary" id="btn-counter-cancel">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

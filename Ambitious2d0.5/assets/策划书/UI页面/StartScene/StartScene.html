@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#2D1B0E">
+  <title>无名之辈：白手起家</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Background Layer -->
+  <div class="bg">
+    <div class="bg__glow"></div>
+    <div class="bg__texture"></div>
+  </div>
+
+  <!-- Main Scene -->
+  <main class="scene">
+    <!-- Logo Section -->
+    <section class="logo" aria-label="游戏Logo">
+      <div class="logo__frame">
+        <div class="logo__shop">
+          <!-- Pixel Shop SVG -->
+          <svg class="shop-icon" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- Roof -->
+            <polygon class="shop-roof" points="70,4 130,36 10,36"/>
+            <rect class="shop-chimney" x="100" y="0" width="10" height="16"/>
+
+            <!-- Wall -->
+            <rect class="shop-wall" x="14" y="36" width="112" height="64"/>
+
+            <!-- Windows with glow -->
+            <rect class="shop-window" x="22" y="46" width="24" height="24"/>
+            <rect class="shop-window" x="94" y="46" width="24" height="24"/>
+            <rect class="shop-window-glass" x="22" y="46" width="24" height="24"/>
+            <rect class="shop-window-glass" x="94" y="46" width="24" height="24"/>
+
+            <!-- Door -->
+            <rect class="shop-door" x="58" y="56" width="24" height="44"/>
+            <circle class="shop-door-knob" cx="76" cy="80" r="2"/>
+
+            <!-- Shelves -->
+            <rect class="shop-shelf" x="20" y="76" width="30" height="6"/>
+            <rect class="shop-shelf" x="90" y="76" width="30" height="6"/>
+
+            <!-- Items on shelves -->
+            <rect class="item item--cola" x="24" y="70" width="6" height="6"/>
+            <rect class="item item--chip" x="34" y="70" width="6" height="6"/>
+            <rect class="item item--milk" x="44" y="70" width="6" height="6"/>
+            <rect class="item item--book" x="94" y="70" width="6" height="6"/>
+            <rect class="item item--soda" x="104" y="70" width="6" height="6"/>
+            <rect class="item item--snack" x="114" y="70" width="6" height="6"/>
+
+            <!-- Cash Register -->
+            <rect class="cash-register" x="60" y="100" width="20" height="14"/>
+            <text class="cash-symbol" x="70" y="110" text-anchor="middle">$</text>
+
+            <!-- Floor -->
+            <rect class="shop-floor" x="14" y="100" width="112" height="14"/>
+
+            <!-- Sign -->
+            <rect class="shop-sign" x="46" y="28" width="48" height="12"/>
+            <text class="shop-sign-text" x="70" y="37" text-anchor="middle">STORE</text>
+          </svg>
+        </div>
+      </div>
+      <div class="logo__divider"></div>
+    </section>
+
+    <!-- Title Section -->
+    <section class="title" aria-label="游戏标题">
+      <h1 class="title__main">无名之辈</h1>
+      <p class="title__sub">白手起家</p>
+    </section>
+
+    <!-- Menu Section -->
+    <nav class="menu" aria-label="主菜单">
+      <ul class="menu__list">
+        <li>
+          <button class="btn btn--primary" data-action="new-game">
+            <span class="btn__text">新游戏</span>
+            <span class="btn__glow"></span>
+          </button>
+        </li>
+        <li class="menu__item--continue" data-show="save-exists">
+          <button class="btn btn--secondary" data-action="continue">
+            <span class="btn__text">继续游戏</span>
+          </button>
+          <span class="save-time"></span>
+        </li>
+        <li>
+          <button class="btn btn--secondary" data-action="achievement">
+            <span class="btn__text">成就</span>
+          </button>
+        </li>
+        <li>
+          <button class="btn btn--secondary btn--exit" data-action="exit">
+            <span class="btn__text">退出游戏</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span class="version">Ver 1.0.0</span>
+      <button class="settings" data-action="settings" aria-label="设置">
+        <svg class="settings__icon" viewBox="0 0 32 32" fill="currentColor">
+          <path d="M16 12a4 4 0 100 8 4 4 0 000-8zm0 10a1 1 0 011 1v2a1 1 0 01-2 0v-2a1 1 0 011-1zm9.5-2.5l2-1.5a1 1 0 10-1.2-1.6l-2 1.5a6 6 0 01-1.3.7V16a1 1 0 010-2h2a1 1 0 010 2h-2v1.8a6 6 0 011.3.7l2 1.5a1 1 0 101.2-1.6l-2-1.5a4 4 0 00.7-.5l1-1.7a1 1 0 00-1.7-1l-1 1.7a4 4 0 00-1.3-.2 4 4 0 001.3-.2l1-1.7a1 1 0 00-1.7-1l-1 1.7a6 6 0 01-.7-.5l-2-1.5a1 1 0 10-1.2 1.6l2 1.5a6 6 0 01-1.3.7V16a1 1 0 10-2 0h2a1 1 0 000-2h-2v1.8a6 6 0 011.3.7l2 1.5a1 1 0 101.2-1.6l-2-1.5a4 4 0 00-.7-.5l-1-1.7a1 1 0 00-1.7 1l1 1.7a4 4 0 001.3.2 4 4 0 00-1.3.2l-1 1.7a1 1 0 101.7 1l1-1.7a6 6 0 01.7-.5z"/>
+        </svg>
+      </button>
+    </footer>
+  </main>
+
+  <!-- Modal: New Game -->
+  <div class="modal" id="modal-new-game" aria-hidden="true">
+    <div class="modal__panel modal__panel--center">
+      <h2 class="modal__title" id="new-game-step-title">创建新角色</h2>
+
+      <!-- Step 1: Name Input -->
+      <div class="modal__step" id="step-name">
+        <p class="modal__hint">请输入你的名字</p>
+        <input
+          type="text"
+          class="input"
+          id="input-name"
+          placeholder="请输入你的名字"
+          maxlength="8"
+          autocomplete="off"
+        >
+        <span class="input__counter"><span id="char-count">0</span> / 8</span>
+        <button class="btn btn--primary btn--block" id="btn-name-next" disabled>下一步</button>
+      </div>
+
+      <!-- Step 2: Trait Selection -->
+      <div class="modal__step" id="step-trait" hidden>
+        <p class="modal__desc">"你生来具有某种特质，这影响了你的起步..."</p>
+        <div class="trait-grid" id="trait-grid"></div>
+        <p class="modal__tip">选择将决定你的起点</p>
+        <div class="trait-actions">
+          <button class="btn btn--secondary" id="btn-trait-random">随机</button>
+          <button class="btn btn--primary" id="btn-trait-confirm" disabled>确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Achievement -->
+  <div class="modal" id="modal-achievement" aria-hidden="true">
+    <div class="modal__panel">
+      <h2 class="modal__title">成就</h2>
+      <div class="achievement-list" id="achievement-list"></div>
+      <button class="btn btn--secondary btn--block" id="btn-achievement-close">关闭</button>
+    </div>
+  </div>
+
+  <!-- Modal: Exit Confirm -->
+  <div class="modal" id="modal-exit" aria-hidden="true">
+    <div class="modal__panel modal__panel--center modal__panel--sm">
+      <p class="modal__message">确定要退出游戏吗？</p>
+      <div class="modal__actions">
+        <button class="btn btn--secondary" id="btn-exit-cancel">取消</button>
+        <button class="btn btn--primary" id="btn-exit-confirm">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
