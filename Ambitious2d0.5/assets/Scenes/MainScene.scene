@@ -3180,7 +3180,7 @@
       "b": 0,
       "a": 255
     },
-    "_string": "账单复盘",
+    "_string": "订单",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 30,
@@ -10559,7 +10559,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -297.355,
+      "x": -367.949,
       "y": 553.0240000000001,
       "z": 0
     },
@@ -11249,7 +11249,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -70.594,
       "y": 269.5640000000001,
       "z": 0
     },
@@ -16624,7 +16624,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 800,
+      "width": 1000,
       "height": 1000
     },
     "_anchorPoint": {
