@@ -1495,6 +1495,86 @@ interface EmployeeData {
 
 ---
 
+### 4.6 进货订单面板
+
+> 状态：已完成 ✅
+> 最后更新：2026-06-30
+
+#### 4.6.1 面板结构
+
+```
+OrderPanel (进货订单面板)
+├── CloseBtn (× 关闭按钮)
+├── PanelBg (背景图，可隐藏)
+├── Title: 📋 进货订单
+└── OrderList (ScrollView 垂直滚动)
+    └── content
+        ├── OrderCard (订单卡片)
+        │   ├── ModeTag (采购模式标签)
+        │   └── ProductInfo (商品信息)
+        │       ├── ProductName (商品名称)
+        │       ├── Category (品类)
+        │       ├── Number (数量)
+        │       ├── UnitPrice (单价)
+        │       ├── TotalPrice (总金额)
+        │       ├── Capacity (仓库容量占用)
+        │       └── CancelBtn (取消订单按钮)
+        └── OrderCard-001 (更多订单卡片...)
+```
+
+#### 4.6.2 订单卡片设计
+
+```
+OrderCard (订单卡片)
+┌─────────────────────────────────────────────┐
+│ [批发市场]                                  │  ← ModeTag (左上角标签)
+│                                             │
+│ 🍎 苹果                                     │  ← ProductName
+│ 生鲜 | 100件                                │  ← Category + Number
+│ 单价: 2.5 金币                              │  ← UnitPrice
+│ 总计: 250 金币                              │  ← TotalPrice
+│ 📦 仓库占用: 10                             │  ← Capacity
+│                                             │
+│                              [取消订单]     │  ← CancelBtn (右下角)
+└─────────────────────────────────────────────┘
+
+尺寸: 宽度 800px，高度自适应
+背景: #3D2B1E
+边框: 1px solid #8B6914
+```
+
+#### 4.6.3 订单数据结构
+
+```typescript
+type PurchaseMode = 'wholesale' | 'agent';
+
+interface PurchaseOrderData {
+    id: string;              // 订单号
+    time: number;            // 下单时间戳
+    mode: PurchaseMode;      // 采购模式：wholesale=批发市场, agent=商家代理
+    productName: string;     // 商品名称
+    category: string;        // 品类
+    quantity: number;        // 数量
+    unitPrice: number;       // 单价
+    totalPrice: number;      // 总金额
+    warehouseUsage: number;  // 仓库容量占用
+}
+```
+
+#### 4.6.4 脚本文件
+
+| 文件 | 职责 |
+|:-----|:-----|
+| `OrderPanelCtrl.ts` | 主控制器，管理关闭按钮、订单列表、取消订单功能 |
+
+#### 4.6.5 界面交互逻辑
+
+1. 点击关闭按钮 → 隐藏 OrderPanel
+2. 滚动订单列表 → 查看所有进货订单
+3. 点击"取消订单"按钮 → 取消订单（TODO: 确认弹窗 + 退还金币）
+
+---
+
 ## 五、共用组件
 
 ### 5.1 AssignMenuUI（气泡指派菜单）
@@ -1616,6 +1696,7 @@ AlertBox
 - [ ] 账单复盘面板
 - [x] 人才市场面板 ✅ (4.4)
 - [ ] 产业总览面板
+- [x] 进货订单面板 ✅ (4.6)
 
 ### 共用组件 ⏳
 
