@@ -1,6 +1,6 @@
 # 《无名之辈：白手起家》UI 策划
 
-> 最后更新：2026-06-07
+> 最后更新：2026-07-02
 > 状态：进行中
 
 ---
@@ -1495,10 +1495,102 @@ interface EmployeeData {
 
 ---
 
-### 4.6 进货订单面板
+### 4.5 产业总览面板
 
 > 状态：已完成 ✅
-> 最后更新：2026-06-30
+> 最后更新：2026-07-02
+
+#### 4.5.1 面板结构
+
+```
+IndustryPanel (产业管理面板)
+├── CloseBtn (× 关闭按钮)
+├── PanelBg (背景图)
+├── Title: 🏢 产业总览
+└── ScrollView (商店列表滚动视图)
+    └── view / content
+        └── InfoPanel (商店信息面板)
+            ├── ShopCard (商店卡片)
+            │   ├── ShopName (🏪 商店名称)
+            │   └── ToggleBtn (关店/开店按钮)
+            │       └── Label (按钮文字)
+            ├── Size: 📐 面积: XXXm²
+            ├── Rent: 💰 租金: XXX/周
+            ├── StaffCost: 👥 人力: XXX/周
+            ├── ShelveCount: 🗃️ 货架: X个
+            └── Profit: 📈 利润: XXX/周
+```
+
+#### 4.5.2 商店卡片设计
+
+```
+ShopCard (商店卡片)
+┌─────────────────────────────────────────────┐
+│ 🏪 中心便利店                    [关店]     │  ← ShopName + ToggleBtn
+│                                             │
+│ 📐 面积: 120m²   💰 租金: 500/周           │
+│ 👥 人力: 200/周  🗃️ 货架: 10个             │
+│ 📈 利润: 800/周                             │
+└─────────────────────────────────────────────┘
+
+尺寸: 宽度自适应，高度自适应
+背景: #3D2B1E
+边框: 1px solid #8B6914
+内边距: 12px
+间距: 8px
+```
+
+#### 4.5.3 商店数据结构
+
+```typescript
+type ShopType = 'convenience' | 'supermarket' | 'restaurant' | 'cafe' | 'clothing' | 'electronics' | 'pharmacy';
+
+interface ShopData {
+    id: string;              // 商店ID
+    name: string;            // 商店名称
+    type: ShopType;         // 商店类型
+    location: string;        // 位置描述
+    size: number;            // 面积（m²）
+    rent: number;            // 周租金
+    staffCost: number;       // 人力成本/周
+    shelveCount: number;     // 货架数量
+    profit: number;          // 周利润
+    isClosed: boolean;      // 是否关店
+}
+```
+
+**商店类型名称映射**：
+
+| 类型 | 名称 |
+|:-----|:-----|
+| convenience | 便利店 |
+| supermarket | 超市 |
+| restaurant | 餐厅 |
+| cafe | 咖啡店 |
+| clothing | 服装店 |
+| electronics | 电器店 |
+| pharmacy | 药店 |
+
+#### 4.5.4 脚本文件
+
+| 文件 | 职责 |
+|:-----|:-----|
+| `IndustryPanelCtrl.ts` | 主控制器，管理商店数据、关店/开店功能、净利润计算 |
+
+#### 4.5.5 界面交互逻辑
+
+1. 点击关闭按钮 → 隐藏 IndustryPanel
+2. 滚动商店列表 → 查看所有商店信息
+3. 点击"关店"按钮 → 暂停营业（isClosed = true）
+4. 点击"开店"按钮 → 恢复营业（isClosed = false）
+5. 净利润计算：利润 - 租金 - 人力成本
+
+---
+
+### 4.7 进货订单面板
+
+> 状态：已完成 ✅
+> 最后更新：2026-07-02
 
 #### 4.6.1 面板结构
 
@@ -1509,7 +1601,7 @@ OrderPanel (进货订单面板)
 ├── Title: 📋 进货订单
 └── OrderList (ScrollView 垂直滚动)
     └── content
-        ├── OrderCard (订单卡片)
+        ├── WholesaleOrder (批发市场订单卡片)
         │   ├── ModeTag (采购模式标签)
         │   └── ProductInfo (商品信息)
         │       ├── ProductName (商品名称)
@@ -1519,7 +1611,7 @@ OrderPanel (进货订单面板)
         │       ├── TotalPrice (总金额)
         │       ├── Capacity (仓库容量占用)
         │       └── CancelBtn (取消订单按钮)
-        └── OrderCard-001 (更多订单卡片...)
+        └── AgentOrder (商家代理订单卡片...)
 ```
 
 #### 4.6.2 订单卡片设计
@@ -1693,9 +1785,9 @@ AlertBox
 
 - [ ] NightUI.prefab
 - [x] 进货市场面板 ✅ (4.2)
-- [ ] 账单复盘面板
+- [x] 账单复盘面板
 - [x] 人才市场面板 ✅ (4.4)
-- [ ] 产业总览面板
+- [x] 产业总览面板 ✅ (4.5)
 - [x] 进货订单面板 ✅ (4.6)
 
 ### 共用组件 ⏳
