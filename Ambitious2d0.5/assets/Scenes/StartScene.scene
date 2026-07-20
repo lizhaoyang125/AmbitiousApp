@@ -4378,6 +4378,21 @@
     "playerInitPanel": {
       "__id__": 62
     },
+    "nameEditBox": {
+      "__id__": 94
+    },
+    "traitLabel": {
+      "__id__": 68
+    },
+    "btnStartGame": {
+      "__id__": 83
+    },
+    "btnRandomTrait": {
+      "__id__": 75
+    },
+    "btnContinue": {
+      "__id__": 23
+    },
     "_id": "fa8GIv3jhBz5hW3iBjYY4/"
   },
   {
